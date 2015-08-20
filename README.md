@@ -3,7 +3,7 @@
 
 ## About 
 
-A zipped archive that contains all the files I've came across and found useful in my programming journey.
+A zipped archive that contains all the different variations of kits that one might use to start a project. For example, there is a kit for those who are using Jekyll, and there is a kit for those using, Gulp, etc. All the instructions for each kit are detailed inside their respective folders. 
 
 ## Use
 
