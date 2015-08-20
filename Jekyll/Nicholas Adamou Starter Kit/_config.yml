@@ -1,0 +1,8 @@
+# Site settings
+title: Nicholas Adamou (Starter Kit)
+email: nicholasadamouemail@gmail.com
+description: Nicholas Adamou's Web Site Starter Kit.
+
+# Build settings
+markdown: redcarpet
+exclude: ["README.md"]
