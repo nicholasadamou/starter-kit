@@ -1,5 +1,5 @@
 {
-  "name": "skeleton-kit",
+  "name": "starter-kit",
   "version": "1.0.0",
   "description": "Simple structure for a simple start to a simple site.",
   "main": "build/index.html",
@@ -9,7 +9,8 @@
   "keywords": [
     "boilerplate",
     "seed",
-    "skeleton-kit",
+    "starter-kit",
+    "nicholas adamou",
     "sass",
     "jade",
     "gulp"
