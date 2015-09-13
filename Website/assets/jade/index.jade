@@ -4,7 +4,7 @@ html
 		title Starter Kit
 		meta(charset="utf-8")
 		meta(name="viewport" content="width=device-width")
-		link(rel="stylesheet" href="/assets/css/index.css")
+		link(rel="stylesheet" href="assets/css/index.css")
 		link(rel="shortcut icon" href="favicon.ico")
 			
 		body 
@@ -12,11 +12,16 @@ html
 				header.island
 					.wrapper
 						h1 Starter Kits
-						span.subhead Ground Zero for your Next Project
+						span.subhead Ground Zero for your Next Web Project
 					
 				main.island
 					.wrapper
-						a(href="https://github.com/NickAdamou/StarterKits/archive/master.zip")
+						a(href="../../../index.html").link
+							button.btn
+								i.fa.fa-arrow-left
+								|  Back
+								
+						a(href="https://github.com/NickAdamou/StarterKits/archive/master.zip").link
 							button.btn
 								i.fa.fa-download
 								|  Download
@@ -28,7 +33,7 @@ html
 						small A thing made by, 
 							a(href="http://nicholasadamou.me/" target="_blank") Nicholas Adamou
 		
-			script(src="/assets/js/0-tools/min/jquery-2.1.4-min.js")
-			script(src="/assets/js/functions.js")
+			script(src="assets/js/0-tools/min/jquery-2.1.4-min.js")
+			script(src="assets/js/functions.js")
 			
 			
