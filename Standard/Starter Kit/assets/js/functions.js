@@ -1,1 +1,3 @@
-//Getting Started!
+$(function() {
+	//Getting Started
+});
