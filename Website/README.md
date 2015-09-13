@@ -1,5 +1,4 @@
 # Starter Kit [Standard]
-=============================
 ![Project Preview](assets/img/thumbnail.png)
 
 ## Install
