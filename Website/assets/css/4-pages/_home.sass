@@ -1,28 +1,23 @@
-html
-  width: 100%
-  overflow: hidden-x
-  text-align: center
+.site__wrapper
+  margin-top: 14%
 
-@media (min-width: 650px)
-  html
-    height: 100%
+  @media (max-width: 1024px)
+    margin-top: 13%
 
-  html:before
-    content: ''
-    display: inline-block
-    height: 100%
-    vertical-align: middle
-    margin-right: -0.25em
+  @media (max-width: 768px)
+    margin-top: 30%
 
-  body
-    display: inline-block
-    vertical-align: middle
-    max-width: 38rem
+  @media (max-width: 640px)
+    margin: 0
 
 .wrapper
   width: 38rem
+  height: 15%
   margin: 0 auto
 
+  @media (max-width: 640px)
+    width: 100%
+
 .island
-  padding: 1.5rem
-  width: 100%
+  padding: 1.0rem
+  text-align: center

@@ -2559,6 +2559,9 @@ body {
   color: #2E2D33;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%; }
+  @media (max-width: 640px) {
+    body {
+      font: 99%/1.5 "Fira Sans", "Fira Mono", sans-serif; } }
 
 a {
   transition: color 0.4s;
@@ -2616,9 +2619,6 @@ body {
   .btn:focus {
     outline: none; }
 
-header {
-  padding: 20px; }
-
 h1, .alpha {
   margin-bottom: 1.5rem;
   font-size: 3rem;
@@ -2629,6 +2629,9 @@ h1, .alpha {
 .mega {
   font-size: 6rem;
   line-height: 1; }
+  @media (max-width: 640px) {
+    .mega {
+      font-size: 4rem; } }
 
 .site__title {
   color: #f35626;
@@ -2652,6 +2655,9 @@ h2, .beta {
   color: #7b8993;
   line-height: 1;
   margin-bottom: 0.75rem; }
+  @media (max-width: 640px) {
+    .subhead {
+      font-size: 1rem; } }
 
 hr {
   border: none;
@@ -2681,30 +2687,26 @@ p, hr, form {
   -webkit-animation: bounceInUp 1s;
   -webkit-animation-delay: 0.1s; }
 
-html {
-  width: 100%;
-  overflow: hidden-x;
-  text-align: center; }
+.site__wrapper {
+  margin-top: 14%; }
+  @media (max-width: 1024px) {
+    .site__wrapper {
+      margin-top: 13%; } }
+  @media (max-width: 768px) {
+    .site__wrapper {
+      margin-top: 30%; } }
+  @media (max-width: 640px) {
+    .site__wrapper {
+      margin: 0; } }
 
-@media (min-width: 650px) {
-  html {
-    height: 100%; }
-
-  html:before {
-    content: "";
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-    margin-right: -0.25em; }
-
-  body {
-    display: inline-block;
-    vertical-align: middle;
-    max-width: 38rem; } }
 .wrapper {
   width: 38rem;
+  height: 15%;
   margin: 0 auto; }
+  @media (max-width: 640px) {
+    .wrapper {
+      width: 100%; } }
 
 .island {
-  padding: 1.5rem;
-  width: 100%; }
+  padding: 1rem;
+  text-align: center; }
