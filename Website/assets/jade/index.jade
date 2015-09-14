@@ -3,35 +3,39 @@ html
 	head 
 		title Starter Kit
 		meta(charset="utf-8")
-		meta(name="viewport" content="width=device-width")
+		meta(meta name="viewport" content="width=device-width")
 		link(rel="stylesheet" href="assets/css/index.css")
 		link(rel="shortcut icon" href="favicon.ico")
 			
 		body 
 			
-				header.island
+				header.island.site__header
 					.wrapper
-						h1 Starter Kits
-						span.subhead Ground Zero for your Next Web Project
+						h1.mega.site__title Starter Kits
+						span.beta.subhead Ground Zero for your Next Web Project
 					
-				main.island
+				main(role="content").island.site__content
 					.wrapper
-						a(href="../../../index.html").link
-							button.btn
+					
+						form					
+							a(href="../../../").link.btn
 								i.fa.fa-arrow-left
 								|  Back
-								
-						a(href="https://github.com/NickAdamou/StarterKits/archive/master.zip").link
-							button.btn
+									
+							a(href="http://github.com/NickAdamou/StarterKits/archive/master.zip").link.btn
 								i.fa.fa-download
 								|  Download
+									
 						hr 
-						p
-							a(href="https://github.com/NickAdamou/StarterKits/archive/master.zip") Download StarterKits
+						
+						p.meta
+							a(href="http://github.com/NickAdamou/StarterKits/archive/master.zip") Download StarterKits
 							|  or 
-							a(href="https://github.com/NickAdamou/StarterKits" target="_blank") View on GitHub
-						small A thing made by, 
-							a(href="http://nicholasadamou.me/" target="_blank") Nicholas Adamou
+							a(href="http://github.com/NickAdamou/StarterKits" target="_blank") View on GitHub
+							
+						p
+							small A thing made by, 
+								a(href="http://nicholasadamou.me/" target="_blank") Nicholas Adamou
 		
 			script(src="assets/js/0-tools/min/jquery-2.1.4-min.js")
 			script(src="assets/js/functions.js")
