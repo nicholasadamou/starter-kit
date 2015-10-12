@@ -28,6 +28,7 @@ Every command has to be executed on the root directory of the project using the 
 * **clean**: Removes all the compiled files on ./build
 * **js**: Compile the JavaScript files
 * **jade**: Compile the Jade templates
+* **rucksack**: Compile the Rucksack styles
 * **sass**: Compile the Sass styles
 * **images**: Copy the newer to the build folder
 * **favicon**: Copy the favicon to the build folder

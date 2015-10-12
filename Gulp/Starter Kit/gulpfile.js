@@ -5,6 +5,7 @@
  */
 // Include gulp plugins
 var gulp = require('gulp');
+var rucksack = require('gulp-rucksack');
 var $ = require('gulp-load-plugins')({ lazy: true });
 var browsersync = require('browser-sync');
 var del = require('del');
@@ -145,6 +146,19 @@ gulp.task('jade', function () {
   return templates.pipe(gulp.dest(views.out));
 });
 
+/*
+* Compile rucksack styles
+* https://simplaio.github.io/rucksack/
+*/
+gulp.task('rucksack', function() {
+  return gulp.src(styles.in)
+    .pipe(rucksack({
+      autoprefixer: true
+      fallbacks: true
+    })
+    .pipe(gulp.dest(styles.out));
+});
+
 // Compile Sass styles
 gulp.task('sass', function () {
   log('-> Compile SASS Styles')
@@ -187,7 +201,7 @@ gulp.task('start', ['build', 'watch']);
 // Help Task
 gulp.task('help', function () {
   console.log('');
-  console.log('===== Help for Nicholas Adamou's Starter Kit' =====');
+  console.log("===== Help for Nicholas Adamou's Starter Kit' =====");
   console.log('');
   console.log('Usage: gulp [command]');
   console.log('The commands for the task runner are the following.');
@@ -196,6 +210,7 @@ gulp.task('help', function () {
   console.log('          js: Compile the JavaScript files');
   console.log('        jade: Compile the Jade templates');
   console.log('        sass: Compile the Sass styles');
+  console.log('    rucksack: Compile the Rucksack styles');
   console.log('      images: Copy the newer to the build folder');
   console.log('     favicon: Copy the favicon to the build folder');
   console.log('     vendors: Copy the vendors to the build folder');

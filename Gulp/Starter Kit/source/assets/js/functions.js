@@ -1,5 +1,7 @@
-$( document ).ready(function() {
+(function ($) {
+	"use strict";
 
-  // Get started here!
-
-});
+	$(document).ready(function () {
+		//Getting Started
+	});
+})(jQuery);
