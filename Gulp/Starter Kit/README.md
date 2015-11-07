@@ -1,5 +1,5 @@
 # Starter Kit [Gulp]
-![Project Preview](source/assets/img/thumbnail.png)
+![Project Preview](source/assets/images/thumbnail.png)
 
 ## Requirements
 This project does have some requirements that you will need to meet in order to compile it. First of all you need NodeJS in order to run javascript on the console, you can go to the [NodeJS](http://nodejs.rg) site and follow through the installation process. After you get the `node` command on the console, you need to install Gulp and Bower globally with the following command:
