@@ -6,6 +6,8 @@
 // Include gulp plugins
 var gulp = require('gulp');
 var rucksack = require('gulp-rucksack');
+var imagemin = require('gulp-imagemin');
+var pngquant = require('imagemin-pngquant');
 var $ = require('gulp-load-plugins')({ lazy: true });
 var browsersync = require('browser-sync');
 var del = require('del');
@@ -159,6 +161,20 @@ gulp.task('rucksack', function() {
     .pipe(gulp.dest(styles.out));
 });
 
+/*
+* Minify PNG, JPEG, GIF and SVG images
+* https://github.com/sindresorhus/gulp-imagemin
+*/
+gulp.task('imagemin', function () {
+    return gulp.src(config.images)
+        .pipe(imagemin({
+            progressive: true,
+            svgoPlugins: [{removeViewBox: false}],
+            use: [pngquant()]
+        }))
+        .pipe(gulp.dest(config.images));
+});
+
 // Compile Sass styles
 gulp.task('sass', function () {
   log('-> Compile SASS Styles')
@@ -211,6 +227,7 @@ gulp.task('help', function () {
   console.log('        jade: Compile the Jade templates');
   console.log('        sass: Compile the Sass styles');
   console.log('    rucksack: Compile the Rucksack styles');
+  console.log('    imagemin: Minify PNG, JPEG, GIF and SVG images');
   console.log('      images: Copy the newer to the build folder');
   console.log('     favicon: Copy the favicon to the build folder');
   console.log('     vendors: Copy the vendors to the build folder');

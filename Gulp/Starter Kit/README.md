@@ -1,5 +1,4 @@
 # Starter Kit [Gulp]
-=============================
 ![Project Preview](source/assets/img/thumbnail.png)
 
 ## Requirements
