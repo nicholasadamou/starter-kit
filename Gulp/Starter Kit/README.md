@@ -8,14 +8,29 @@ This project does have some requirements that you will need to meet in order to 
 node install -g gulp bower
 ```
 
-Gulp is the one that will run all the task of compilation, watchers, and others. Bower will get the dependencies for the client-side like jQuery. Those are the only requirements to run this project.
+Gulp is the process that will run all the task of compilation, watchers, and others. Bower will get the dependencies for the client-side like jQuery. Those are the only requirements to run this project.
 
 ## Install
 In order to start using this project, you need to clone/download it to your machine.
+
+Now choose one of the following methods of setting up the kit.
+
+## Method One
 After you have it on you machine, you will need to navigate to the project folder using terminal and execute the following command to gather all the dependencies.
 ```
 npm install && bower install
+npm install gulp-rucksack --save-dev
+npm install --save-dev gulp-imagemin
+npm install --save imagemin-pngquant
 ```
+
+## Method Two
+Additionally, if you are running on a mac, you can use the custom `setup` script, which will automate the previously mentioned information.
+
+Double click on the `script` file to execute the setup process.
+
+Note: When you first run the script, a dialog box will appear. Navigate to the `Starter Kit` directory and press `choose`.
+
 After the process finishes, you will have all that you will need to start coding.
 
 ## How to use
@@ -28,6 +43,7 @@ Every command has to be executed on the root directory of the project using the 
 * **js**: Compile the JavaScript files
 * **jade**: Compile the Jade templates
 * **rucksack**: Compile the Rucksack styles
+* **imagemin**: Minify PNG, JPEG, GIF and SVG images
 * **sass**: Compile the Sass styles
 * **images**: Copy the newer to the build folder
 * **favicon**: Copy the favicon to the build folder
@@ -49,7 +65,7 @@ The project has a very simple and flexible structure. If the default place for a
 │   ├───vendors -> Project dependencies
 ├───source -> Source files for the project
 │   ├───assets -> Assets for the project
-│   │   ├───img -> Images
+│   │   ├───images -> Images
 │   │   └───js -> Scripts
 │   ├───sass  -> Sass styles
 │   │   index.sass -> Main sass file, where all other sass files should be included.

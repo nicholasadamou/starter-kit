@@ -110,7 +110,7 @@ gulp.task('js', function () {
 
 // Update images on build folder
 gulp.task('images', function () {
-  return gulp.src( images.in )
+  return gulp.src(images.in)
     .pipe($.newer(images.out))
     .pipe(gulp.dest(images.out));
 });
@@ -154,10 +154,7 @@ gulp.task('jade', function () {
 */
 gulp.task('rucksack', function() {
   return gulp.src(styles.in)
-    .pipe(rucksack({
-      autoprefixer: true
-      fallbacks: true
-    })
+    .pipe(rucksack())
     .pipe(gulp.dest(styles.out));
 });
 

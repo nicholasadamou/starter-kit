@@ -7,15 +7,15 @@ module.exports = function() {
      * - development
      * - production
      * - empty string
-     * For the development build the output will be verbose.
-     * For the production build the output will be compress and minified
-     * If is set to and empty string the environment will be extract from
+     * For the development build, the output will be verbose.
+     * For the production build, the output will be compress and minified
+     * If it is set to an empty string the environment will be extract from
      * the NODE_ENV environment var.
      */
     environment: 'development',
     // Source code directory.
     source: 'source/',
-    // Build directory, is where the compiled code will be output.
+    // Build directory, is where the compiled code will be outputted.
     build: 'build/',
     // Where the images are inside the source folder.
     // they will be copied to the same dir on the build folder
@@ -28,7 +28,7 @@ module.exports = function() {
     views: 'views/',
     /**
      * As this is a Sass based project, this is the dir for the sass files. Every file
-     * under this dir will be watched for changes, but only the main.sass file
+     * under this dir will be watched for changes, but only the index.sass file
      * will be compiled.
      */
     sass: 'sass/index.sass',
@@ -66,8 +66,8 @@ module.exports = function() {
       notify: true
     },
     /**
-     * This is the relative to build dir for vendors assets like jquery. Vendors are
-     * managed by bower and if the directory will be changed, you should change on
+     * This is the relative to build dir for vendors assets like jQuery. Vendors are
+     * managed by bower and if the directory should be changed, you should change the
      * .bowerrc file in the root directory as well.
      */
     vendors: 'vendors'
