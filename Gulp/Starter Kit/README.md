@@ -13,7 +13,9 @@ Gulp is the process that will run all the task of compilation, watchers, and oth
 ## Install
 In order to start using this project, you need to clone/download it to your machine.
 
-Now choose one of the following methods of setting up the kit.
+## Set Up
+
+Now after you have cloned/downloaded the kit to a desirable location, you can choose one of the following methods of setting up the kit.
 
 ## Method One
 After you have it on you machine, you will need to navigate to the project folder using terminal and execute the following command to gather all the dependencies.
