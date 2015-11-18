@@ -51,7 +51,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>on run {input, parameters}		display alert "Note: This Script will only work if (NodeJS) is currently installed. If it isn't please download + install it now."		set scriptQuestion to display dialog "Would you like to continue?" buttons {"No", "Yes"}	set userAnswer to button returned of scriptQuestion		if (userAnswer is equal to "No") then		display alert "Starter Kit Closing"	else if (userAnswer is equal to "Yes") then		--Open {Finder.app} to begin task		tell application "Finder"			--Make the Finder Application window focused			activate						--Navigate to the {Starter Kit} Directory			set source_folder to choose folder with prompt "Please select the Starter Kit directory."						tell application "System Events"				set itemPath to POSIX path of source_folder			end tell						--Open {Terminal.app} to begin task			tell application "Terminal"				--Make the Terminal Application window focused				activate												--Navigate's {Terminal.app} to the {Starter Kit} Directory				do script with command "cd " &amp; quoted form of itemPath in window 1								--Set the {Terminal.app} Window Title				do script with command "title 'Setting up Starter Kit (Gulp)'" in window 1								display alert "Setting up Starter Kit (Gulp). Please press *Ok* to continue."								--Install all the necessary modules in order for 				--{Starter Kit} to work				do script with command "npm install &amp;&amp; bower install" in window 1				do script with command "npm install gulp-rucksack --save-dev" in window 1				do script with command "npm install --save-dev gulp-imagemin" in window 1				do script with command "npm install --save imagemin-pngquant" in window 1								--Show the {Starter Kit} help commands				do script with command "gulp help" in window 1			end tell --end tell (Terminal)		end tell --end tell (Finder)	end if		return inputend run</string>
+					<string>on run {input, parameters}			display alert "Note: This Script will only work if you already ran, [setup.app] first. If you haven't, please run it now."		set scriptQuestion to display dialog "Would you like to continue?" buttons {"No", "Yes"}	set userAnswer to button returned of scriptQuestion		if (userAnswer is equal to "No") then		display alert "Starter Kit Closing"	else if (userAnswer is equal to "Yes") then		--Navigate to the {Starter Kit} Directory		set source_folder to choose folder with prompt "Please select the Starter Kit directory."				tell application "System Events"			set itemPath to POSIX path of source_folder		end tell				--Open {Terminal.app} to begin task		tell application "Terminal"			--Make the Terminal Application window focused			activate						--Open a second {Terminal.app} Window			do script with command "cd " &amp; quoted form of itemPath in window 1			do script with command "gulp help" in window 1		end tell	end if		return inputend run</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.RunScript</string>
@@ -68,15 +68,15 @@
 				<key>Class Name</key>
 				<string>RunScriptAction</string>
 				<key>InputUUID</key>
-				<string>46C45E26-7092-4712-9970-E2A2AF63D5A3</string>
+				<string>8856AA35-2367-4CA4-BE7B-E5CBDB962D8C</string>
 				<key>Keywords</key>
 				<array>
 					<string>Run</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>19E58485-4DC4-4DC1-AA0B-0B9DDF71C969</string>
+				<string>D974038D-482A-4DC5-9059-4D71FAC1904C</string>
 				<key>UUID</key>
-				<string>84256141-ADAB-4A6E-8426-B90929B52642</string>
+				<string>5DE72A4A-DB98-4C59-932D-C963CD655491</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
@@ -107,7 +107,7 @@ end run</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>301.500000:840.000000</string>
+				<string>309.000000:316.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
