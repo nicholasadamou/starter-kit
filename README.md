@@ -3,8 +3,8 @@
 
 ## About 
 
-A zipped archive that contains all the different variations of kits that one might use to start a project. For example, there is a kit for those who are using Jekyll, and there is a kit for those using, Gulp, etc. All the instructions for each kit are detailed inside their respective folders. 
+A zipped archive that contains the kit made with [Gulpjs] that one might use to start a web project. The instructions for the kit is detailed inside the `Gulp/Starter Kit` folder. 
 
 ## Use
 
-In order to start using this library of kits, you will need to clone/download it to your machine.
+In order to start using the gulpjs starter kit, you will need to clone/download it to your machine.
