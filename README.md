@@ -3,7 +3,7 @@
 
 ## About 
 
-A zipped archive that contains the kit made with [gulpjs]("http://gulpjs.com/") that one might use to start a web project. The instructions for the kit is detailed inside the `Gulp/Starter Kit` folder. 
+A zipped archive that contains the kit made with ![gulpjs]("http://gulpjs.com/") that one might use to start a web project. The instructions for the kit is detailed inside the `Gulp/Starter Kit` folder. 
 
 ## Use
 
