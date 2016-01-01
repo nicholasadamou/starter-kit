@@ -35,11 +35,13 @@ Windows file extension: `.bat`
 Choose the one that suits your OS. 
 
 *Mac Version Notes:*
+
 Double click on the `setup.app` file to execute the setup process.
 
 Note: When you first run the script, a dialog box will appear. Navigate to the `Starter Kit` directory and press `choose`. I am still working on a version, much like the windows version, where you will not have to navigate to the `Starter Kit` directory.
 
 *Windows Version Notes:*
+
 Unlike the Mac setup script, the windows version of the setup process doesn't require you to navigate to the `Starter Kit` directory. 
 
 After the process finishes, you will have all that you will need to start coding.
