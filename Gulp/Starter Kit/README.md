@@ -56,6 +56,21 @@ Every command has to be executed on the root directory of the project using the 
 
 If you are in the development process, the `gulp start` command is the best option for you. Go to the project folder in the console and execute `gulp start`, it will compile the project and start server that will refresh every time you change something in the code. The command will be waiting for changes and will tell you how to access the project from local and public url. Every browser that points to that url will be auto refreshed. As an extra feature for testing purpose any interaction on one browser will be reflected on any others. Try it on a phone, tablet and pc at the same time.
 
+## Using Sass Command Line Tools (Source Mapping Sass -- WIP)
+
+If you want to enable source mapping of this project, please type in the terminal the following:
+`sass source/sass/index.sass:build/assets/css/index.css` (Note:`--sourcemap` command has been deprecated and is done automatically with the `sass` command.)
+
+Please note that this function requires that the `sass command line tools` are installed.
+If they are not, install them in the following way in the terminal:
+`sudo gem install -n /usr/local/bin sass`
+
+To update your `sass` version, do the following:
+`sudo gem update sass`
+
+Once source mapping is installed, please follow this tutorial below to get started:
+[Using source maps with Sass 3.3](http://thesassway.com/intermediate/using-source-maps-with-sass)
+
 ## Structure
 The project has a very simple and flexible structure. If the default place for any file or directory needs to be moved, be sure to update the new position on the config file.
 

@@ -32,7 +32,7 @@ module.exports = function() {
      * will be compiled.
      */
     sass: 'sass/index.sass',
-    // Dir where the sass will be compiled
+    // Dir where the sass will be compiled to
     css: 'assets/css',
     // Favicon
     favicon: 'favicon.ico',
@@ -48,7 +48,7 @@ module.exports = function() {
        */
       outputStyle: 'expanded',
       // Relative path to the css where the images dir is.
-      imagePath: '../img',
+      imagePath: '../images',
       // Sass precision
       precision: 3,
     },
