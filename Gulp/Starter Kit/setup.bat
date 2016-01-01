@@ -3,25 +3,6 @@ TITLE Starter Kit
 runas /noprofile /user:Administrator cmd
 goto :checkNodeVersion
 
-:primaryFunction
-  cls
-  echo Starter Kit Log:
-  echo NodeJS is installed.
-  echo GulpJS is installed.
-  echo Gulp Dependencies are installed.
-  set /p response="Would you like to continue? <y/n>"
-
-  if /i "%response%"=="y" (
-    cls
-    set "filePath=%~dp0"
-    cd %filePath%
-
-    gulp help
-    cmd /k
-  )
-
-  if /i "%response%"=="n" goto :exitFunction
-
 :checkNodeVersion
   cls
   echo Current NodeJS version:
@@ -53,6 +34,14 @@ goto :checkNodeVersion
   echo NodeJS was successfully updated to version #:
   node -v
   timeout 5
+  goto :installBower
+
+:installBower
+  cls
+  echo Installing Bower:
+  call npm install -g gulp bower
+
+  echo Bower was successfully installed.
   goto :installGulp
 
 :installGulp
@@ -75,6 +64,25 @@ goto :checkNodeVersion
   echo Project Dependencies were successfully installed.
   timeout 5
   goto :primaryFunction
+
+:primaryFunction
+  cls
+  echo Starter Kit Log:
+  echo NodeJS is installed.
+  echo GulpJS is installed.
+  echo Gulp Dependencies are installed.
+  set /p response="Would you like to continue? <y/n>"
+
+  if /i "%response%"=="y" (
+    cls
+    set "filePath=%~dp0"
+    cd %filePath%
+
+    gulp help
+    cmd /k
+  )
+
+  if /i "%response%"=="n" goto :exitFunction
 
 :exitFunction
   cls

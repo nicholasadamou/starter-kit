@@ -2,10 +2,10 @@
 ![Project Preview](source/assets/images/thumbnail.png)
 
 ## Requirements
-This project does have some requirements that you will need to meet in order to compile it. First of all you need NodeJS in order to run javascript on the console, you can go to the [NodeJS](http://nodejs.rg) site and follow through the installation process. After you get the `node` command on the console, you need to install Gulp and Bower globally with the following command:
+This project does have some requirements that you will need to meet in order to compile it. First of all you need NodeJS in order to run javascript on the console, you can go to the [NodeJS](http://nodejs.rg) site and follow through the installation process. After you get the `npm` command on the console, you need to install Gulp and Bower globally with the following command:
 
 ```
-node install -g gulp bower
+npm install -g gulp bower
 ```
 
 Gulp is the process that will run all the task of compilation, watchers, and others. Bower will get the dependencies for the client-side like jQuery. Those are the only requirements to run this project.
@@ -29,10 +29,11 @@ npm install --save imagemin-pngquant
 Additionally, you can use the custom `setup` script, which will automate the previously mentioned information.
 
 There are two versions, one for Mac, and one for Windows.
+
 Mac file extension: `.app`
 Windows file extension: `.bat`
 
-Choose the one that suits your OS. 
+Choose the one that suits your OS.
 
 *Mac Version Notes:*
 
