@@ -44,7 +44,7 @@ Note: When you first run the script, a dialog box will appear. Navigate to the `
 
 Unlike the Mac version, the Windows version of the setup process doesn't require you to navigate to the `Starter Kit` directory. It autodetects the file path that the `setup.bat` file is located in.  
 
-After the process finishes, you will have all that you will need to start coding.
+After the process finishes, you will be prompted with the `Gulp Help` screen. Once you've reached this point, you can proceed into the `How to Use` section to understand each option the kit gives you.
 
 ## How to use
 To start using it, the only thing you will need to do is open the project on the code editor of your choice and start coding. To compile and live preview all of your changes, you have some commands that will help you. Here are the list of commands you should know.
