@@ -1,22 +1,27 @@
 @echo off
 TITLE Starter Kit
-runas /noprofile /user:Administrator cmd
-cls  
+cls
 
 echo Note: this script will only work if you already ran, [setup.bat] first.
-echo If you haven't please run it now.
-set /p response="Would you like to continue? <y/n>"
+set /p response="Did you run [setup.bat] already? <y/n>"
 
 if /i "%response%"=="y" (
+goto :gainAdminRights
+
+:gainAdminRights
   cls
+  echo Give [setup.bat] Administrative Rights:
+  runas /noprofile /user:Administrator cmd
+  goto :setupKit
+
+:setupKit
+  cls
+  echo Setting Up Starter Kit:
   set "filePath=%~dp0"
   cd %filePath%
-
-  gulp help
-  cmd /k
+  cmd /k gulp help
 )
 
 if /i "%response%"=="n" (
-  echo Starter Kit is Closing
-  exit
+  call setup.bat
 )

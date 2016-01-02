@@ -1,7 +1,20 @@
 @echo off
-TITLE Starter Kit
-runas /noprofile /user:Administrator cmd
-goto :checkNodeVersion
+title Starter Kit
+set "filePath=%~dp0"
+cd %filePath%
+
+cls
+
+echo Note: this script will take a while [approx. 5 min] to complete.
+set /p response="Would you like to continue? <y/n>"
+if /i "%response%"=="y" (
+goto :gainAdminRights
+
+:gainAdminRights
+  cls
+  echo Give [setup.bat] Administrative Rights:
+  runas /noprofile /user:Administrator cmd
+  goto :checkNodeVersion
 
 :checkNodeVersion
   cls
@@ -15,9 +28,9 @@ goto :checkNodeVersion
   cls
   echo Installing NodeJS:
   powershell -Command "(New-Object Net.WebClient).DownloadFile('https://nodejs.org/dist/v5.3.0/node-v5.3.0-x64.msi', 'node-v5.3.0-x64.msi')"
-  echo downloading file, node-v5.3.0-x64.msi, from https://nodejs.org/dist/v5.3.0/node-v5.3.0-x64.msi....
+  echo downloading file, node-v5.3.0-x64.msi, from https://nodejs.org/dist/v5.3.0/node-v5.3.0-x64.msi...
   set "fileName=node-v5.3.0-x64.msi"
-  %fileName%
+  start %fileName%
 
   echo NodeJS was successfully installed.
   timeout 5
@@ -34,14 +47,6 @@ goto :checkNodeVersion
   echo NodeJS was successfully updated to version #:
   node -v
   timeout 5
-  goto :installBower
-
-:installBower
-  cls
-  echo Installing Bower:
-  call npm install -g gulp bower
-
-  echo Bower was successfully installed.
   goto :installGulp
 
 :installGulp
@@ -49,14 +54,14 @@ goto :checkNodeVersion
   echo Installing GulpJS:
   call npm install -g gulp
 
-  echo Gulp was successfully installed.
+  echo GulpJS was successfully installed.
   timeout 5
   goto :installDependencies
 
 :installDependencies
   cls
   echo Installing Project Dependencies:
-  call npm install && bower install
+  call npm install-dependencies
   call npm install --save-dev gulp-rucksack
   call npm install --save-dev gulp-imagemin
   call npm install --save imagemin-pngquant
@@ -70,16 +75,13 @@ goto :checkNodeVersion
   echo Starter Kit Log:
   echo NodeJS is installed.
   echo GulpJS is installed.
-  echo Gulp Dependencies are installed.
+  echo Project Dependencies are installed.
   set /p response="Would you like to continue? <y/n>"
 
   if /i "%response%"=="y" (
     cls
-    set "filePath=%~dp0"
-    cd %filePath%
-
-    gulp help
-    cmd /k
+    echo Setting Up Starter Kit:
+    cmd /k gulp help
   )
 
   if /i "%response%"=="n" goto :exitFunction
@@ -88,3 +90,10 @@ goto :checkNodeVersion
   cls
   echo Starter Kit is Closing
   exit
+)
+
+if /i "%response%"=="n" (
+  echo Starter Kit is Closing
+  timeout 5
+  exit
+)

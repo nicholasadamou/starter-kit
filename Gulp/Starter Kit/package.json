@@ -4,7 +4,7 @@
   "description": "Simple structure for a simple start to a simple site.",
   "main": "build/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install-dependencies": "npm install && bower install"
   },
   "keywords": [
     "boilerplate",
