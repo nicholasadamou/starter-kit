@@ -1,9 +1,11 @@
 # Starter Kit [Gulp]
 ![Project Preview](source/assets/images/thumbnail.png)
 
+![status](https://img.shields.io/pypi/status/Django.svg)
 ![Build Passing](https://img.shields.io/scrutinizer/build/g/filp/whoops.svg)
 ![dependencies](https://img.shields.io/david/strongloop/express.svg)
 ![devDependencies](https://img.shields.io/david/dev/strongloop/express.svg)
+![license](https://img.shields.io/apm/l/vim-mode.svg)
 
 ## About
 Starter Kit is a simple, responsive boilerplate to kickstart any responsive project.
