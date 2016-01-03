@@ -1,7 +1,7 @@
 # Starter Kit [Gulp]
 ![Project Preview](source/assets/images/thumbnail.png)
 
-![Build Passing](https://img.shields.io/travis/nicholasadamou/starterkits.svg)
+![Build Passing](https://img.shields.io/scrutinizer/build/g/filp/whoops.svg)
 ![dependencies](https://img.shields.io/david/strongloop/express.svg)
 ![devDependencies](https://img.shields.io/david/dev/strongloop/express.svg)
 
