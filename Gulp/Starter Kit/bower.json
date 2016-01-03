@@ -1,19 +1,22 @@
 {
-  "name": "nicholas-adamou-starter-kit",
+  "name": "Starter-Kit",
   "version": "1.0.0",
+  "homepage": "https://github.com/NicholasAdamou/StarterKits",
   "authors": [
-    "Nicholas Adamou <nicholasadamouemail@gmail.com>"
+    "Nicholas Adamou <nicholasadamouemail@gmail.com> (http://nicholasadamou.me/)"
   ],
-  "description": "Simple structure for a start to a simple site.",
+  "description": "A Dead Simple, Responsive Boilerplate for Mobile-Friendly Development",
   "main": "build/index.html",
   "keywords": [
-    "boilerplate",
-    "seed",
     "starter-kit",
-    "nicholas-adamou",
+    "nicholas adamou",
     "sass",
     "jade",
-    "gulp"
+    "gulp",
+    "sass",
+    "scss",
+    "responsive",
+    "boilerplate"
   ],
   "license": "MIT",
   "ignore": [
@@ -21,8 +24,6 @@
     "node_modules",
     "bower_components",
     "source/vendors",
-    "test",
-    "tests"
   ],
   "dependencies": {
     "jquery": "~2.1.4"

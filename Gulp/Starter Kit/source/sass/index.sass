@@ -1,26 +1,35 @@
-// This is the single file output by sass. It is intended to ONLY @import other files.
+/* Starter Kit V1.0.0
+ * Copyright 2016, Nicholas Adamou
+ * https://github.com/NicholasAdamou/StarterKits
+ * Free to use under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ */
 
-//Header
-@import '5-other/header'
+/* Header file */
+@import "other/header"
 
-//Tools
-@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css")
-//@import url("https://s3-us-west-2.amazonaws.com/pesticide/1.2.0/pesticide.css")
-@import '0-tools/fonts'
-@import '0-tools/bourbon/bourbon'
-//@import '0-tools/animate'
-//@import '0-tools/hover'
-//@import '0-tools/hint'
+/* Base files */
+@import "base/variables"
+@import "base/functions"
+@import "base/base-styles"
+@import "base/utils"
+@import "base/typography"
 
-//Base
-@import '1-base/vars'
-@import '1-base/base'
+/* Modules */
+@import "modules/grid"
+@import "modules/buttons"
+@import "modules/forms"
+@import "modules/lists"
+@import "modules/code"
+@import "modules/tables"
+@import "modules/spacing"
+@import "modules/media-queries"
 
-//Modules
-//--
-
-//Sections
-//--
-
-//Pages
-//--
+/* Vendors */
+@import "vendors/normalize"
+@import "vendors/bourbon/bourbon"
+@import "vendors/font-awesome/scss/fontawesome"
+@import "vendors/clrs"
+@import "vendors/material-color"
+@import "vendors/multi-brand-colors"
+@import "vendors/tinymixins"

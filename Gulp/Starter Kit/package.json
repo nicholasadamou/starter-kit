@@ -1,22 +1,32 @@
 {
-  "name": "starter-kit",
+  "name": "Starter-Kit",
   "version": "1.0.0",
-  "description": "Simple structure for a simple start to a simple site.",
-  "main": "build/index.html",
-  "scripts": {
-    "install-dependencies": "npm install && bower install"
+  "description": "A Dead Simple, Responsive Boilerplate for Mobile-Friendly Development",
+  "repository": {
+   "type": "git",
+   "url": "https://github.com/NicholasAdamou/StarterKits"
   },
+  "bugs": {
+    "url": "https://github.com/NicholasAdamou/StarterKits/issues"
+  },
+  "homepage": "https://github.com/NicholasAdamou/StarterKits",
+  "author": "Nicholas Adamou <nicholasadamouemail@gmail.com> (http://nicholasadamou.me/)",
   "keywords": [
-    "boilerplate",
-    "seed",
     "starter-kit",
     "nicholas adamou",
     "sass",
     "jade",
-    "gulp"
+    "gulp",
+    "sass",
+    "scss",
+    "responsive",
+    "boilerplate"
   ],
-  "author": "Nicholas Adamou <nicholasadamouemail@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
+  "main": "build/index.html",
+  "scripts": {
+    "install-dependencies": "npm install && bower install"
+  },
   "devDependencies": {
     "browser-sync": "^2.7.11",
     "del": "^1.2.0",

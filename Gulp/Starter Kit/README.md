@@ -1,6 +1,10 @@
 # Starter Kit [Gulp]
 ![Project Preview](source/assets/images/thumbnail.png)
 
+## About
+Starter Kit is a simple, responsive boilerplate to kickstart any responsive project.
+It is built on [Skeleton](https://github.com/dhg/Skeleton), to provide a simplistic start to any web development project.
+
 ## Requirements
 This project does have some requirements that you will need to meet in order to compile it. First of all you need NodeJS in order to run javascript on the console, you can go to the [NodeJS](http://nodejs.rg) site and follow through the installation process. After you get the `npm` command on the console, you need to install Gulp and Bower globally with the following command:
 
@@ -98,7 +102,7 @@ The project has a very simple and flexible structure. If the default place for a
 │   │   └───js -> Scripts
 │   ├───sass  -> Sass styles
 │   │   index.sass -> Main sass file, where all other sass files should be included.
-│   ├───vendors -> Vendors folder for all the dependencies (Managed by Bower)
+│   ├───vendors -> Vendors 	folder for all the dependencies (Managed by Bower)
 │   └───views -> Templates directory for Jade files
 │   │   └───index.jade
 ├───.bowerrc -> Defines where the dependencies will be installed
