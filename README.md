@@ -1,6 +1,7 @@
 # Nicholas Adamou's Starter Kits
 ![Project Preview](Other/thumbnail.png)
 
+
 ## About
 Starter Kit is a simple, responsive boilerplate to kickstart any responsive project.
 It is built on [Skeleton](https://github.com/dhg/Skeleton), to provide a simplistic start to any web development project.
