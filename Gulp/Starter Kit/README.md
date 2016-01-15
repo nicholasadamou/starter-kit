@@ -93,7 +93,7 @@ The project has a very simple and flexible structure. If the default place for a
 │   │   └───js -> Scripts
 │   ├───sass  -> Sass styles
 │   │   index.sass -> Main sass file, where all other sass files should be included.
-│   ├───vendors -> Vendors 	folder for all the dependencies (Managed by Bower)
+│   ├───vendors -> Vendors folder for all the dependencies (Managed by Bower)
 │   └───views -> Templates directory for Jade files
 │   │   └───index.jade
 ├───.bowerrc -> Defines where the dependencies will be installed

@@ -1,6 +1,12 @@
 # Nicholas Adamou's Starter Kits
 ![Project Preview](Other/thumbnail.png)
 
+![status](https://img.shields.io/pypi/status/Django.svg)
+![Build Passing](https://img.shields.io/teamcity/codebetter/bt428.svg)
+![dependencies](https://img.shields.io/david/strongloop/express.svg)
+![devDependencies](https://img.shields.io/david/dev/strongloop/express.svg)
+![license](https://img.shields.io/apm/l/vim-mode.svg)
+
 ## About
 Starter Kit is a simple, responsive boilerplate to kickstart any responsive project.
 It is built on [Skeleton](https://github.com/dhg/Skeleton), to provide a simplistic start to any web development project.
@@ -102,7 +108,7 @@ The project has a very simple and flexible structure. If the default place for a
 │   │   └───js -> Scripts
 │   ├───sass  -> Sass styles
 │   │   index.sass -> Main sass file, where all other sass files should be included.
-│   ├───vendors -> Vendors 	folder for all the dependencies (Managed by Bower)
+│   ├───vendors -> Vendors folder for all the dependencies (Managed by Bower)
 │   └───views -> Templates directory for Jade files
 │   │   └───index.jade
 ├───.bowerrc -> Defines where the dependencies will be installed
