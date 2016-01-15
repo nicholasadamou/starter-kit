@@ -31,7 +31,7 @@ module.exports = function() {
      * under this dir will be watched for changes, but only the index.sass file
      * will be compiled.
      */
-    sass: 'sass/index.scss',
+    sass: 'sass/index.sass',
     // Dir where the sass will be compiled to
     css: 'assets/css',
     // Favicon
@@ -47,6 +47,8 @@ module.exports = function() {
        * - compressed
        */
       outputStyle: 'expanded',
+      //Source Mapping Support
+			sourceComments: 'map',
       // Relative path to the css where the images dir is.
       imagePath: '../images',
       // Sass precision

@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "A Dead Simple, Responsive Boilerplate for Mobile-Friendly Development",
   "repository": {
-   "type": "git",
-   "url": "https://github.com/NicholasAdamou/StarterKits"
+    "type": "git",
+    "url": "https://github.com/NicholasAdamou/StarterKits"
   },
   "bugs": {
     "url": "https://github.com/NicholasAdamou/StarterKits/issues"
@@ -43,14 +43,16 @@
     "gulp-plumber": "^1.0.1",
     "gulp-preprocess": "^1.2.0",
     "gulp-rucksack": "^0.1.2",
-    "gulp-sass": "^2.0.1",
+    "gulp-sass": "^2.1.1",
     "gulp-size": "^1.2.1",
+    "gulp-sourcemaps": "^1.6.*",
     "gulp-strip-debug": "^1.0.2",
     "gulp-uglify": "^1.2.0",
-    "jshint-stylish": "^2.0.1"
+    "imagemin-pngquant": "^4.2.0",
+    "jshint-stylish": "^2.0.1",
+    "rucksack-css": "^0.8.2"
   },
   "dependencies": {
-    "imagemin-pngquant": "^4.2.0",
-    "rucksack-css": "^0.8.2"
+    "imagemin-pngquant": "^4.2.0"
   }
 }

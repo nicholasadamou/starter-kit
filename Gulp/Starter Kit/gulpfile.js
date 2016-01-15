@@ -33,6 +33,7 @@ var
     watch: [source + config.sass.substring(0, (config.sass.lastIndexOf('/')+1)) + '**/*'],
     out: dest + (config.css[--config.css.length] == '/' ? config.css : config.css + '/'),
     sassOpt: {
+      sourceComments: config.sassOptions.sourceComments || 'map',
       outputStyle: config.sassOptions.outputStyle || 'expanded',
       imagePath: config.sassOptions.imagePath,
       precision: config.sassOptions.precision || 3,
@@ -84,12 +85,14 @@ gulp.task('js', function () {
   if (devBuild) {
     log('-> Compiling Javascript for Development')
     return gulp.src(js.in)
+      .pipe($.sourcemaps.init())
       .pipe($.plumber())
       .pipe($.newer(js.out))
       .pipe($.jshint())
       .pipe($.jshint.reporter('jshint-stylish', { verbose: true }))
       .pipe($.jshint.reporter('fail'))
       .pipe($.concat(js.filename))
+      .pipe($.sourcemaps.write())
       .pipe(gulp.dest(js.out));
   } else {
     log('-> Compiling Javascript for Production')
@@ -97,6 +100,7 @@ gulp.task('js', function () {
       dest + 'js/*'
     ]);
     return gulp.src(js.in)
+      .pipe($.sourcemaps.init())
       .pipe($.plumber())
       .pipe($.deporder())
       .pipe($.concat(js.filename))
@@ -104,6 +108,7 @@ gulp.task('js', function () {
       .pipe($.stripDebug())
       .pipe($.uglify())
       .pipe($.size({ title: 'Javascript Out Size' }))
+      .pipe($.sourcemaps.write())
       .pipe(gulp.dest(js.out));
   }
 });
@@ -166,6 +171,7 @@ gulp.task('imagemin', function () {
     return gulp.src(config.images)
         .pipe(imagemin({
             progressive: true,
+            interlaced: true,
             svgoPlugins: [{removeViewBox: false}],
             use: [pngquant()]
         }))
@@ -173,14 +179,17 @@ gulp.task('imagemin', function () {
 });
 
 // Compile Sass styles
+// (1/15/16) Trying to get sourceMapping to work.
 gulp.task('sass', function () {
   log('-> Compile SASS Styles')
   return gulp.src(styles.in)
+    .pipe($.sourcemaps.init())
     .pipe($.plumber())
     .pipe($.sass(styles.sassOpt))
     .pipe($.size({ title: 'styles In Size' }))
     .pipe($.pleeease(styles.pleeeaseOpt))
     .pipe($.size({ title: 'styles Out Size' }))
+    .pipe($.sourcemaps.write())
     .pipe(gulp.dest(styles.out))
     .pipe(browsersync.reload({ stream: true }));
 });
