@@ -37,7 +37,7 @@ Additionally, you can use the custom `setup` script, which will automate the pre
 
 Double click on the `setup.bat` file and follow the on-screen instructions.
 
-*Note*: The setup process doesn't require you to navigate to the `Starter Kit` directory. It auto-detects the file path that the `setup.bat` file is located in.  
+*Note*: This setup process, unlike the Mac version, doesn't require you to navigate to the `Starter Kit` directory. It auto-detects the file path that the `setup.bat` file is located in.  
 
 After the process finishes, you will be prompted with the `Gulp Help` screen. Once you've reached this point, you can proceed into the `How to Use` section to understand each option the kit gives you.
 
