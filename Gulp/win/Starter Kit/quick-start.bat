@@ -6,13 +6,7 @@ echo Note: this script will only work if you already ran, [setup.bat] first.
 set /p response="Did you run [setup.bat] already? <y/n>"
 
 if /i "%response%"=="y" (
-goto :gainAdminRights
-
-:gainAdminRights
-  cls
-  echo Give [setup.bat] Administrative Rights:
-  runas /noprofile /user:Administrator cmd
-  goto :setupKit
+goto :setupKit
 
 :setupKit
   cls

@@ -8,13 +8,7 @@ cls
 echo Note: this script will take a while [approx. 5 min] to complete.
 set /p response="Would you like to continue? <y/n>"
 if /i "%response%"=="y" (
-goto :gainAdminRights
-
-:gainAdminRights
-  cls
-  echo Give [setup.bat] Administrative Rights:
-  runas /noprofile /user:Administrator cmd
-  goto :checkNodeVersion
+goto :checkNodeVersion
 
 :checkNodeVersion
   cls
@@ -61,8 +55,8 @@ goto :gainAdminRights
 :installDependencies
   cls
   echo Installing Project Dependencies:
-  call npm install && bower install
-  
+  call npm run-script install-dependencies
+
   echo Project Dependencies were successfully installed.
   timeout 5
   goto :primaryFunction
