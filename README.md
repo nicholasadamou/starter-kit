@@ -38,6 +38,7 @@ Additionally, you can use the custom `setup` script, which will automate the pre
 There are two versions, one for Mac, and one for Windows.
 
 Mac file extension: `.sh`
+
 Windows file extension: `.bat`
 
 Choose the one that suits your OS and read its respective notes.
