@@ -1,16 +1,16 @@
 /**
  * Starter Kit Gulp configuration file.
  * Feel free to modify this file as you need.
- * if you find any bug or error, please submit an issue.
+ * If you find any bug or error, please submit an issue.
  */
-// Include gulp plugins
-var del = require('del');
+// Required gulp files
 var gulp = require('gulp');
 var config = require('./config.js')();
-var rucksack = require('gulp-rucksack');
-var imagemin = require('gulp-imagemin');
-var pngquant = require('imagemin-pngquant');
+
+// Include gulp plugins
+var del = require('del');
 var browsersync = require('browser-sync');
+var pngquant = require('imagemin-pngquant');
 var $ = require('gulp-load-plugins')({ lazy: true });
 
 // Configs
@@ -39,8 +39,18 @@ var
     watch: [source + config.sass.substring(0, (config.sass.lastIndexOf('/')+1)) + '**/*'],
     out: dest + (config.css[--config.css.length] == '/' ? config.css : config.css + '/'),
     sassOpt: {
-      sourceComments: config.sassOptions.sourceComments || 'map',
-      outputStyle: config.sassOptions.outputStyle || 'expanded',
+      //              ~1/16/16~
+      //Currently the (1) doesn't take priority over the (2).
+      //(1)  config.sassOptions.sourceComments
+      //(2)  ('map' ? !devBuild : '')
+      //Need to fix.
+      sourceComments: config.sassOptions.sourceComments || ('map' ? !devBuild : ''),
+      //              ~1/16/16~
+      //Currently the (1) doesn't take priority over the (2).
+      //(1)  config.sassOptions.outputStyle
+      //(2)  ('expanded' ? !devBuild : 'compressed')
+      //Need to fix.
+      outputStyle: config.sassOptions.outputStyle || ('expanded' ? !devBuild : 'compressed'),
       imagePath: config.sassOptions.imagePath,
       precision: config.sassOptions.precision || 3,
       errLogToConsole: true
@@ -60,7 +70,11 @@ var
   js = {
     in: source + (config.jsDir[--config.jsDir.length] == '/' ? config.jsDir + '**/*' : config.jsDir + '/**/*'),
     out: dest + config.jsDir,
-    filename: config.jsName
+    filename: config.jsName,
+
+    browserifyOpt: {
+      debug: true
+    }
   },
   syncOpt = {
     server: {
@@ -96,6 +110,7 @@ gulp.task('js', function () {
     log('-> Compiling Javascript for Development')
     return gulp.src(js.in)
       .pipe($.sourcemaps.init())
+      .pipe($.browserify(js.browserifyOpt))
       .pipe($.plumber())
       .pipe($.newer(js.out))
       .pipe($.jshint())
@@ -111,6 +126,7 @@ gulp.task('js', function () {
     ]);
     return gulp.src(js.in)
       .pipe($.sourcemaps.init())
+      .pipe($.browserify(js.browserifyOpt))
       .pipe($.plumber())
       .pipe($.deporder())
       .pipe($.concat(js.filename))
@@ -126,7 +142,7 @@ gulp.task('js', function () {
 // Update images on build folder
 gulp.task('images', function () {
   return gulp.src(images.in)
-    .pipe(imagemin(images.imageminOpt))
+    .pipe($.imagemin(images.imageminOpt))
     .pipe($.newer(images.out))
     .pipe(gulp.dest(images.out));
 });
@@ -172,7 +188,7 @@ gulp.task('rucksack', function() {
   return gulp.src(styles.in)
     .pipe($.sourcemaps.init())
     .pipe($.sass(styles.sassOpt))
-    .pipe(rucksack(styles.rucksackOpt))
+    .pipe($.rucksack(styles.rucksackOpt))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest(styles.out));
 });
@@ -183,7 +199,7 @@ gulp.task('rucksack', function() {
 */
 gulp.task('imagemin', function () {
     return gulp.src(images.in)
-        .pipe(imagemin(images.imageminOpt))
+        .pipe($.imagemin(images.imageminOpt))
         .pipe(gulp.dest(images.out));
 });
 
@@ -191,16 +207,31 @@ gulp.task('imagemin', function () {
 gulp.task('sass', function () {
   log('-> Compile SASS Styles')
 
-  return gulp.src(styles.in)
-    .pipe($.sourcemaps.init())
-    .pipe($.plumber())
-    .pipe($.sass(styles.sassOpt))
-    .pipe($.size({ title: 'styles In Size' }))
-    .pipe($.pleeease(styles.pleeeaseOpt))
-    .pipe($.size({ title: 'styles Out Size' }))
-    .pipe($.sourcemaps.write())
-    .pipe(gulp.dest(styles.out))
-    .pipe(browsersync.reload({ stream: true }));
+  if (devBuild) {
+    log('-> Compiling sass for Development')
+
+    return gulp.src(styles.in)
+      .pipe($.sourcemaps.init())
+      .pipe($.plumber())
+      .pipe($.sass(styles.sassOpt))
+      .pipe($.size({ title: 'styles In Size' }))
+      .pipe($.pleeease(styles.pleeeaseOpt))
+      .pipe($.size({ title: 'styles Out Size' }))
+      .pipe($.sourcemaps.write())
+      .pipe(gulp.dest(styles.out))
+      .pipe(browsersync.reload({ stream: true }));
+  } else {
+    log('-> Compiling sass for Production')
+
+    return gulp.src(styles.in)
+      .pipe($.plumber())
+      .pipe($.sass(styles.sassOpt))
+      .pipe($.size({ title: 'styles In Size' }))
+      .pipe($.pleeease(styles.pleeeaseOpt))
+      .pipe($.size({ title: 'styles Out Size' }))
+      .pipe(gulp.dest(styles.out))
+      .pipe(browsersync.reload({ stream: true }));
+  }
 });
 
 // Start BrowserSync

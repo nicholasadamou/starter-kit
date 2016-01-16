@@ -46,9 +46,9 @@ module.exports = function() {
        * - compact
        * - compressed
        */
-      outputStyle: 'expanded',
+      outputStyle: 'comprssed',
       //Source Mapping Support
-			sourceComments: 'map',
+      sourceComments: '',
       // Relative path to the css where the images dir is.
       imagePath: '../images',
       // Sass precision
