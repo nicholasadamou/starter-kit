@@ -1,0 +1,90 @@
+// Tiny Mixins V1.0.0
+// A library/archive of useful mixins.
+// Copyright 2016, Nicholas Adamou
+// Free to use under the MIT license.
+// http://www.opensource.org/licenses/mit-license.php
+
+// Base path for assets (fonts, images...),
+// should not include trailing slash
+// @access public
+// @type String
+$asset-base-path: '../assets' !default
+
+// Asset URL builder
+// @access private
+// @param {String} $type - Asset type, matching folder name
+// @param {String} $file - Asset file name, including extension
+// @return {URL} - A `url()` function leading to the asset
+@function asset($type, $file)
+  @return url($asset-base-path + '/' + $type + '/' + $file)
+
+// Image asset helper
+// @access public
+// @param {String} $file - Asset file name, including extension
+// @return {URL} - A `url()` function leading to the image
+// @require {function} asset
+@function image($file)
+  @return asset('images', $file)
+
+// Font asset helper
+// @access public
+// @param {String} $file - Asset file name, including extension
+// @return {URL} - A `url()` function leading to the font
+// @require {function} asset
+@function font($file)
+  @return asset('fonts', $file)
+
+// Mixin to prefix a property
+// @author Hugo Giraudel
+// @param {String} $property - Property name
+// @param {*} $value - Property value
+// @param {List} $prefixes (()) - List of prefixes to print
+@mixin simplePrefix($property, $value, $prefixes: ())
+  @each $prefix in $prefixes
+    #{'-' + $prefix + '-' + $property}: $value
+
+  // Output standard non-prefixed declaration
+  #{$property}: $value
+
+// Mixin to prefix several properties at once
+// @author Hugo Giraudel
+// @param {Map} $declarations - Declarations to prefix
+// @param {List} $prefixes (()) - List of prefixes to print
+@mixin advancedPrefix($declarations, $prefixes: ())
+  @each $property, $value in $declarations
+    @each $prefix in $prefixes
+      #{'-' + $prefix + '-' + $property}: $value
+
+    // Output standard non-prefixed declaration
+    #{$property}: $value
+
+
+// Mixin to center an element
+// @author css-tricks.com
+// Assuming the parent element has (position: relative;), these four properties
+// will center a child element both horizontally and vertically inside, no matter
+// what the width of height of either are.
+// Although beware if the child element being centered is taller than parent,
+// the top could get cut off.
+@mixin simpleCenter
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+// Mixin to center an element
+// @author css-tricks.com
+// @param {boolean} $horizontal - if true, will center horizontally
+// @param {boolean} $vertical - if true, will center vertically
+@mixin advancedCenter($horizontal: true, $vertical: true)
+  position: absolute
+  @if ($horizontal and $vertical)
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+  @else if ($horizontal)
+    left: 50%
+    transform: translate(-50%, 0)
+  @else if ($vertical)
+    top: 50%
+    transform: translate(0, -50%)
