@@ -35,7 +35,7 @@ function primaryFunction() {
 function installDependencies() {
 	clear
 	echo "Installing Project Dependencies:"
-	npm install && bower install
+	npm run-script install-dependencies
 	echo "Project Dependencies were successfully installed."
 	sleep 5
 	primaryFunction
