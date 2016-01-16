@@ -25,7 +25,6 @@ goto :checkNodeVersion
   echo downloading file, node-v5.3.0-x64.msi, from https://nodejs.org/dist/v5.3.0/node-v5.3.0-x64.msi...
   set "fileName=node-v5.3.0-x64.msi"
   start %fileName%
-
   echo NodeJS was successfully installed.
   timeout 5
   goto :updateNode
@@ -36,7 +35,6 @@ goto :checkNodeVersion
   call npm cache clean -f
   call npm install -g n
   call n stable
-
   cls
   echo NodeJS was successfully updated to version #:
   node -v
@@ -47,7 +45,6 @@ goto :checkNodeVersion
   cls
   echo Installing GulpJS:
   call npm install -g gulp
-
   echo GulpJS was successfully installed.
   timeout 5
   goto :installDependencies
@@ -56,7 +53,6 @@ goto :checkNodeVersion
   cls
   echo Installing Project Dependencies:
   call npm run-script install-dependencies
-
   echo Project Dependencies were successfully installed.
   timeout 5
   goto :primaryFunction

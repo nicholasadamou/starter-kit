@@ -36,6 +36,7 @@ function installDependencies() {
 	clear
 	echo "Installing Project Dependencies:"
 	npm run-script install-dependencies
+
 	echo "Project Dependencies were successfully installed."
 	sleep 5
 	primaryFunction
