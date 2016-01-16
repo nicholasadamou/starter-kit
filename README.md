@@ -55,7 +55,7 @@ After the process finishes, you will be prompted with the `Gulp Help` screen. On
 
 ## Windows Version Notes
 
-Double click on the `setup.bat` file and follow the on-screen instructions.
+Right click on the `setup.bat` file and `run as Administrator` then follow the on-screen instructions.
 
 *Note*: This setup process, unlike the Mac version, doesn't require you to navigate to the `Starter Kit` directory. It auto-detects the file path that the `setup.bat` file is located in.  
 

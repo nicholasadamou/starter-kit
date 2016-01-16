@@ -61,11 +61,8 @@ goto :gainAdminRights
 :installDependencies
   cls
   echo Installing Project Dependencies:
-  call npm install-dependencies
-  call npm install --save-dev gulp-rucksack
-  call npm install --save-dev gulp-imagemin
-  call npm install --save imagemin-pngquant
-
+  call npm install && bower install
+  
   echo Project Dependencies were successfully installed.
   timeout 5
   goto :primaryFunction
