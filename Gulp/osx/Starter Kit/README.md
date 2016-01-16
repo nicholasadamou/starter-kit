@@ -37,7 +37,7 @@ Additionally, you can use the custom `setup` script, which will automate the pre
 
 Open `Terminal.app` and navigate to this directory, then type the following:
 
-`sudo bash setup.sh`. This will run the `setup.sh` shell script as `sudo`.
+`sudo bash setup.sh`. This will run the `setup.sh` shell script as `sudo`, follow the on-screen instructions.
 
 *Note*: If you double click on the `.sh` file(s), the process will not work because the `.sh` file(s) requires `sudo` privileges.
 
