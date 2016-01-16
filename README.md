@@ -42,7 +42,7 @@ Windows file extension: `.bat`
 
 Choose the one that suits your OS.
 
-*Mac Version Notes:*
+## Mac Version Notes:
 
 Open `Terminal.app` and navigate to this directory, then type the following:
 
@@ -52,7 +52,7 @@ Open `Terminal.app` and navigate to this directory, then type the following:
 
 After the process finishes, you will be prompted with the `Gulp Help` screen. Once you've reached this point, you can proceed into the `How to Use` section to understand each option the kit gives you.
 
-*Windows Version Notes:*
+## Windows Version Notes: 
 
 Unlike the Mac version, the Windows version of the setup process doesn't require you to navigate to the `Starter Kit` directory. It auto-detects the file path that the `setup.bat` file is located in.  
 
