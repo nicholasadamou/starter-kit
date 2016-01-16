@@ -29,7 +29,7 @@ Now after you have cloned/downloaded the kit to a desirable location, you can ch
 ## Method One
 After you have it on you machine, you will need to navigate to the project folder using terminal and execute the following command to gather all the dependencies.
 ```
-npm install && bower install
+npm run-script install-dependencies
 ```
 
 ## Method Two
