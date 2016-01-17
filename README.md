@@ -33,21 +33,21 @@ npm run-script install-dependencies
 ```
 
 ## Method Two
-Additionally, you can use the custom `setup` script inside the `setup scripts` folder, which will automate the previously mentioned information.
+Additionally, you can use the custom `setup` script inside the `setup` folder, which will automate the previously mentioned information.
 
 There are two versions, one for Mac, and one for Windows.
 
 Both located in their respective folder labeled: `osx` or `win`.
 
-Mac file extension: `.sh` (located in `Starter\ Kit/setup\ scripts/osx/`)
+Mac file extension: `.sh` (located in `Starter\ Kit/setup/osx/`)
 
-Windows file extension: `.bat` (located in `Starter\ Kit/setup\ scripts/win/`)
+Windows file extension: `.bat` (located in `Starter\ Kit/setup/win/`)
 
 Choose the one that suits your OS and read its respective notes.
 
 ## Mac Version Notes
 
-Open `Terminal.app` and navigate to `Starter\ Kit/setup\ scripts/`, then type the following:
+Open `Terminal.app` and navigate to `Starter\ Kit/setup/`, then type the following:
 
 `sudo bash setup.sh`. This will run the `setup.sh` shell script as `sudo`, follow the on-screen instructions.
 
@@ -57,7 +57,7 @@ After the process finishes, you will be prompted with the `Gulp Help` screen. On
 
 ## Windows Version Notes
 
-Open the `win` folder inside the `setup scripts` folder and right click on the `setup.bat` file and `run as Administrator` then follow the on-screen instructions.
+Open the `win` folder inside the `setup` folder and right click on the `setup.bat` file and `run as Administrator` then follow the on-screen instructions.
 
 *Note*: If you double click on the `.bat` file(s) *without* right clicking and selecting `run as Administrator`, the process will not work because the `.bat` file(s) requires `Administrative` privileges.
 
