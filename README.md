@@ -1,4 +1,4 @@
-# Nicholas Adamou's Starter Kits
+# Nicholas Adamou's Starter Kits [Gulp]
 ![Project Preview](Other/thumbnail.png)
 
 ![status](https://img.shields.io/pypi/status/Django.svg)
@@ -33,19 +33,21 @@ npm run-script install-dependencies
 ```
 
 ## Method Two
-Additionally, you can use the custom `setup` script, which will automate the previously mentioned information.
+Additionally, you can use the custom `setup` script inside the `Setup Scripts` folder, which will automate the previously mentioned information.
 
 There are two versions, one for Mac, and one for Windows.
 
-Mac file extension: `.sh`
+Both located in their respective folder labeled: `osx` or `win`.
 
-Windows file extension: `.bat`
+Mac file extension: `.sh` (located in `Starter\ Kit/Setup\ Scripts/osx/`)
+
+Windows file extension: `.bat` (located in `Starter\ Kit/Setup\ Scripts/win/`)
 
 Choose the one that suits your OS and read its respective notes.
 
 ## Mac Version Notes
 
-Open `Terminal.app` and navigate to this directory, then type the following:
+Open `Terminal.app` and navigate to `Starter\ Kit/Setup\ Scripts/`, then type the following:
 
 `sudo bash setup.sh`. This will run the `setup.sh` shell script as `sudo`, follow the on-screen instructions.
 
@@ -55,11 +57,9 @@ After the process finishes, you will be prompted with the `Gulp Help` screen. On
 
 ## Windows Version Notes
 
-Right click on the `setup.bat` file and `run as Administrator` then follow the on-screen instructions.
+Open the `win` folder inside the `Setup Scripts` folder and right click on the `setup.bat` file and `run as Administrator` then follow the on-screen instructions.
 
-*Note*: This setup process, unlike the Mac version, doesn't require you to navigate to the `Starter Kit` directory. It auto-detects the file path that the `setup.bat` file is located in.  
-
-*Note*: If you double click on the `.bat` file(s), the process will not work because the `.bat` file(s) requires `Administrative` privileges.
+*Note*: If you double click on the `.bat` file(s) *without* right clicking and selecting `run as Administrator`, the process will not work because the `.bat` file(s) requires `Administrative` privileges.
 
 After the process finishes, you will be prompted with the `Gulp Help` screen. Once you've reached this point, you can proceed into the `How to Use` section to understand each option the kit gives you.
 

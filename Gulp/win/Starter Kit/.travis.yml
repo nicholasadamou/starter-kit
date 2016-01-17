@@ -1,9 +1,0 @@
-language: node_js
-node_js:
-  - '3.3.12'
-before install:
-  - npm install -g gulp bower
-install:
-  - npm install && bower install
-after success:
-  - gulp build
