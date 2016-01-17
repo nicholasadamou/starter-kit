@@ -1,9 +1,10 @@
 language: node_js
 node_js:
-  - '3.3.12'
-before install:
+  - "0.10"
+  - "0.11"
+before script:
   - npm install -g gulp bower
-install:
+after script:
   - npm install && bower install
 after success:
   - gulp build
