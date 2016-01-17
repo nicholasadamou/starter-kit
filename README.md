@@ -2,7 +2,7 @@
 ![Project Preview](other/thumbnail.png)
 
 ![status](https://img.shields.io/pypi/status/Django.svg)
-![travis-ci](https://travis-ci.org/NicholasAdamou/StarterKits.svg?branch=master)
+[![Build Status](https://travis-ci.org/NicholasAdamou/StarterKits.svg?branch=master)](https://travis-ci.org/NicholasAdamou/StarterKits)
 ![dependencies](https://img.shields.io/david/strongloop/express.svg)
 ![devDependencies](https://img.shields.io/david/dev/strongloop/express.svg)
 ![license](https://img.shields.io/apm/l/vim-mode.svg)
