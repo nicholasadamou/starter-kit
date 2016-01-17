@@ -1,5 +1,5 @@
 # Nicholas Adamou's Starter Kits [Gulp]
-![Project Preview](Other/thumbnail.png)
+![Project Preview](other/thumbnail.png)
 
 ![status](https://img.shields.io/pypi/status/Django.svg)
 ![Build Passing](https://img.shields.io/teamcity/codebetter/bt428.svg)
