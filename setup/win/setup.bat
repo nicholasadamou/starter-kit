@@ -52,7 +52,7 @@ goto :checkNodeVersion
 :installDependencies
   cls
   echo Installing Project Dependencies:
-  call npm install && bower install
+  call npm run-script install-dependencies
   echo Project Dependencies were successfully installed.
   timeout 5
   goto :primaryFunction
