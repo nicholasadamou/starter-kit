@@ -102,6 +102,13 @@ The project has a very simple and flexible structure. If the default place for a
 │   ├───vendors -> Vendors folder for all the dependencies (Managed by Bower)
 │   └───views -> Templates directory for Jade files
 │   │   └───index.jade
+├───setup -> Setup files for the project
+│   ├───win -> Setup files for Windows
+│   │   └───quick-start.bat -> Secondary setup file used to quickly get to the "Gulp Help" page, if [setup.bat] has been ran first.
+│   │   └───setup.bat -> Main setup file for the project dependencies. Must be ran first.
+│   ├───osx -> Setup files for OS X
+│   │   └───quick-start.sh -> Secondary setup file used to quickly get to the "Gulp Help" page, if [setup.sh] has been ran first.
+│   │   └───setup.sh -> Main setup file for the project dependencies. Must be ran first.
 ├───.bowerrc -> Defines where the dependencies will be installed
 ├───bower.json -> Bower configuration file for managing project dependencies
 ├───package.json -> NodeJS configuration file for managing node dependencies
