@@ -2,7 +2,7 @@
 ![Project Preview](other/thumbnail.png)
 
 ![status](https://img.shields.io/pypi/status/Django.svg)
-[![Build Status](https://travis-ci.org/NicholasAdamou/StarterKits.svg?branch=master)](https://travis-ci.org/NicholasAdamou/StarterKits)
+[![Build Status](https://travis-ci.org/NicholasAdamou/Gulp-Starter-Kit.svg?branch=master)](https://travis-ci.org/NicholasAdamou/Gulp-Starter-Kit)
 ![license](https://img.shields.io/apm/l/vim-mode.svg)
 
 ## About
