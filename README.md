@@ -95,8 +95,8 @@ The project has a very simple and flexible structure. If the default place for a
 │   ├───assets -> Assets for the project
 │   │   ├───images -> Images
 │   │   └───js -> Scripts
-│   ├───sass  -> Sass styles
-│   │   index.sass -> Main sass file, where all other sass files should be included.
+│   ├───sass  -> SCSS/Sass styles
+│   │   index.scss -> Main sass/scss file, where all other sass/scss files should be included.
 │   ├───vendors -> Vendors folder for all the dependencies (Managed by Bower)
 │   └───views -> Templates directory for Jade files
 │   │   ├───includes -> Files to include inside the 'index.jade' file.
