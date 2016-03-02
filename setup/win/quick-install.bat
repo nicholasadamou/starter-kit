@@ -17,5 +17,5 @@ goto :installDependencies
 )
 
 if /i "%response%"=="n" (
-  call setup.bat
+  call exit
 )
