@@ -7,7 +7,7 @@
 
 ## About
 Starter Kit is a simple, responsive boilerplate to kickstart any responsive project.
-It is built on [Skeleton](https://github.com/dhg/Skeleton), to provide a simplistic start to any web development project.
+It is built on [Skeleton](https://github.com/dhg/Skeleton), to provide a simplistic start to any web development project. This kit is built to be used in conjuction with [gulp](http://gulpjs.com/) to automate different tasks as a web developer.
 
 ## Requirements
 This project does have some requirements that you will need to meet in order to compile it. First of all you need NodeJS in order to run javascript on the console, you can go to the [NodeJS](http://nodejs.rg) site and follow through the installation process. After you get the `npm` command on the console, you need to install Gulp and Bower globally with the following command:
