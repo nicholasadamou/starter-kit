@@ -8,8 +8,8 @@ function setupKit() {
 	gulp help
 }
 
-echo "Note: this script will only work if you already ran, [setup.bat] first."
-read -p "Did you run [setup.bat] already? <y/n>: " response
+echo "Note: this script will only work if you already ran, [setup.sh] first."
+read -p "Did you run [setup.sh] already? <y/n>: " response
 
 if [ $response == "y" ];
 	then setupKit

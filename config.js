@@ -31,7 +31,7 @@ module.exports = function() {
      * under this dir will be watched for changes, but only the index.sass file
      * will be compiled.
      */
-    sass: 'sass/index.scss',
+    sass: 'scss/index.scss',
     // Dir where the sass/scss will be compiled to
     css: 'assets/css',
     // Favicon
