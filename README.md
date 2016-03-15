@@ -1,4 +1,4 @@
-# Nicholas Adamou's Starter Kits [Gulp]
+# Nicholas Adamou's Starter Kit [Gulp]
 ![Project Preview](other/thumbnail.png)
 
 ![status](https://img.shields.io/pypi/status/Django.svg)
