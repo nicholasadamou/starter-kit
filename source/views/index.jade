@@ -1,8 +1,8 @@
 doctype html
 html 
 	head 
-		include ./includes/head.jade	
+		include ../settings/settings.jade
+		include ./includes/partials/head.jade	
 		body 
 			//- Add Content Here
-			script(src="/vendors/jquery/dist/jquery.min.js")
-			script(src="/assets/js/functions.js")
+			include ./includes/partials/scripts.jade

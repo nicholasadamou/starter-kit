@@ -1,0 +1,16 @@
+/* Starter Kit V1.0.0
+ * Copyright 2016, Nicholas Adamou
+ * https://github.com/NicholasAdamou/Gulp-Starter-Kit
+ * Free to use under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ */
+
+//- Settings.scss
+//- Contains various variables, mixins, and other things to make the life of a front-end developer easier.
+@import "../settings/settings.scss";
+
+//- Bower Components/Partials
+//- Contains useful code developed by third-parties to be used in this project.
+@import "bourbon"; //- When using "CodeKit", "Bourbon" will automatically install.
+@import url($normalize_css);
+@import url($skeleton);
