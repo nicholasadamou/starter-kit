@@ -95,12 +95,19 @@ The project has a very simple and flexible structure. If the default place for a
 │   ├───assets -> Assets for the project
 │   │   ├───images -> Images
 │   │   └───js -> Scripts
-│   ├───sass  -> SCSS/Sass styles
+├───js/ -> Un-Compiled Javascript directory
+│   ├───functions.js -> Un-Compiled Javascript file
+├───scss/ -> Un-Compiled SCSS directory
+│   ├───partials/ -> Tools/Frameworks
+│   ├───index.scss -> Un-Compiled SCSS file
 │   │   index.scss -> Main sass/scss file, where all other sass/scss files should be included.
 │   ├───vendors -> Vendors folder for all the dependencies (Managed by Bower)
-│   └───views -> Templates directory for Jade files
-│   │   ├───includes -> Files to include inside the 'index.jade' file.
-│   │   └───index.jade
+├───settings/ -> Starter Kit Settings
+├───views/ -> Un-Compiled Jade directory
+│   ├───includes/ -> Un-Compiled Jade files to be included inside the `index.jade` file
+│   │   └───partials/ -> Contains the main `head.jade` and `scripts.jade` file(s)
+│   │   └───layouts/ -> Contains the main 'layout.jade' file to be added as an 'extension' to the 'index.jade' file
+│   ├───index.jade -> Un-Compiled Jade file
 ├───setup -> Setup files for the project
 │   ├───win -> Setup files for Windows
 │   │   └───quick-start.bat -> Secondary setup file used to quickly get to the "Gulp Help" page, if [setup.bat] has been ran first.
