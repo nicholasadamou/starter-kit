@@ -176,7 +176,6 @@ gulp.task('js', function () {
     ]);
 
     return gulp.src(js.in)
-      .pipe($.sourcemaps.init())
       .pipe($.browserify(js.browserifyOptions))
       .pipe($.plumber())
       .pipe($.deporder())
@@ -185,7 +184,6 @@ gulp.task('js', function () {
       .pipe($.stripDebug())
       .pipe($.uglify())
       .pipe($.size({ title: 'Javascript Out Size' }))
-      .pipe($.sourcemaps.write())
       .pipe(gulp.dest(js.out));
   }
 });
