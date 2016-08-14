@@ -12,6 +12,7 @@ var config = require('./config.js')();
 var del = require('del');
 var browserSync = require('browser-sync');
 var pngquant = require('imagemin-pngquant');
+var autoprefixer = require('gulp-autoprefixer');
 var $ = require('gulp-load-plugins')({ lazy: true });
 
 // Configuration Options
@@ -132,6 +133,7 @@ gulp.task('sass', function () {
       .pipe($.pleeease(styles.pleeeaseOptions))
       .pipe($.size({ title: 'styles Out Size' }))
       .pipe($.sourcemaps.write())
+      .pipe(autoprefixer())
       .pipe(gulp.dest(styles.out))
       .pipe(browserSync.reload({ stream: true }));
   } else {
@@ -144,6 +146,7 @@ gulp.task('sass', function () {
       .pipe($.size({ title: 'styles In Size' }))
       .pipe($.pleeease(styles.pleeeaseOptions))
       .pipe($.size({ title: 'styles Out Size' }))
+      .pipe(autoprefixer())
       .pipe(gulp.dest(styles.out))
       .pipe(browserSync.reload({ stream: true }));
   }
