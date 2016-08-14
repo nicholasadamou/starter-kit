@@ -1,29 +1,28 @@
 {
-  "name": "Gulp-Starter-Kit",
+  "name": "gulp-starter-kit",
   "version": "1.0.0",
   "homepage": "https://github.com/NicholasAdamou/Gulp-Starter-Kit",
   "authors": [
-    "Nicholas Adamou <nicholasadamouemail@gmail.com> (http://nicholasadamou.me/)"
+    "Nicholas Adamou <nicholasadamouemail@gmail.com> (http://nicholasadamou.github.io/)"
   ],
   "description": "A Dead Simple, Responsive Boilerplate for Mobile-Friendly Development",
-  "main": "build/index.html",
   "keywords": [
     "starter-kit",
     "nicholas adamou",
     "sass",
+    "scss",
     "jade",
     "gulp",
-    "sass",
-    "scss",
     "responsive",
     "boilerplate"
   ],
   "license": "MIT",
+  "main": "build/index.html",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
-    "source/vendors",
+    "source/vendors"
   ],
   "dependencies": {
     "jquery": "~2.1.4"

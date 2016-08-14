@@ -22,17 +22,16 @@ module.exports = function() {
     images: 'assets/images',
     /**
      * Views directory. This is the dir where all the Jade files should live
-     * Important: only will be compiled *.jade files in this exact dir and not any sub dir
-     * you could use a subdir to put partials on it and include in jade.
+     * Important: only *.jade files will be compiled in this exact dir and not any sub dir.
+     * you could use a subdir to include partials and use the include command in jade to included them.
      */
     views: 'views/',
     /**
-     * As this is a Sass based project, this is the dir for the sass files. Every file
-     * under this dir will be watched for changes, but only the index.sass file
-     * will be compiled.
+     * As this is a sass-based project, this is the dir for the sass files. Every file
+     * under this dir will be watched for changes, but only the index file will be compiled.
      */
-    sass: 'scss/index.scss',
-    // Dir where the sass/scss will be compiled to
+    sass: 'sass/index.scss',
+    // Dir where the sass will be compiled to
     css: 'assets/css',
     // Favicon
     favicon: 'favicon.ico',
@@ -46,9 +45,9 @@ module.exports = function() {
        * - compact
        * - compressed
        */
-      outputStyle: 'comprssed',
+      outputStyle: 'compressed',
       //Source Mapping Support
-      sourceComments: '',
+      sourceComments: 'map',
       // Relative path to the css where the images dir is.
       imagePath: '../images',
       // Sass precision

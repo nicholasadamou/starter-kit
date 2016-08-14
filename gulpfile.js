@@ -1,19 +1,20 @@
 /**
- * Starter Kit Gulp configuration file.
+ * Gulp Starter Kit configuration file.
  * Feel free to modify this file as you need.
- * If you find any bug or error, please submit an issue.
+ * If you find any bugs or errors, please submit an issue.
  */
+
 // Required gulp files
 var gulp = require('gulp');
 var config = require('./config.js')();
 
 // Include gulp plugins
 var del = require('del');
-var browsersync = require('browser-sync');
+var browserSync = require('browser-sync');
 var pngquant = require('imagemin-pngquant');
 var $ = require('gulp-load-plugins')({ lazy: true });
 
-// Configs
+// Configuration Options
 var
   devBuild = (( config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production'),
   source = config.source[--config.source.length] == '/' ? config.source : config.source + '/',
@@ -22,7 +23,7 @@ var
   images = {
     in: source + (config.images[--config.images.length] == '/' ? config.images + '**/*.*' : config.images + '/**/*.*'),
     out: dest + config.images,
-    imageminOpt: {
+    imageminOptions: {
       progressive: true,
       interlaced: true,
       svgoPlugins: [{removeViewBox: false}],
@@ -38,31 +39,21 @@ var
     in: source + config.sass,
     watch: [source + config.sass.substring(0, (config.sass.lastIndexOf('/')+1)) + '**/*'],
     out: dest + (config.css[--config.css.length] == '/' ? config.css : config.css + '/'),
-    sassOpt: {
-      //              ~1/16/16~
-      //Currently the (1) doesn't take priority over the (2).
-      //(1)  config.sassOptions.sourceComments
-      //(2)  ('map' ? !devBuild : '')
-      //Need to fix.
-      sourceComments: config.sassOptions.sourceComments || ('map' ? !devBuild : ''),
-      //              ~1/16/16~
-      //Currently the (1) doesn't take priority over the (2).
-      //(1)  config.sassOptions.outputStyle
-      //(2)  ('expanded' ? !devBuild : 'compressed')
-      //Need to fix.
-      outputStyle: config.sassOptions.outputStyle || ('expanded' ? !devBuild : 'compressed'),
+    sass: {
+      sourceComments: (config.sassOptions.sourceComments).trim().toLowerCase() ? !devBuild : '',
+      outputStyle: (config.sassOptions.outputStyle).trim().toLowerCase() ? !devBuild : 'compressed',
       imagePath: config.sassOptions.imagePath,
       precision: config.sassOptions.precision || 3,
       errLogToConsole: true
     },
-    pleeeaseOpt: {
+    pleeeaseOptions: {
       autoprefixer: { browsers: ['last 2 versions', '> 2%'] },
       rem: ['16px'],
       pseudoElements: true,
       mqpacker: true,
       minifier: !devBuild
     },
-    rucksackOpt: {
+    rucksackOptions: {
       clearFix: false,
       fallbacks: true
     }
@@ -70,13 +61,13 @@ var
   js = {
     in: source + (config.jsDir[--config.jsDir.length] == '/' ? config.jsDir + '**/*' : config.jsDir + '/**/*'),
     out: dest + config.jsDir,
-    filename: config.jsName,
+    fileName: config.jsName,
 
-    browserifyOpt: {
+    browserifyOptions: {
       debug: true
     }
   },
-  syncOpt = {
+  syncOptions = {
     server: {
       baseDir: dest,
       index: config.syncOptions.index || 'index.html'
@@ -91,79 +82,24 @@ var
     watch: [source + (config.vendors[--config.vendors.length] == '/' ? config.vendors + '**/*' : config.vendors + '/**/*')]
   };
 
-console.log(pkg.name + ' ' + pkg.version + ' ' + config.environment + ' build');
+log(pkg.name + ' ' + pkg.version + ' ' + config.environment + ' build');
 
 /**
  * Tasks
  */
+
 //Clean the build folder
 gulp.task('clean', function () {
-  log('-> Cleaning build folder')
+  log('-> Cleaning build folder');
+
   del([
     dest + '*'
   ]);
 });
 
-// Compile Javascript files
-gulp.task('js', function () {
-  if (devBuild) {
-    log('-> Compiling Javascript for Development')
-    return gulp.src(js.in)
-      .pipe($.sourcemaps.init())
-      .pipe($.browserify(js.browserifyOpt))
-      .pipe($.plumber())
-      .pipe($.newer(js.out))
-      .pipe($.jshint())
-      .pipe($.jshint.reporter('jshint-stylish', { verbose: true }))
-      .pipe($.jshint.reporter('fail'))
-      .pipe($.concat(js.filename))
-      .pipe($.sourcemaps.write())
-      .pipe(gulp.dest(js.out));
-  } else {
-    log('-> Compiling Javascript for Production')
-    del([
-      dest + 'js/*'
-    ]);
-    return gulp.src(js.in)
-      .pipe($.sourcemaps.init())
-      .pipe($.browserify(js.browserifyOpt))
-      .pipe($.plumber())
-      .pipe($.deporder())
-      .pipe($.concat(js.filename))
-      .pipe($.size({ title: 'Javascript In Size' }))
-      .pipe($.stripDebug())
-      .pipe($.uglify())
-      .pipe($.size({ title: 'Javascript Out Size' }))
-      .pipe($.sourcemaps.write())
-      .pipe(gulp.dest(js.out));
-  }
-});
-
-// Update images on build folder
-gulp.task('images', function () {
-  return gulp.src(images.in)
-    .pipe($.imagemin(images.imageminOpt))
-    .pipe($.newer(images.out))
-    .pipe(gulp.dest(images.out));
-});
-
-// Update Favicon on build folder
-gulp.task('favicon', function () {
-  return gulp.src(source + config.favicon)
-    .pipe($.newer(dest))
-    .pipe(gulp.dest(dest));
-});
-
-// Copy all vendors to build folder
-gulp.task('vendors', function () {
-  return gulp.src(vendors.in)
-    .pipe($.newer(vendors.out))
-    .pipe(gulp.dest(vendors.out));
-});
-
 //Compile Jade templates
 gulp.task('jade', function () {
-  log('-> Compiling Jade Templates')
+  log('-> Compiling Jade Templates');
 
   var templates = gulp.src(views.in)
     .pipe($.plumber())
@@ -180,78 +116,123 @@ gulp.task('jade', function () {
   return templates.pipe(gulp.dest(views.out));
 });
 
-/*
-* Compile rucksack styles
-* https://simplaio.github.io/rucksack/
-*/
-gulp.task('rucksack', function() {
-  return gulp.src(styles.in)
-    .pipe($.sourcemaps.init())
-    .pipe($.sass(styles.sassOpt))
-    .pipe($.rucksack(styles.rucksackOpt))
-    .pipe($.sourcemaps.write())
-    .pipe(gulp.dest(styles.out));
-});
-
-/*
-* Minify PNG, JPEG, GIF and SVG images
-* https://github.com/sindresorhus/gulp-imagemin
-*/
-gulp.task('imagemin', function () {
-    return gulp.src(images.in)
-        .pipe($.imagemin(images.imageminOpt))
-        .pipe(gulp.dest(images.out));
-});
-
 // Compile Sass styles
 gulp.task('sass', function () {
-  log('-> Compile SASS Styles')
+  log('-> Compiling SASS Styles');
 
   if (devBuild) {
-    log('-> Compiling sass for Development')
+    log('-> Compiling SASS for Development');
 
     return gulp.src(styles.in)
       .pipe($.sourcemaps.init())
       .pipe($.plumber())
-      .pipe($.sass(styles.sassOpt))
+      .pipe($.sass(styles.sass))
+      .pipe($.rucksack(styles.rucksackOptions))
       .pipe($.size({ title: 'styles In Size' }))
-      .pipe($.pleeease(styles.pleeeaseOpt))
+      .pipe($.pleeease(styles.pleeeaseOptions))
       .pipe($.size({ title: 'styles Out Size' }))
       .pipe($.sourcemaps.write())
       .pipe(gulp.dest(styles.out))
-      .pipe(browsersync.reload({ stream: true }));
+      .pipe(browserSync.reload({ stream: true }));
   } else {
-    log('-> Compiling sass for Production')
+    log('-> Compiling SASS for Production');
 
     return gulp.src(styles.in)
       .pipe($.plumber())
-      .pipe($.sass(styles.sassOpt))
+      .pipe($.sass(styles.sass))
+      .pipe($.rucksack(styles.rucksackOptions))
       .pipe($.size({ title: 'styles In Size' }))
-      .pipe($.pleeease(styles.pleeeaseOpt))
+      .pipe($.pleeease(styles.pleeeaseOptions))
       .pipe($.size({ title: 'styles Out Size' }))
       .pipe(gulp.dest(styles.out))
-      .pipe(browsersync.reload({ stream: true }));
+      .pipe(browserSync.reload({ stream: true }));
   }
 });
 
-// Start BrowserSync
-gulp.task('browsersync', function () {
-  log('-> Starting BrowserSync')
+// Compile Javascript files
+gulp.task('js', function () {
+  if (devBuild) {
+    log('-> Compiling Javascript for Development');
 
-  browsersync(syncOpt);
+    return gulp.src(js.in)
+      .pipe($.sourcemaps.init())
+      .pipe($.browserify(js.browserifyOptions))
+      .pipe($.plumber())
+      .pipe($.newer(js.out))
+      .pipe($.jshint())
+      .pipe($.jshint.reporter('jshint-stylish', { verbose: true }))
+      .pipe($.jshint.reporter('fail'))
+      .pipe($.concat(js.fileName))
+      .pipe($.sourcemaps.write())
+      .pipe(gulp.dest(js.out));
+  } else {
+    log('-> Compiling Javascript for Production');
+
+    del([
+      dest + 'js/*'
+    ]);
+
+    return gulp.src(js.in)
+      .pipe($.sourcemaps.init())
+      .pipe($.browserify(js.browserifyOptions))
+      .pipe($.plumber())
+      .pipe($.deporder())
+      .pipe($.concat(js.fileName))
+      .pipe($.size({ title: 'Javascript In Size' }))
+      .pipe($.stripDebug())
+      .pipe($.uglify())
+      .pipe($.size({ title: 'Javascript Out Size' }))
+      .pipe($.sourcemaps.write())
+      .pipe(gulp.dest(js.out));
+  }
+});
+
+// Update images on build folder
+gulp.task('images', function () {
+  log('-> Updating images in build folder');
+
+  return gulp.src(images.in)
+    .pipe($.imagemin(images.imageminOptions))
+    .pipe($.newer(images.out))
+    .pipe(gulp.dest(images.out));
+});
+
+// Update Favicon on build folder
+gulp.task('favicon', function () {
+  log('-> Updating favicon in build folder');
+
+  return gulp.src(source + config.favicon)
+    .pipe($.newer(dest))
+    .pipe(gulp.dest(dest));
+});
+
+// Copy all vendors to build folder
+gulp.task('vendors', function () {
+  log('-> Updating vendors in build folder');
+
+  return gulp.src(vendors.in)
+    .pipe($.newer(vendors.out))
+    .pipe(gulp.dest(vendors.out));
+});
+
+// Start browserSync
+gulp.task('browserSync', function () {
+  log('-> Starting browserSync');
+
+  browserSync(syncOptions);
 });
 
 // Build Task
-gulp.task('build', ['sass', 'jade', 'js', 'images', 'imagemin', 'vendors', 'favicon']);
+gulp.task('build', ['sass', 'jade', 'js', 'images', 'vendors', 'favicon']);
 
 // Watch Task
-gulp.task('watch', ['browsersync'], function () {
+gulp.task('watch', ['browserSync'], function () {
   // Watch for style changes and compile
   gulp.watch(styles.watch, ['sass']);
   // Watch for jade changes and compile
-  gulp.watch(views.watch, ['jade', browsersync.reload]);
+  gulp.watch(views.watch, ['jade', browserSync.reload]);
   // Watch for javascript changes and compile
-  gulp.watch(js.in, ['js', browsersync.reload]);
+  gulp.watch(js.in, ['js', browserSync.reload]);
   // Watch for new vendors and copy
   gulp.watch(vendors.watch, ['vendors']);
   // Watch for new images and copy
@@ -263,27 +244,25 @@ gulp.task('start', ['build', 'watch']);
 
 // Help Task
 gulp.task('help', function () {
-  console.log('');
-  console.log("===== Help for Nicholas Adamou's Starter Kit' =====");
-  console.log('');
-  console.log('Usage: gulp [command]');
-  console.log('The commands for the task runner are the following.');
-  console.log('------------------------------------------------------');
-  console.log('    clean: Removes all the compiled files on ./build');
-  console.log('    js: Compile the JavaScript files');
-  console.log('    jade: Compile the Jade templates');
-  console.log('    sass: Compile the Sass styles');
-  console.log('    rucksack: Compile the Rucksack styles');
-  console.log('    imagemin: Minify PNG, JPEG, GIF and SVG images');
-  console.log('    images: Copy the newer to the build folder');
-  console.log('    favicon: Copy the favicon to the build folder');
-  console.log('    vendors: Copy the vendors to the build folder');
-  console.log('    build: Build the project');
-  console.log('    watch: Watch for any changes on the each section');
-  console.log('    start: Compile and watch for changes (for dev)');
-  console.log('    help: Print this message');
-  console.log('    browsersync: Start the browsersync server');
-  console.log('');
+  log('');
+  log("===== Help for Nicholas Adamou's Starter Kit' =====");
+  log('');
+  log('Usage: gulp [command]');
+  log('The commands for the task runner are the following.');
+  log('------------------------------------------------------');
+  log('    clean: Removes all the compiled files on ./build');
+  log('    js: Compile the JavaScript files');
+  log('    jade: Compile the Jade templates');
+  log('    sass: Compile the Sass styles');
+  log('    images: Copy the newer to the build folder');
+  log('    favicon: Copy the favicon to the build folder');
+  log('    vendors: Copy the vendors to the build folder');
+  log('    build: Build the project');
+  log('    watch: Watch for any changes on the each section');
+  log('    start: Compile and watch for changes (for dev)');
+  log('    help: Print this message');
+  log('    browserSync: Start the browserSync server');
+  log('');
 });
 
 // Default Task

@@ -1,5 +1,5 @@
 {
-  "name": "Gulp-Starter-Kit",
+  "name": "gulp-starter-kit",
   "version": "1.0.0",
   "description": "A Dead Simple, Responsive Boilerplate for Mobile-Friendly Development",
   "repository": {
@@ -15,10 +15,9 @@
     "starter-kit",
     "nicholas adamou",
     "sass",
+    "scss",
     "jade",
     "gulp",
-    "sass",
-    "scss",
     "responsive",
     "boilerplate"
   ],
@@ -29,9 +28,9 @@
   },
   "devDependencies": {
     "browser-sync": "^2.7.11",
-    "gulp-browserify": "^0.5.0",
     "del": "^1.2.0",
     "gulp": "^3.9.0",
+    "gulp-browserify": "^0.5.0",
     "gulp-concat": "^2.5.2",
     "gulp-deporder": "^1.1.0",
     "gulp-htmlclean": "^2.6.4",
