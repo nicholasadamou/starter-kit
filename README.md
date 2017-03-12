@@ -1,8 +1,8 @@
 # Nicholas Adamou's Starter Kit [Gulp]
 ![Project Preview](thumbnail.png)
 
-[![Build Status](https://travis-ci.org/NicholasAdamou/Gulp-Starter-Kit.svg?branch=master)](https://travis-ci.org/NicholasAdamou/Gulp-Starter-Kit)
 ![license](https://img.shields.io/apm/l/vim-mode.svg)
+[![Say Thanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/NicholasAdamou)
 
 ## About
 Gulp Starter Kit is a simple, responsive boilerplate to kickstart any responsive project.
