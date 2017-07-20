@@ -21,16 +21,16 @@ module.exports = function() {
     // they will be copied to the same dir on the build folder
     images: 'assets/images',
     /**
-     * Views directory. This is the dir where all the Jade files should live
-     * Important: only *.jade files will be compiled in this exact dir and not any sub dir.
-     * you could use a subdir to include partials and use the include command in jade to included them.
+     * Views directory. This is the dir where all the Pug files should live
+     * Important: only *.Pug files will be compiled in this exact dir and not any sub dir.
+     * you could use a subdir to include partials and use the include command in Pug to included them.
      */
     views: 'views/',
     /**
      * As this is a sass-based project, this is the dir for the sass files. Every file
      * under this dir will be watched for changes, but only the index file will be compiled.
      */
-    sass: 'sass/index.scss',
+    sass: 'sass/index.sass',
     // Dir where the sass will be compiled to
     css: 'assets/css',
     // Favicon
@@ -56,7 +56,7 @@ module.exports = function() {
     // Javascript directory
     jsDir: 'assets/js',
     // Javascript file name
-    jsName: 'functions.js',
+    jsName: 'index.js',
     // This is the browser sync options
     syncOptions: {
       // Entry point for the application

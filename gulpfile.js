@@ -13,6 +13,8 @@ var del = require('del');
 var browserSync = require('browser-sync');
 var pngquant = require('imagemin-pngquant');
 var autoprefixer = require('gulp-autoprefixer');
+var rucksack = require('gulp-rucksack');
+var postcss = require('gulp-postcss');
 var $ = require('gulp-load-plugins')({ lazy: true });
 
 // Configuration Options
@@ -32,7 +34,7 @@ var
     }
   },
   views = {
-    in: source + (config.views[--config.views.length] == '/' ? config.views + '*.jade' : config.views + '/*.jade'),
+    in: source + (config.views[--config.views.length] == '/' ? config.views + '*.pug' : config.views + '/*.pug'),
     out: dest,
     watch: source + (config.views[--config.views.length] == '/' ? config.views + '**/*' : config.views + '/**/*')
   },
@@ -76,11 +78,14 @@ var
     open: config.syncOptions.open || false,
     notify: config.syncOptions.notify || true
   },
-  jadeOptions = { pretty: devBuild },
+  pugOptions = { pretty: devBuild },
   vendors = {
     in: source + (config.vendors[--config.vendors.length] == '/' ? config.vendors + '**/*' : config.vendors + '/**/*'),
     out: dest + (config.vendors[--config.vendors.length] == '/' ? config.vendors : config.vendors + '/'),
     watch: [source + (config.vendors[--config.vendors.length] == '/' ? config.vendors + '**/*' : config.vendors + '/**/*')]
+  },
+  postcss = {
+    plugins = [rucksack(styles.rucksackOptions), autoprefixer(styles.pleeeaseOptions.autoprefixer)],
   };
 
 log(pkg.name + ' ' + pkg.version + ' ' + config.environment + ' build');
@@ -98,7 +103,7 @@ gulp.task('clean', function () {
   ]);
 });
 
-//Compile Jade templates
+//Compile pug templates
 gulp.task('pug', function () {
   log('-> Compiling Pug Templates');
 
@@ -109,10 +114,10 @@ gulp.task('pug', function () {
     log('-> Compressing templates for Production')
     templates = templates
       .pipe($.size({ title: 'Pug Templates Before Compression' }))
-      .pipe($.jade())
+      .pipe($.pug())
       .pipe($.size({ title: 'Pug Templates After Compression' }));
   } else {
-    templates.pipe($.jade(jadeOptions));
+    templates.pipe($.pug(pugOptions));
   }
   return templates.pipe(gulp.dest(views.out));
 });
@@ -128,12 +133,11 @@ gulp.task('sass', function () {
       .pipe($.sourcemaps.init())
       .pipe($.plumber())
       .pipe($.sass(styles.sass))
-      .pipe($.rucksack(styles.rucksackOptions))
+      .pipe(postcss(postcss.plugins))
       .pipe($.size({ title: 'styles In Size' }))
       .pipe($.pleeease(styles.pleeeaseOptions))
       .pipe($.size({ title: 'styles Out Size' }))
       .pipe($.sourcemaps.write())
-      .pipe(autoprefixer())
       .pipe(gulp.dest(styles.out))
       .pipe(browserSync.reload({ stream: true }));
   } else {
@@ -142,11 +146,10 @@ gulp.task('sass', function () {
     return gulp.src(styles.in)
       .pipe($.plumber())
       .pipe($.sass(styles.sass))
-      .pipe($.rucksack(styles.rucksackOptions))
+      .pipe(postcss(postcss.plugins))
       .pipe($.size({ title: 'styles In Size' }))
       .pipe($.pleeease(styles.pleeeaseOptions))
       .pipe($.size({ title: 'styles Out Size' }))
-      .pipe(autoprefixer())
       .pipe(gulp.dest(styles.out))
       .pipe(browserSync.reload({ stream: true }));
   }
@@ -230,7 +233,7 @@ gulp.task('build', ['sass', 'pug', 'js', 'images', 'vendors', 'favicon']);
 gulp.task('watch', ['browserSync'], function () {
   // Watch for style changes and compile
   gulp.watch(styles.watch, ['sass']);
-  // Watch for jade changes and compile
+  // Watch for pug changes and compile
   gulp.watch(views.watch, ['pug', browserSync.reload]);
   // Watch for javascript changes and compile
   gulp.watch(js.in, ['js', browserSync.reload]);
