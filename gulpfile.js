@@ -12,9 +12,11 @@ var config = require('./config.js')();
 var del = require('del');
 var browserSync = require('browser-sync');
 var pngquant = require('imagemin-pngquant');
-var autoprefixer = require('gulp-autoprefixer');
-var rucksack = require('gulp-rucksack');
 var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer');
+var rucksack = require('rucksack-css');
+var bourbon = require("node-bourbon").includePaths;
+var neat = require("node-neat").includePaths;
 var $ = require('gulp-load-plugins')({ lazy: true });
 
 // Configuration Options
@@ -47,19 +49,12 @@ var
       outputStyle: (config.sassOptions.outputStyle).trim().toLowerCase() ? !devBuild : 'compressed',
       imagePath: config.sassOptions.imagePath,
       precision: config.sassOptions.precision || 3,
-      errLogToConsole: true
+      errLogToConsole: true,
+      includePaths: [
+        bourbon,
+        neat
+      ]
     },
-    pleeeaseOptions: {
-      autoprefixer: { browsers: ['last 2 versions', '> 2%'] },
-      rem: ['16px'],
-      pseudoElements: true,
-      mqpacker: true,
-      minifier: !devBuild
-    },
-    rucksackOptions: {
-      clearFix: false,
-      fallbacks: true
-    }
   },
   js = {
     in: source + (config.jsDir[--config.jsDir.length] == '/' ? config.jsDir + '**/*' : config.jsDir + '/**/*'),
@@ -84,9 +79,10 @@ var
     out: dest + (config.vendors[--config.vendors.length] == '/' ? config.vendors : config.vendors + '/'),
     watch: [source + (config.vendors[--config.vendors.length] == '/' ? config.vendors + '**/*' : config.vendors + '/**/*')]
   },
-  postcss = {
-    plugins = [rucksack(styles.rucksackOptions), autoprefixer(styles.pleeeaseOptions.autoprefixer)],
-  };
+  plugins = [
+    rucksack(), 
+    autoprefixer({ browsers: ['last 2 versions', '> 2%'] })
+  ];
 
 log(pkg.name + ' ' + pkg.version + ' ' + config.environment + ' build');
 
@@ -132,10 +128,9 @@ gulp.task('sass', function () {
     return gulp.src(styles.in)
       .pipe($.sourcemaps.init())
       .pipe($.plumber())
-      .pipe($.sass(styles.sass))
-      .pipe(postcss(postcss.plugins))
+      .pipe($.sass(styles.sass)).on('error', $.sass.logError)
       .pipe($.size({ title: 'styles In Size' }))
-      .pipe($.pleeease(styles.pleeeaseOptions))
+      .pipe(postcss(plugins))
       .pipe($.size({ title: 'styles Out Size' }))
       .pipe($.sourcemaps.write())
       .pipe(gulp.dest(styles.out))
@@ -146,9 +141,9 @@ gulp.task('sass', function () {
     return gulp.src(styles.in)
       .pipe($.plumber())
       .pipe($.sass(styles.sass))
-      .pipe(postcss(postcss.plugins))
+      .pipe(postcss(plugins))
       .pipe($.size({ title: 'styles In Size' }))
-      .pipe($.pleeease(styles.pleeeaseOptions))
+      .pipe(postcss(plugins))
       .pipe($.size({ title: 'styles Out Size' }))
       .pipe(gulp.dest(styles.out))
       .pipe(browserSync.reload({ stream: true }));

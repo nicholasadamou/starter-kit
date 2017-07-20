@@ -1,7 +1,3 @@
-//- Kit Variables
-- var assetsLocation = "assets";
-- var vendorsLocation = "vendors";
-
 block mixins
 
 block variables
@@ -9,9 +5,8 @@ block variables
 doctype html
 html(lang='en' class='#{pageName}')
 	head
-		include ../../settings/_settings.jade
-		include ../includes/partials/_head.jade
+		include ../includes/partials/_head.pug
 		body
 			block content
-			include ../includes/partials/_scripts.jade
+			include ../includes/partials/_scripts.pug
 		

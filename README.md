@@ -9,7 +9,24 @@ Gulp Starter Kit is a simple, responsive boilerplate to kickstart any responsive
 It is built on [Skeleton](https://github.com/dhg/Skeleton), to provide a simplistic start to any web development project. This kit is built to be used in conjunction with [gulp](http://gulpjs.com/) to automate different tasks as a web developer.
 
 ## Requirements
-This project does have some requirements that you will need to meet in order to compile it. First of all you need NodeJS in order to run javascript on the console, you can go to the [NodeJS](https://nodejs.org/en/) site and follow through the installation process. After you get the `npm` command on the console, you need to install Gulp and Bower globally with the following command:
+This project does have some requirements that you will need to meet in order to compile it. 
+
+First of all, you need *NodeJS* in order to run javascript on the console, you can go to the [NodeJS](https://nodejs.org/en/) site and follow through the installation process. 
+
+Updating NodeJS:
+
+*Windows*:
+
+Use [npm-windows-upgrade](https://www.npmjs.com/package/npm-windows-upgrade) to update NodeJS to its LTS.
+
+*Mac/Linux*:
+
+Run the following command:
+```
+sudo npm cache clean -f && sudo npm install -g n && sudo n stable
+```
+
+After you get the `npm` command on the console, you need to install Gulp and Bower globally with the following command:
 
 ```
 npm install -g gulp bower
@@ -57,7 +74,7 @@ The project has a very simple and flexible structure. If the default place for a
 ```
 ├───build -> All of the compiled files will be placed here (Distribution)
 │   ├───assets -> Compiled Assets
-│   ├───index.html -> Compiled Jade files
+│   ├───index.html -> Compiled Pug files
 │   ├───vendors -> Project dependencies
 ├───source -> All of the un-compiled files will be placed here (Development)
 │   ├───assets -> Assets for the project
@@ -67,15 +84,14 @@ The project has a very simple and flexible structure. If the default place for a
 │   ├───functions.js -> Un-Compiled Javascript file
 ├───sass/ -> Uncompiled SASS directory
 │   ├───partials/ -> Tools/Frameworks
-│   ├───index.scss -> Uncompiled sass file
-│   │   index.scss -> Main sass file, where all other sass files should be included.
+│   ├───index.sass -> Uncompiled sass file
+│   │   index.sass -> Main sass file, where all other sass files should be included.
 │   ├───vendors -> Vendors folder for all the dependencies (Managed by Bower)
-├───settings/ -> Starter Kit Settings
 ├───views/ -> Uncompiled Pug directory
-│   ├───includes/ -> Un-Compiled Pug files to be included inside the `index.jade` file
-│   │   └───partials/ -> Contains the main `_head.jade` and `_scripts.jade` file(s)
-│   ├───layouts/ -> Contains the main '_layout.jade' file to be added as an 'extension' to the 'index.jade' file
-│   ├───index.jade -> Un-Compiled Pug file
+│   ├───includes/ -> Un-Compiled Pug files to be included inside the `index.pug` file
+│   │   └───partials/ -> Contains the main `_head.pug` and `_scripts.pug` file(s)
+│   ├───layouts/ -> Contains the main '_layout.pug' file to be added as an 'extension' to the 'index.pug' file
+│   ├───index.pug -> Un-Compiled Pug file
 ├───.bowerrc -> Defines where the dependencies will be installed
 ├───bower.json -> Bower configuration file for managing bower dependencies
 ├───package.json -> NodeJS configuration file for managing node dependencies
