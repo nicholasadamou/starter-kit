@@ -5,19 +5,22 @@
  */
 
 // Required gulp files
-var gulp = require('gulp');
-var config = require('./config.js')();
+var 
+  gulp = require('gulp'),
+  config = require('./config.js')();
 
 // Include gulp plugins
-var del = require('del');
-var browserSync = require('browser-sync');
-var pngquant = require('imagemin-pngquant');
-var postcss = require('gulp-postcss');
-var autoprefixer = require('autoprefixer');
-var rucksack = require('rucksack-css');
-var bourbon = require("node-bourbon").includePaths;
-var neat = require("node-neat").includePaths;
-var $ = require('gulp-load-plugins')({ lazy: true });
+var
+ del = require('del'),
+ browserSync = require('browser-sync'),
+ pngquant = require('imagemin-pngquant'),
+ postcss = require('gulp-postcss'),
+ autoprefixer = require('autoprefixer'),
+ rucksack = require('rucksack-css'),
+ bourbon = require("node-bourbon").includePaths,
+ neat = require("node-neat").includePaths,
+ lost = require("lost"),
+ $ = require('gulp-load-plugins')({ lazy: true });
 
 // Configuration Options
 var
@@ -80,6 +83,7 @@ var
     watch: [source + (config.vendors[--config.vendors.length] == '/' ? config.vendors + '**/*' : config.vendors + '/**/*')]
   },
   plugins = [
+    lost(),
     rucksack(), 
     autoprefixer({ browsers: ['last 2 versions', '> 2%'] })
   ];

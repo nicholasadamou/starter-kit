@@ -27,10 +27,10 @@
     "install-dependencies": "npm install && bower install"
   },
   "devDependencies": {
+    "autoprefixer": "^7.1.2",
     "browser-sync": "^2.18.13",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
-    "autoprefixer": "^7.1.2",
     "gulp-browserify": "^0.5.1",
     "gulp-concat": "^2.6.1",
     "gulp-deporder": "^1.1.0",
@@ -51,6 +51,7 @@
     "imagemin-pngquant": "^5.0.1",
     "jshint": "^2.9.5",
     "jshint-stylish": "^2.2.1",
+    "lost": "^8.2.0",
     "node-bourbon": "^4.2.8",
     "node-neat": "^2.0.0-beta.0",
     "postcss-cli": "^4.1.0",
