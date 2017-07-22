@@ -43,7 +43,7 @@
     "gulp-postcss": "^7.0.0",
     "gulp-preprocess": "^2.0.0",
     "gulp-pug": "^3.3.0",
-    "gulp-sass": "^3.1.0",
+    "gulp-sass": "*",
     "gulp-size": "^2.1.0",
     "gulp-sourcemaps": "^2.6.*",
     "gulp-strip-debug": "^1.0.0",
@@ -56,8 +56,5 @@
     "node-neat": "^2.0.0-beta.0",
     "postcss-cli": "^4.1.0",
     "rucksack-css": "^0.9.1"
-  },
-  "dependencies": {
-    "imagemin-pngquant": "^5.0.1"
   }
 }
