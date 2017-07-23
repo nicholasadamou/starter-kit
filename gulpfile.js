@@ -290,7 +290,7 @@ gulp.task('help', function () {
   log('The commands for the task runner are the following.');
   log('------------------------------------------------------');
   log('    clean: Removes all the compiled files on ./build');
-  log('    ftp: Deploy ./build to an (S)FTP server');  
+  log('    ftp: Deploy ./build to an FTP/SFTP server');  
   log('    surge: Deploy ./build to a Surge.sh domain');
   log('    js: Compile the JavaScript files');
   log('    pug: Compile the Pug templates');
