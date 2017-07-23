@@ -14,6 +14,7 @@ It is built on [Skeleton](https://github.com/dhg/Skeleton), to provide a simplis
 - [**NodeJS**](https://nodejs.org) - JavaScript runtime built on Chrome's V8 JavaScript engine.
 - [**Gulp**](http://gulpjs.com) - Automate and enhance your workflow.
 - [**Yarn**](https://yarnpkg.com/en/docs/install) - Fast, Reliable, and secure dependency management.
+- [**BabelJS**](https://babeljs.io/) - Babel puts a soft cushion between a web application and the many cool new file formats developed for use with node.js such as CoffeeScript, SASS, and Jade.
 - [**Surge**](https://surge.sh) - Simple, single-command web publishing. Publish HTML, CSS, and JS for free, without leaving the command line.
 - [**PostCSS**](http://postcss.org/) - A tool for transforming CSS with JavaScript.
 - [**Pug**](https://pugjs.org) - Simple language for writing HTML templates.

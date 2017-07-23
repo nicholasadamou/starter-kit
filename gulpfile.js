@@ -17,11 +17,13 @@ var
  postcss = require('gulp-postcss'),
  autoprefixer = require('autoprefixer'),
  rucksack = require('rucksack-css'),
- bourbon = require("node-bourbon").includePaths,
- neat = require("node-neat").includePaths,
- lost = require("lost"),
+ bourbon = require('node-bourbon').includePaths,
+ neat = require('node-neat').includePaths,
+ lost = require('lost'),
+ uncss = require('gulp-uncss'),
  surge = require('gulp-surge'),
  ftp = require('vinyl-ftp'),
+ babel = require('gulp-babel'),
  $ = require('gulp-load-plugins')({ lazy: true });
 
 // Configuration Options
@@ -60,6 +62,10 @@ var
         neat
       ]
     },
+    unCSSOptions: {
+      html: [config.build + '/*html'],
+      ignore: ['*:*']
+    }
   },
   js = {
     in: source + (config.jsDir[--config.jsDir.length] == '/' ? config.jsDir + '**/*' : config.jsDir + '/**/*'),
@@ -137,6 +143,7 @@ gulp.task('sass', function () {
       .pipe($.sass(styles.sass))
       .pipe($.size({ title: 'styles In Size' }))
       .pipe(postcss(plugins))
+      .pipe(uncss(styles.unCSSOptions))
       .pipe($.size({ title: 'styles Out Size' }))
       .pipe($.sourcemaps.write())
       .pipe(gulp.dest(styles.out))
@@ -149,6 +156,7 @@ gulp.task('sass', function () {
       .pipe($.sass(styles.sass))
       .pipe($.size({ title: 'styles In Size' }))
       .pipe(postcss(plugins))
+      .pipe(uncss(styles.unCSSOptions))
       .pipe($.size({ title: 'styles Out Size' }))
       .pipe(gulp.dest(styles.out))
       .pipe(browserSync.reload({ stream: true }));
@@ -164,6 +172,7 @@ gulp.task('js', function () {
       .pipe($.sourcemaps.init())
       .pipe($.browserify(js.browserifyOptions))
       .pipe($.plumber())
+      .pipe(babel())
       .pipe($.newer(js.out))
       .pipe($.jshint())
       .pipe($.jshint.reporter('jshint-stylish', { verbose: true }))
@@ -181,6 +190,7 @@ gulp.task('js', function () {
     return gulp.src(js.in)
       .pipe($.browserify(js.browserifyOptions))
       .pipe($.plumber())
+      .pipe(babel())
       .pipe($.deporder())
       .pipe($.concat(js.fileName))
       .pipe($.size({ title: 'Javascript In Size' }))
