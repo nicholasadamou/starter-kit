@@ -16,7 +16,7 @@ It is built on [Skeleton](https://github.com/dhg/Skeleton), to provide a simplis
 - [**Yarn**](https://yarnpkg.com/en/docs/install) - Fast, Reliable, and secure dependency management.
 - [**Surge**](https://surge.sh) - Simple, single-command web publishing. Publish HTML, CSS, and JS for free, without leaving the command line.
 - [**PostCSS**](http://postcss.org/) - A tool for transforming CSS with JavaScript.
-- [**Pug**](https://pugjs.org) - Terse language for writing HTML templates.
+- [**Pug**](https://pugjs.org) - Simple language for writing HTML templates.
 - [**SASS**](http://sass-lang.com) - CSS with superpowers.
 - [**Rucksack**](https://simplaio.github.io/rucksack/) - A little bag of CSS superpowers.
 - [**Skeleton**](https://github.com/dhg/Skeleton) - A simple, responsive boilerplate to kickstart any responsive project.
