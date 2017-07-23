@@ -2,7 +2,7 @@ module.exports = function() {
   // Configuration Options
   var config = {
     /**
-     * This is the environment in wish you are working on
+     * This is the environment in which you are working on
      * Options are:
      * - development
      * - production
