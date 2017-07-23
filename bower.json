@@ -22,7 +22,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "source/vendors"
+    "src/vendors"
   ],
   "dependencies": {}
 }
