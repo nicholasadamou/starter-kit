@@ -9,9 +9,9 @@ Gulp Starter Kit is a simple, responsive boilerplate to kickstart any responsive
 It is built on [Skeleton](https://github.com/dhg/Skeleton), to provide a simplistic start to any web development project. This kit is built to be used in conjunction with [gulp](http://gulpjs.com/) to automate different tasks as a web developer.
 
 ## Requirements
-This project does have some requirements that you will need to meet in order to compile it. 
+This project does have some requirements that you will need to meet in order to compile it.
 
-First of all, you need *NodeJS* in order to run javascript on the console, you can go to the [NodeJS](https://nodejs.org/en/) site and follow through the installation process. 
+First of all, you need *NodeJS* in order to run javascript on the console, you can go to the [NodeJS](https://nodejs.org/en/) site and follow through the installation process.
 
 Updating NodeJS:
 
@@ -44,7 +44,29 @@ Now after you have cloned/downloaded the kit to a desirable location, you will n
 npm run-script install-dependencies
 gulp help
 ```
-After the two processes finish, you can proceed into the `How to Use` section to understand each option the kit presents to you.
+After the two processes finish, you can proceed into the `Configure Atom` or `Configure VS Code` section to set up Atom or VS Code.
+
+## Configure Atom
+
+Download and install [Atom](https://atom.io/).
+
+Install Atom packages from `./packages-list.txt` by running the following `apm` command:
+
+```
+apm install --packages-file packages-list.txt
+```
+
+## Configure VS Code
+
+Download and install [VS Code]().
+
+Install VS Code packages by running the following command: 
+
+```
+install_pkgs.cmd
+```
+
+You can now proceed into the `How to Use` section to understand each option the kit presents to you.
 
 ## How to use
 To start using the kit, open the project on the code editor of your choice and start coding.
