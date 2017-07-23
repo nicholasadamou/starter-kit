@@ -30,7 +30,7 @@ It is built on [Skeleton](https://github.com/dhg/Skeleton), to provide a simplis
 npm install -g gulp yarn bower
 ```
 
-Gulp is the process that will run all the task of compilation, watchers, and others. Bower will get the dependencies for the client-side like jQuery. Those are the only requirements to run this project.
+Gulp is the process that will run all the task of compilation, watchers, and others. Bower will get the dependencies for the client-side like jQuery. Yarn is an alternative to npm for dependency managment. It is much more reliable when compared to npm, so we will use yarn for dependency management instead of npm. Those are the only requirements to run this project.
 
 ## Install
 In order to start using this project, you need to clone/download it to your machine.
