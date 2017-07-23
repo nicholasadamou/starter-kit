@@ -1,5 +1,5 @@
 # Nicholas Adamou's Starter Kit [Gulp]
-![Project Preview](thumbnail.png)
+![Project Preview](thumbnail.jpg)
 
 ![license](https://img.shields.io/apm/l/vim-mode.svg)
 [![Say Thanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/NicholasAdamou)
