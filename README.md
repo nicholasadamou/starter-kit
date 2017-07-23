@@ -58,7 +58,7 @@ apm install --packages-file packages-list.txt
 
 ## Configure VS Code
 
-Download and install [VS Code]().
+Download and install [VS Code](https://code.visualstudio.com/download).
 
 Install VS Code packages by running the following command: 
 
