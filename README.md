@@ -1,5 +1,6 @@
-# Nicholas Adamou's Starter Kit [Gulp]
-![Project Preview](thumbnail.jpg)
+# Nicholas Adamou Starter Kit
+
+![Project Preview](https://cloud.githubusercontent.com/assets/7629661/9838465/89626e74-5a5e-11e5-9b7d-e0ce76856732.gif)
 
 ![license](https://img.shields.io/apm/l/vim-mode.svg)
 [![Say Thanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/NicholasAdamou)
@@ -8,28 +9,25 @@
 Gulp Starter Kit is a simple, responsive boilerplate to kickstart any responsive project.
 It is built on [Skeleton](https://github.com/dhg/Skeleton), to provide a simplistic start to any web development project. This kit is built to be used in conjunction with [gulp](http://gulpjs.com/) to automate different tasks as a web developer.
 
+## Technologies
+
+- [**NodeJS**](https://nodejs.org) - JavaScript runtime built on Chrome's V8 JavaScript engine.
+- [**Gulp**](http://gulpjs.com) - Automate and enhance your workflow.
+- [**Yarn**](https://yarnpkg.com/en/docs/install) - Fast, Reliable, and secure dependency management.
+- [**PostCSS**](http://postcss.org/) - A tool for transforming CSS with JavaScript.
+- [**Pug**](https://pugjs.org) - Terse language for writing HTML templates.
+- [**SASS**](http://sass-lang.com) - CSS with superpowers.
+- [**Rucksack**](https://simplaio.github.io/rucksack/) - A little bag of CSS superpowers.
+- [**Skeleton**](https://github.com/dhg/Skeleton) - A simple, responsive boilerplate to kickstart any responsive project.
+
 ## Requirements
-This project does have some requirements that you will need to meet in order to compile it.
 
-First of all, you need *NodeJS* in order to run javascript on the console, you can go to the [NodeJS](https://nodejs.org/en/) site and follow through the installation process.
+- [Node.js](https://nodejs.org/en/)
+- [Gulp](http://gulpjs.com)
+- [Yarn](https://yarnpkg.com/en/docs/install)
 
-Updating NodeJS:
-
-*Windows*:
-
-Use [npm-windows-upgrade](https://www.npmjs.com/package/npm-windows-upgrade) to update NodeJS to its LTS.
-
-*Mac/Linux*:
-
-Run the following command:
-```
-sudo npm cache clean -f && sudo npm install -g n && sudo n stable
-```
-
-After you get the `npm` command on the console, you need to install Gulp and Bower globally with the following command:
-
-```
-npm install -g gulp bower
+```bash
+npm install -g gulp yarn bower
 ```
 
 Gulp is the process that will run all the task of compilation, watchers, and others. Bower will get the dependencies for the client-side like jQuery. Those are the only requirements to run this project.
@@ -41,32 +39,10 @@ In order to start using this project, you need to clone/download it to your mach
 Now after you have cloned/downloaded the kit to a desirable location, you will need to navigate to the `Starter Kit` folder using terminal and execute the following commands to gather all the dependencies and open the `Gulp Help` screen.
 
 ```
-npm run-script install-dependencies
+yarn install
 gulp help
 ```
-After the two processes finish, you can proceed into the `Configure Atom` or `Configure VS Code` section to set up Atom or VS Code.
-
-## Configure Atom
-
-Download and install [Atom](https://atom.io/).
-
-Install Atom packages from `./packages-list.txt` by running the following `apm` command:
-
-```
-apm install --packages-file packages-list.txt
-```
-
-## Configure VS Code
-
-Download and install [VS Code](https://code.visualstudio.com/download).
-
-Install VS Code packages by running the following command: 
-
-```
-install_pkgs.cmd
-```
-
-You can now proceed into the `How to Use` section to understand each option the kit presents to you.
+After the two processes finish, you can now proceed into the `How to Use` section to understand each option the kit presents to you.
 
 ## How to use
 To start using the kit, open the project on the code editor of your choice and start coding.

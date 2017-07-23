@@ -1,7 +1,0 @@
-advanced-new-file@0.5.0
-atom-material-syntax@1.0.6
-atom-material-ui@2.0.4
-atom-pug@0.2.0
-emmet@2.4.3
-pigments@0.39.1
-
