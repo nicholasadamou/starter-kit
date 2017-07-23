@@ -20,7 +20,8 @@ var
  bourbon = require("node-bourbon").includePaths,
  neat = require("node-neat").includePaths,
  lost = require("lost"),
- surge = require('gulp-surge');
+ surge = require('gulp-surge'),
+ ftp = require('vinyl-ftp'),
  $ = require('gulp-load-plugins')({ lazy: true });
 
 // Configuration Options
@@ -76,10 +77,6 @@ var
     },
     open: config.syncOptions.open || false,
     notify: config.syncOptions.notify || true
-  },
-  surgeOptions = {
-    project: './build', // Path to your static build directory
-    domain: 'YOURDOMAIN.surge.sh' // Your domain or Surge subdomain
   },
   pugOptions = { pretty: devBuild },
   vendors = {
@@ -230,10 +227,38 @@ gulp.task('browserSync', function () {
 });
 
 // Deploy ./build to a Surge.sh domain
-gulp.task('deploy', function() {
-  log('-> Deploying ./build to ' + surgeOptions.domain)
+gulp.task('surge', function() {
+  log('-> Deploying ./build to ' + config.SURGE.domain)
 
-  return surge(surgeOptions);
+  return surge(config.SURGE);
+});
+
+//Deploy ./build to an FTP server
+gulp.task('ftp', function() {
+  log('-> Deploying ./build to ftp://' + config.FTP.host)
+
+  const conn = ftp.create({
+    host: config.FTP.host,
+    user: config.FTP.user,
+    password: config.FTP.password
+  });
+
+  return gulp.src(config.build + '**', {
+    base: config.build,
+    buffer: false
+  })
+  .pipe($.plumber({
+    errorHandler: notify.onError({
+      title: 'Error: deployment to ftp://' + config.FTP.host + ' has failed.',
+      message: '<%= error.message %>'
+    })
+  }))
+  .pipe(conn.newer(config.FTP.target))
+  .pipe(conn.dest(config.FTP.target))
+  .pipe(notify({
+    title: 'Deployment  to ftp://' + config.FTP.host + ' was successful!',
+    message: 'Your project has been deployed to ftp://' + config.FTP.host + '.'
+  }));
 });
 
 // Build Task
@@ -265,7 +290,8 @@ gulp.task('help', function () {
   log('The commands for the task runner are the following.');
   log('------------------------------------------------------');
   log('    clean: Removes all the compiled files on ./build');
-  log('    deploy: deploy ./build to a Surge.sh domain');
+  log('    ftp: Deploy ./build to an (S)FTP server');  
+  log('    surge: Deploy ./build to a Surge.sh domain');
   log('    js: Compile the JavaScript files');
   log('    pug: Compile the Pug templates');
   log('    sass: Compile the Sass styles');

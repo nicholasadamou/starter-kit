@@ -13,6 +13,17 @@ module.exports = function() {
      * the NODE_ENV environment var.
      */
     environment: 'development',
+    FTP = {
+        host: 'HOST',
+        user: 'USER',
+        password: 'PASSWORD',
+        secure: true, //Set 'true' for secured FTP connections
+        target: 'FTP-DIRECTORY'
+    },
+    SURGE = {
+        project: './build', // Path to your static build directory
+        domain: 'YOURDOMAIN.surge.sh' // Your domain or Surge subdomain
+    },
     // Source code directory.
     source: 'src/',
     // Build directory, is where the compiled code will be outputted.
@@ -73,5 +84,6 @@ module.exports = function() {
      */
     vendors: 'vendors'
   }
+  
   return config;
 }
