@@ -24,6 +24,7 @@ var
  surge = require('gulp-surge'),
  ftp = require('vinyl-ftp'),
  babel = require('gulp-babel'),
+ notify = require('gulp-notify'),
  $ = require('gulp-load-plugins')({ lazy: true });
 
 // Configuration Options
@@ -260,7 +261,7 @@ gulp.task('ftp', function() {
   .pipe($.plumber({
     errorHandler: notify.onError({
       title: 'Error: deployment to ftp://' + config.FTP.host + ' has failed.',
-      message: '<%= error.message %>'
+      message: error.message
     })
   }))
   .pipe(conn.newer(config.FTP.target))
