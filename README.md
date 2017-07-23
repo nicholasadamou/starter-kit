@@ -74,7 +74,7 @@ The project has a very simple and flexible structure. If the default place for a
 │   ├───assets -> Compiled Assets
 │   ├───index.html -> Compiled Pug files
 │   ├───vendors -> Project dependencies
-├───source -> All of the un-compiled files will be placed here (Development)
+├───src -> All of the un-compiled files will be placed here (Development)
 │   ├───assets -> Assets for the project
 │   │   ├───images -> Images
 │   │   └───js -> Scripts

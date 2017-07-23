@@ -14,9 +14,9 @@ module.exports = function() {
      */
     environment: 'development',
     // Source code directory.
-    source: 'source/',
+    source: 'src/',
     // Build directory, is where the compiled code will be outputted.
-    build: 'build/',
+    build: 'src/',
     // Where the images are inside the source folder.
     // they will be copied to the same dir on the build folder
     images: 'assets/images',
