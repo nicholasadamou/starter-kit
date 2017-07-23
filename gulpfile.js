@@ -20,6 +20,7 @@ var
  bourbon = require("node-bourbon").includePaths,
  neat = require("node-neat").includePaths,
  lost = require("lost"),
+ surge = require('gulp-surge');
  $ = require('gulp-load-plugins')({ lazy: true });
 
 // Configuration Options
@@ -75,6 +76,10 @@ var
     },
     open: config.syncOptions.open || false,
     notify: config.syncOptions.notify || true
+  },
+  surgeOptions = {
+    project: './build', // Path to your static build directory
+    domain: 'YOURDOMAIN.surge.sh' // Your domain or Surge subdomain
   },
   pugOptions = { pretty: devBuild },
   vendors = {
@@ -224,6 +229,13 @@ gulp.task('browserSync', function () {
   browserSync(syncOptions);
 });
 
+// Deploy ./build to a Surge.sh domain
+gulp.task('deploy', function() {
+  log('-> Deploying ./build to ' + surgeOptions.domain)
+
+  return surge(surgeOptions);
+});
+
 // Build Task
 gulp.task('build', ['sass', 'pug', 'js', 'images', 'vendors', 'favicon']);
 
@@ -253,6 +265,7 @@ gulp.task('help', function () {
   log('The commands for the task runner are the following.');
   log('------------------------------------------------------');
   log('    clean: Removes all the compiled files on ./build');
+  log('    deploy: deploy ./build to a Surge.sh domain');
   log('    js: Compile the JavaScript files');
   log('    pug: Compile the Pug templates');
   log('    sass: Compile the Sass styles');

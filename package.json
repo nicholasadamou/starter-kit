@@ -47,6 +47,7 @@
     "gulp-size": "^2.1.0",
     "gulp-sourcemaps": "^2.6.*",
     "gulp-strip-debug": "^1.0.0",
+    "gulp-surge": "^0.1.0",
     "gulp-uglify": "^3.0.0",
     "imagemin-pngquant": "^5.0.1",
     "jshint": "^2.9.5",
@@ -55,6 +56,7 @@
     "node-bourbon": "^4.2.8",
     "node-neat": "^2.0.0-beta.0",
     "postcss-cli": "^4.1.0",
-    "rucksack-css": "^0.9.1"
+    "rucksack-css": "^0.9.1",
+    "yarn": "^0.27.5"
   }
 }
