@@ -54,6 +54,8 @@ Every command has to be executed on the root directory of the project using the 
 
 * **start**: Compile and watch for changes (For development)
 * **clean**: Removes all the compiled files on ./build
+* **ftp**: Deploy ./build to an FTP/SFTP server
+* **surge**: Deploy ./build to a Surge.sh domain
 * **js**: Compile the JavaScript files
 * **pug**: Compile the Pug templates
 * **sass**: Compile the Sass styles
