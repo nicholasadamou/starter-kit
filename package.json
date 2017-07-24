@@ -1,15 +1,15 @@
 {
-  "name": "gulp-starter-kit",
+  "name": "starter-kit",
   "version": "1.0.0",
   "description": "A Dead Simple, Responsive Boilerplate for Mobile-Friendly Development",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NicholasAdamou/Gulp-Starter-Kit"
+    "url": "https://github.com/NicholasAdamou/Starter-Kit"
   },
   "bugs": {
-    "url": "https://github.com/NicholasAdamou/Gulp-Starter-Kit/issues"
+    "url": "https://github.com/NicholasAdamou/Starter-Kit/issues"
   },
-  "homepage": "https://github.com/NicholasAdamou/Gulp-Starter-Kit",
+  "homepage": "https://github.com/NicholasAdamou/Starter-Kit",
   "author": "Nicholas Adamou <nicholasadamouemail@gmail.com> (http://nicholasadamou.github.io/)",
   "keywords": [
     "starter-kit",
