@@ -1,4 +1,4 @@
-# Nicholas Adamou Starter Kit
+# Nicholas Adamou's Starter Kit
 
 ![Project Preview](https://cloud.githubusercontent.com/assets/7629661/9838465/89626e74-5a5e-11e5-9b7d-e0ce76856732.gif)
 
