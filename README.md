@@ -6,7 +6,7 @@
 [![Say Thanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/NicholasAdamou)
 
 ## About
-Gulp Starter Kit is a simple, responsive boilerplate to kickstart any responsive project.
+Starter Kit is a simple, responsive boilerplate to kickstart any responsive project.
 It is built on [Skeleton](https://github.com/dhg/Skeleton), to provide a simplistic start to any web development project. This kit is built to be used in conjunction with [gulp](http://gulpjs.com/) to automate different tasks as a web developer.
 
 ## Technologies
