@@ -4,28 +4,24 @@
  * If you find any bugs or errors, please submit an issue.
  */
 
-// Required gulp files
-var 
-  gulp = require('gulp'),
-  config = require('./config.js')();
-
 // Include gulp plugins
+var
+ gulp = require('gulp'),
+ $ = require('gulp-load-plugins')({ lazy: true });
+
 var
  del = require('del'),
  browserSync = require('browser-sync'),
  pngquant = require('imagemin-pngquant'),
- postcss = require('gulp-postcss'),
  autoprefixer = require('autoprefixer'),
  rucksack = require('rucksack-css'),
  bourbon = require('node-bourbon').includePaths,
  neat = require('node-neat').includePaths,
  lost = require('lost'),
- uncss = require('gulp-uncss'),
- surge = require('gulp-surge'),
- ftp = require('vinyl-ftp'),
- babel = require('gulp-babel'),
- notify = require('gulp-notify'),
- $ = require('gulp-load-plugins')({ lazy: true });
+ ftp = require('vinyl-ftp');
+
+// Required gulp files
+var config = require('./config.js')();
 
 // Configuration Options
 var
@@ -143,8 +139,8 @@ gulp.task('sass', function () {
       .pipe($.plumber())
       .pipe($.sass(styles.sass))
       .pipe($.size({ title: 'styles In Size' }))
-      .pipe(postcss(plugins))
-      .pipe(uncss(styles.unCSSOptions))
+      .pipe($.postcss(plugins))
+      .pipe($.uncss(styles.unCSSOptions))
       .pipe($.size({ title: 'styles Out Size' }))
       .pipe($.sourcemaps.write())
       .pipe(gulp.dest(styles.out))
@@ -156,8 +152,8 @@ gulp.task('sass', function () {
       .pipe($.plumber())
       .pipe($.sass(styles.sass))
       .pipe($.size({ title: 'styles In Size' }))
-      .pipe(postcss(plugins))
-      .pipe(uncss(styles.unCSSOptions))
+      .pipe($.postcss(plugins))
+      .pipe($.uncss(styles.unCSSOptions))
       .pipe($.size({ title: 'styles Out Size' }))
       .pipe(gulp.dest(styles.out))
       .pipe(browserSync.reload({ stream: true }));
@@ -173,7 +169,7 @@ gulp.task('js', function () {
       .pipe($.sourcemaps.init())
       .pipe($.browserify(js.browserifyOptions))
       .pipe($.plumber())
-      .pipe(babel())
+      .pipe($.babel())
       .pipe($.newer(js.out))
       .pipe($.jshint())
       .pipe($.jshint.reporter('jshint-stylish', { verbose: true }))
@@ -191,7 +187,7 @@ gulp.task('js', function () {
     return gulp.src(js.in)
       .pipe($.browserify(js.browserifyOptions))
       .pipe($.plumber())
-      .pipe(babel())
+      .pipe($.babel())
       .pipe($.deporder())
       .pipe($.concat(js.fileName))
       .pipe($.size({ title: 'Javascript In Size' }))
@@ -241,7 +237,7 @@ gulp.task('browserSync', function () {
 gulp.task('surge', function() {
   log('-> Deploying ./build to ' + config.SURGE.domain)
 
-  return surge(config.SURGE);
+  return $.surge(config.SURGE);
 });
 
 //Deploy ./build to an FTP server
@@ -259,14 +255,14 @@ gulp.task('ftp', function() {
     buffer: false
   })
   .pipe($.plumber({
-    errorHandler: notify.onError({
+    errorHandler: $.notify.onError({
       title: 'Error: deployment to ftp://' + config.FTP.host + ' has failed.',
       message: error.message
     })
   }))
   .pipe(conn.newer(config.FTP.target))
   .pipe(conn.dest(config.FTP.target))
-  .pipe(notify({
+  .pipe($.notify({
     title: 'Deployment  to ftp://' + config.FTP.host + ' was successful!',
     message: 'Your project has been deployed to ftp://' + config.FTP.host + '.'
   }));

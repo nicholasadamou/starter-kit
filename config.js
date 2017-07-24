@@ -13,14 +13,14 @@ module.exports = function() {
      * the NODE_ENV environment var.
      */
     environment: 'development',
-    FTP = {
+    FTP: {
         host: 'HOST',
         user: 'USER',
         password: 'PASSWORD',
         secure: true, //Set 'true' for secured FTP connections
         target: 'FTP-DIRECTORY'
     },
-    SURGE = {
+    SURGE: {
         project: './build', // Path to your static build directory
         domain: 'YOURDOMAIN.surge.sh' // Your domain or Surge subdomain
     },
