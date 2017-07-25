@@ -1,6 +1,9 @@
 language: node_js
+env:
+  global:
+    - secure: <YOUR_ENCRYPTED_DATA>
 node_js:
-  - "0.10"
+  - '0.10'
 before script:
   - npm install -g gulp yarn bower
 after script:

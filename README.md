@@ -58,6 +58,7 @@ Every command has to be executed on the root directory of the project using the 
 * **clean**: Removes all the compiled files on ./build
 * **ftp**: Deploy ./build to an FTP/SFTP server
 * **surge**: Deploy ./build to a Surge.sh domain
+* **ghpages**: Deploy to Github Pages
 * **js**: Compile the JavaScript files
 * **pug**: Compile the Pug templates
 * **sass**: Compile the Sass styles
@@ -66,6 +67,7 @@ Every command has to be executed on the root directory of the project using the 
 * **vendors**: Copy the vendors to the build folder
 * **build**: Build the project
 * **watch**: Watch for any changes on the each section
+* **pagespeed**: Run Google PageSpeed Insights
 * **help**: Print this message
 * **browserSync**: Start the browser-sync server
 

@@ -1,0 +1,30 @@
+{
+  "name": "node-bourbon",
+  "version": "4.2.8",
+  "description": "node-sass wrapper for thoughtbot's bourbon library",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha --reporter spec --recursive --growl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lacroixdesign/node-bourbon.git"
+  },
+  "keywords": [
+    "sass",
+    "css"
+  ],
+  "author": "Michael LaCroix <michael@lacroixdesign.net> (http://www.lacroixdesign.net)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lacroixdesign/node-bourbon/issues"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.1.0",
+    "node-sass": "^3.0.0"
+  },
+  "dependencies": {
+    "bourbon": "^4.2.6"
+  }
+}

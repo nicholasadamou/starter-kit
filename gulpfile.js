@@ -1,8 +1,24 @@
 /**
- * Gulp Starter Kit configuration file.
+ * Starter Kit configuration file.
  * Feel free to modify this file as you need.
  * If you find any bugs or errors, please submit an issue.
+ *
+ *  Copyright 2017 Nicholas Adamou. All rights reserved.
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *    https://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License
  */
+
+'use strict';
 
 // Include gulp plugins
 var
@@ -29,16 +45,6 @@ var
   source = config.source[--config.source.length] == '/' ? config.source : config.source + '/',
   dest = config.build[--config.build.length] == '/' ? config.build : config.build + '/',
   pkg = require('./package.json'),
-  images = {
-    in: source + (config.images[--config.images.length] == '/' ? config.images + '**/*.*' : config.images + '/**/*.*'),
-    out: dest + config.images,
-    imageminOptions: {
-      progressive: true,
-      interlaced: true,
-      svgoPlugins: [{removeViewBox: false}],
-      use: [pngquant()]
-    }
-  },
   views = {
     in: source + (config.views[--config.views.length] == '/' ? config.views + '*.pug' : config.views + '/*.pug'),
     out: dest,
@@ -71,8 +77,21 @@ var
 
     browserifyOptions: {
       debug: true
+    },
+    renameOptions: {
+      suffix: '.min',
     }
   },
+  images = {
+    in: source + (config.images[--config.images.length] == '/' ? config.images + '**/*.*' : config.images + '/**/*.*'),
+    out: dest + config.images,
+    imageminOptions: {
+      progressive: true,
+      interlaced: true,
+      svgoPlugins: [{removeViewBox: false}],
+      use: [pngquant()]
+    }
+  }
   syncOptions = {
     server: {
       baseDir: dest,
@@ -90,8 +109,25 @@ var
   plugins = [
     lost(),
     rucksack(), 
-    autoprefixer({ browsers: ['last 2 versions', '> 2%'] })
-  ];
+    autoprefixer({  
+      browsers: [
+                    '> 1%',
+                    'last 2 versions',
+                    'firefox >= 4',
+                    'safari 7',
+                    'safari 8',
+                    'IE 8',
+                    'IE 9',
+                    'IE 10',
+                    'IE 11'
+                ],
+     })
+  ],
+  ghpagesOptions = {
+    remoteUrl: 'https://' + process.env.GITHUB_TOKEN + 
+      '@github.com/' + ghpagesOptions.username + '/' + ghpagesOptions.repo + '.git',
+    branch: 'gh-pages'
+  };
 
 log(pkg.name + ' ' + pkg.version + ' ' + config.environment + ' build');
 
@@ -176,6 +212,7 @@ gulp.task('js', function () {
       .pipe($.jshint.reporter('fail'))
       .pipe($.concat(js.fileName))
       .pipe($.sourcemaps.write())
+      .pipe($.rename(js.renameOptions))
       .pipe(gulp.dest(js.out));
   } else {
     log('-> Compiling Javascript for Production');
@@ -194,6 +231,7 @@ gulp.task('js', function () {
       .pipe($.stripDebug())
       .pipe($.uglify())
       .pipe($.size({ title: 'Javascript Out Size' }))
+      .pipe($.rename(js.renameOptions))
       .pipe(gulp.dest(js.out));
   }
 });
@@ -268,6 +306,29 @@ gulp.task('ftp', function() {
   }));
 });
 
+// Publish to GitHub Pages
+gulp.task('ghpages', function () {
+  // To deploy with Travis CI:
+  //   1. Generate OAuth token on GitHub > Settings > Application page
+  //   2. Encrypt and save that token into the `.travis.yml` file by running:
+  //      `travis encrypt GITHUB_TOKEN="<your-oauth-token>" --add`
+
+  return gulp.src(config.build + '**/*')
+    .pipe($.if('**/robots.txt', !argv.production ? $.replace('Disallow:', 'Disallow: /') : $.util.noop()))
+    .pipe($.ghPages(ghpagesOptions));
+});
+
+// Run PageSpeed Insights
+gulp.task('pagespeed', function (cb) {
+  // Update the below URL to the public URL of your site
+  require('psi').output(config.URL, {
+    strategy: 'mobile'
+    // By default we use the PageSpeed Insights free (no API key) tier.
+    // Use a Google Developer API key if you have one: http://goo.gl/RkN0vE
+    // key: 'YOUR_API_KEY'
+  }, cb);
+});
+
 // Build Task
 gulp.task('build', ['sass', 'pug', 'js', 'images', 'vendors', 'favicon']);
 
@@ -299,6 +360,7 @@ gulp.task('help', function () {
   log('    clean: Removes all the compiled files on ./build');
   log('    ftp: Deploy ./build to an FTP/SFTP server');  
   log('    surge: Deploy ./build to a Surge.sh domain');
+  log('    ghpages: Deploy to Github Pages')
   log('    js: Compile the JavaScript files');
   log('    pug: Compile the Pug templates');
   log('    sass: Compile the Sass styles');
@@ -308,6 +370,7 @@ gulp.task('help', function () {
   log('    build: Build the project');
   log('    watch: Watch for any changes on the each section');
   log('    start: Compile and watch for changes (for dev)');
+  log('    pagespeed: Run Google PageSpeed Insights');  
   log('    help: Print this message');
   log('    browserSync: Start the browserSync server');
   log('');

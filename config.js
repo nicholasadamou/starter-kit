@@ -24,6 +24,7 @@ module.exports = function() {
         project: './build', // Path to your static build directory
         domain: 'YOURDOMAIN.surge.sh' // Your domain or Surge subdomain
     },
+    URL: 'example.com',
     // Source code directory.
     source: 'src/',
     // Build directory, is where the compiled code will be outputted.

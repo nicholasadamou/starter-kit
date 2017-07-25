@@ -1,0 +1,37 @@
+{
+  "name": "gulp-browserify",
+  "version": "0.5.1",
+  "description": "Bundle modules with Browserify",
+  "license": "MIT",
+  "repository": "https://github.com/deepak1556/gulp-browserify",
+  "author": "Robo <hop2deep@gmail.com>",
+  "contributors": [
+    "Robo <hop2deep@gmail.com>",
+    "Steve Lacy <me@slacy.me>",
+    "Shuhei Kagawa <shuhei.kagawa@gmail.com>"
+  ],
+  "dependencies": {
+    "browserify": "3.x",
+    "gulp-util": "~2.2.5",
+    "browserify-shim": "~2.0.10",
+    "readable-stream": "~1.1.10",
+    "through2": "~0.4.0"
+  },
+  "main": "index.js",
+  "engines": {
+    "node": ">= 0.9"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
+  },
+  "devDependencies": {
+    "mocha": "~1.17.1",
+    "chai": "~1.9.0",
+    "coffeeify": "~0.6.0"
+  },
+  "keywords": [
+    "gulpplugin",
+    "gulpfriendly",
+    "browserify"
+  ]
+}
