@@ -1,7 +1,7 @@
 /**
- * Starter Kit configuration file.
- * Feel free to modify this file as you need.
- * If you find any bugs or errors, please submit an issue.
+ *  Starter Kit configuration file.
+ *  Feel free to modify this file as you need.
+ *  If you find any bugs or errors, please submit an issue.
  *
  *  Copyright 2017 Nicholas Adamou. All rights reserved.
  *
