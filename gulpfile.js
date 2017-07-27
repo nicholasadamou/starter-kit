@@ -37,14 +37,14 @@ var
  ftp = require('vinyl-ftp');
 
 // Required gulp files
-var config = require('./config.js')();
+var config = require('./config.js')(),
+    pkg = require('./package.json');
 
 // Configuration Options
 var
   devBuild = (( config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production'),
   source = config.source[--config.source.length] == '/' ? config.source : config.source + '/',
   dest = config.build[--config.build.length] == '/' ? config.build : config.build + '/',
-  pkg = require('./package.json'),
   views = {
     in: source + (config.views[--config.views.length] == '/' ? config.views + '*.pug' : config.views + '/*.pug'),
     out: dest,
