@@ -115,7 +115,7 @@ gulp.task('browserSync', require(config.tasks + 'browserSync.js')(gulp, browserS
 gulp.task('surge', require(config.tasks + 'surge.js')(gulp, $, log, config));
 
 //Deploy ./build to an FTP server
-gulp.task('ftp', require(config.tasks + 'ftp.js')(gulp, $, log, config));
+gulp.task('ftp', require(config.tasks + 'ftp.js')(gulp, $, ftp, log, config));
 
 // Publish to GitHub Pages
 gulp.task('ghpages', require(config.tasks + 'ghpages.js')(gulp, $, log, config));

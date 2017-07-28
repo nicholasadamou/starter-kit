@@ -1,4 +1,4 @@
-module.exports = function(gulp, $, log, config) {
+module.exports = function(gulp, $, ftp, log, config) {
     return function() {
         log('-> Deploying ./build to ftp://' + config.FTP.host)
 
