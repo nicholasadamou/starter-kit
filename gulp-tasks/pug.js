@@ -1,12 +1,12 @@
-module.exports = function(gulp, $, log, config, STATE, views) {
+module.exports = function(config, STATE, views) {
     return function() {
-        log('-> Compiling Pug Templates');
+        console.log('-> Compiling Pug Templates');
 
         var templates = gulp.src(views.in)
             .pipe($.plumber())
             .pipe($.newer(views.out));
         if (!STATE) {
-            log('-> Compressing templates for Production')
+            console.log('-> Compressing templates for Production')
             templates = templates
                 .pipe($.size({ title: 'Pug Templates Before Compression' }))
                 .pipe($.pug())

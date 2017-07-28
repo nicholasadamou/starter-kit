@@ -1,6 +1,6 @@
-module.exports = function(gulp, browserSync, log, config, dest) {
+module.exports = function(config, dest) {
     return function() {
-        log('-> Starting browserSync');
+        console.log('-> Starting browserSync');
 
         browserSync({
             server: {

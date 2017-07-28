@@ -1,6 +1,6 @@
-module.exports = function(log, config) {
+module.exports = function(config) {
     return function() {
-        log('-> Running Google PageSpeed Insights');
+        console.log('-> Running Google PageSpeed Insights');
 
         // Update the below URL to the public URL of your site
         require('psi').output(config.URL, {

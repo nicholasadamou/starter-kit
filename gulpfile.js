@@ -81,101 +81,59 @@ var
     watch: [src + (config.vendors[--config.vendors.length] == '/' ? config.vendors + '**/*' : config.vendors + '/**/*')]
   };
 
-log(pkg.name + ' ' + pkg.version + ' ' + config.environment + ' build');
+console.log(pkg.name + ' ' + pkg.version + ' ' + config.environment + ' build');
 
 /**
  * Tasks
  */
 
 //Clean the build folder
-gulp.task('clean', require(config.tasks + 'clean.js')(gulp, del, log, dest));
+gulp.task('clean', ['gulp', 'del'], require(config.tasks + 'clean.js')(dest));
 
 //Compile pug templates
-gulp.task('pug', require(config.tasks + 'pug.js')(gulp, $, log, config, STATE, views));
+gulp.task('pug', ['gulp', '$'], require(config.tasks + 'pug.js')(config, STATE, views));
 
 // Compile Sass styles
-gulp.task('sass', require(config.tasks + 'sass.js')(gulp, $, browserSync, log, config, STATE, styles));
+gulp.task('sass', ['gulp', '$', 'browserSync'], require(config.tasks + 'sass.js')(config, STATE, styles));
 
 // Compile Javascript files
-gulp.task('js', require(config.tasks + 'js.js')(gulp, $, del, log, STATE, dest, js));
+gulp.task('js', ['gulp', '$', 'del'], require(config.tasks + 'js.js')(STATE, dest, js));
 
 // Update images on build folder
-gulp.task('images', require(config.tasks + 'images.js')(gulp, $, pngquant, log, images));
+gulp.task('images', ['gulp', '$', 'pngquant'], require(config.tasks + 'images.js')(images));
 
 // Update Favicon on build folder
-gulp.task('favicon', require(config.tasks + 'favicon.js')(gulp, $, log, config, src, dest));
+gulp.task('favicon', ['gulp', '$'], require(config.tasks + 'favicon.js')(config, src, dest));
 
 // Copy all vendors to build folder
-gulp.task('vendors', require(config.tasks + 'vendors.js')(gulp, $, log, vendors));
+gulp.task('vendors', ['gulp', '$'], require(config.tasks + 'vendors.js')(vendors));
 
 // Start browserSync
-gulp.task('browserSync', require(config.tasks + 'browserSync.js')(gulp, browserSync, log, config, dest));
+gulp.task('browserSync', ['gulp', '$', 'browserSync'], require(config.tasks + 'browserSync.js')(config, dest));
 
 // Deploy ./build to a Surge.sh domain
-gulp.task('surge', require(config.tasks + 'surge.js')(gulp, $, log, config));
+gulp.task('surge', ['gulp', '$'], require(config.tasks + 'surge.js')(config));
 
 //Deploy ./build to an FTP server
-gulp.task('ftp', require(config.tasks + 'ftp.js')(gulp, $, ftp, log, config));
+gulp.task('ftp', ['gulp', '$', 'ftp'], require(config.tasks + 'ftp.js')(config));
 
 // Publish to GitHub Pages
-gulp.task('ghpages', require(config.tasks + 'ghpages.js')(gulp, $, log, config));
+gulp.task('ghpages', ['gulp', '$'], require(config.tasks + 'ghpages.js')(config));
 
 // Run Google PageSpeed Insights
-gulp.task('pagespeed', require(config.tasks + 'pagespeed.js')(log, config));
+gulp.task('pagespeed', require(config.tasks + 'pagespeed.js')(config));
 
 // Build Task
 gulp.task('build', ['sass', 'pug', 'js', 'images', 'vendors', 'favicon']);
 
 // Watch Task
-gulp.task('watch', ['browserSync'], function () {
-  // Watch for style changes and compile
-  gulp.watch(styles.watch, ['sass']);
-  // Watch for pug changes and compile
-  gulp.watch(views.watch, ['pug', browserSync.reload]);
-  // Watch for javascript changes and compile
-  gulp.watch(js.in, ['js', browserSync.reload]);
-  // Watch for new vendors and copy
-  gulp.watch(vendors.watch, ['vendors']);
-  // Watch for new images and copy
-  gulp.watch(images.in, ['images']);
-});
+gulp.task('watch', ['browserSync'], require(config.tasks + 'watch.js')(styles, views, js, images, vendors));
 
 // Compile and Watch task
 gulp.task('start', ['build', 'watch']);
 
 // Help Task
-gulp.task('help', function () {
-  log('');
-  log("===== Help for Nicholas Adamou's Starter Kit' =====");
-  log('');
-  log('Usage: gulp [command]');
-  log('The commands for the task runner are the following.');
-  log('------------------------------------------------------');
-  log('    clean: Removes all the compiled files on ./build');
-  log('    ftp: Deploy ./build to an FTP/SFTP server');  
-  log('    surge: Deploy ./build to a Surge.sh domain');
-  log('    ghpages: Deploy to Github Pages')
-  log('    js: Compile the JavaScript files');
-  log('    pug: Compile the Pug templates');
-  log('    sass: Compile the Sass styles');
-  log('    images: Copy the newer to the build folder');
-  log('    favicon: Copy the favicon to the build folder');
-  log('    vendors: Copy the vendors to the build folder');
-  log('    build: Build the project');
-  log('    watch: Watch for any changes on the each section');
-  log('    start: Compile and watch for changes (for dev)');
-  log('    pagespeed: Run Google PageSpeed Insights');  
-  log('    help: Print this message');
-  log('    browserSync: Start the browserSync server');
-  log('');
-});
+gulp.task('help', require(config.tasks + 'help.js')());
 
 // Default Task
 gulp.task('default', ['help']);
-
-/**
- * Custom functions
- */
- function log(msg) {
-   console.log(msg);
-}

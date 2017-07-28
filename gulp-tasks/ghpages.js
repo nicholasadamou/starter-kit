@@ -1,6 +1,6 @@
-module.exports = function(gulp, $, log, config) {
+module.exports = function(config) {
     return function() {
-        log('->  Deploying to Github Pages');
+        console.log('->  Deploying to Github Pages');
         // To deploy with Travis CI:
         //   1. Generate OAuth token on GitHub > Settings > Application page
         //   2. Encrypt and save that token into the `.travis.yml` file by running:

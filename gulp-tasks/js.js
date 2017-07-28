@@ -1,7 +1,7 @@
-module.exports = function(gulp, $, del, log, STATE, dest, js) {
+module.exports = function(STATE, dest, js) {
     return function() {
         if (STATE) {
-            log('-> Compiling Javascript for Development');
+            console.log('-> Compiling Javascript for Development');
 
             return gulp.src(js.in)
                 .pipe($.sourcemaps.init())
@@ -17,7 +17,7 @@ module.exports = function(gulp, $, del, log, STATE, dest, js) {
                 .pipe($.rename({ suffix: '.min' }))
                 .pipe(gulp.dest(js.out));
         } else {
-            log('-> Compiling Javascript for Production');
+            console.log('-> Compiling Javascript for Production');
 
             del([
                 dest + 'js/*'

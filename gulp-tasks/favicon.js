@@ -1,6 +1,6 @@
-module.exports = function(gulp, $, log, config, src, dest) {
+module.exports = function(config, src, dest) {
     return function() {
-        log('-> Updating favicon in build folder');
+        console.log('-> Updating favicon in build folder');
 
         return gulp.src(src + config.favicon)
             .pipe($.newer(dest))

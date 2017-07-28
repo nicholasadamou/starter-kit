@@ -1,6 +1,6 @@
-module.exports = function(gulp, $, pngquant, log, images) {
+module.exports = function(images) {
     return function() {
-        log('-> Updating images in build folder');
+        console.log('-> Updating images in build folder');
 
         return gulp.src(images.in)
             .pipe($.imagemin({

@@ -1,6 +1,6 @@
-module.exports = function(gulp, $, log, vendors) {
+module.exports = function(vendors) {
     return function() {
-        log('-> Updating vendors in build folder');
+        console.log('-> Updating vendors in build folder');
 
         return gulp.src(vendors.in)
             .pipe($.newer(vendors.out))

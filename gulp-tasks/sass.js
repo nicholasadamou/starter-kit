@@ -1,6 +1,6 @@
-module.exports = function(gulp, $, browserSync, log, config, STATE, styles) {
+module.exports = function(config, STATE, styles) {
     return function() {
-        log('-> Compiling SASS Styles');
+        console.log('-> Compiling SASS Styles');
 
         var 
             plugins = [
@@ -26,7 +26,7 @@ module.exports = function(gulp, $, browserSync, log, config, STATE, styles) {
             };
 
         if (STATE) {
-            log('-> Compiling SASS for Development');
+            console.log('-> Compiling SASS for Development');
 
             return gulp.src(styles.in)
                 .pipe($.sourcemaps.init())
@@ -40,7 +40,7 @@ module.exports = function(gulp, $, browserSync, log, config, STATE, styles) {
                 .pipe(gulp.dest(styles.out))
                 .pipe(browserSync.reload({ stream: true }));
         } else {
-            log('-> Compiling SASS for Production');
+            console.log('-> Compiling SASS for Production');
 
             return gulp.src(styles.in)
                 .pipe($.plumber())

@@ -1,6 +1,6 @@
-module.exports = function(gulp, $, ftp, log, config) {
+module.exports = function(config) {
     return function() {
-        log('-> Deploying ./build to ftp://' + config.FTP.host)
+        console.log('-> Deploying ./build to ftp://' + config.FTP.host)
 
         const conn = ftp.create({
             host: config.FTP.host,

@@ -1,6 +1,6 @@
-module.exports = function(gulp, del, log, dest) {
+module.exports = function(dest) {
     return function() {
-        log('-> Cleaning build folder');
+        console.log('-> Cleaning build folder');
 
         del([
             dest + '*'
