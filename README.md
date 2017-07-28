@@ -77,6 +77,7 @@ If you are in the development process, the `gulp start` command is the best opti
 The project has a very simple and flexible structure. If the default place for any file or directory needs to be moved, be sure to update the new position on the config file.
 
 ```
+├───gulp-tasks -> All of the different gulp tasks used in 'gulpfile.js'
 ├───build -> All of the compiled files will be placed here (Distribution)
 │   ├───assets -> Compiled Assets
 │   ├───index.html -> Compiled Pug files
