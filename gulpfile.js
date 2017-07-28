@@ -42,91 +42,43 @@ var config = require('./config.js')(),
 
 // Configuration Options
 var
-  devBuild = (( config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production'),
-  source = config.source[--config.source.length] == '/' ? config.source : config.source + '/',
+  STATE = (( config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production'),
+  src = config.source[--config.source.length] == '/' ? config.source : config.source + '/',
   dest = config.build[--config.build.length] == '/' ? config.build : config.build + '/',
   views = {
-    in: source + (config.views[--config.views.length] == '/' ? config.views + '*.pug' : config.views + '/*.pug'),
+    in: src + (config.views[--config.views.length] == '/' ? config.views + '*.pug' : config.views + '/*.pug'),
     out: dest,
-    watch: source + (config.views[--config.views.length] == '/' ? config.views + '**/*' : config.views + '/**/*')
+    watch: src + (config.views[--config.views.length] == '/' ? config.views + '**/*' : config.views + '/**/*')
   },
   styles = {
-    in: source + config.sass,
-    watch: [source + config.sass.substring(0, (config.sass.lastIndexOf('/')+1)) + '**/*'],
+    in: src + config.sass,
+    watch: [src + config.sass.substring(0, (config.sass.lastIndexOf('/')+1)) + '**/*'],
     out: dest + (config.css[--config.css.length] == '/' ? config.css : config.css + '/'),
     sass: {
-      sourceComments: (config.sassOptions.sourceComments).trim().toLowerCase() ? !devBuild : '',
-      outputStyle: (config.sassOptions.outputStyle).trim().toLowerCase() ? !devBuild : 'compressed',
+      sourceComments: (config.sassOptions.sourceComments).trim().toLowerCase() ? !STATE : '',
+      outputStyle: (config.sassOptions.outputStyle).trim().toLowerCase() ? !STATE : 'compressed',
       imagePath: config.sassOptions.imagePath,
       precision: config.sassOptions.precision || 3,
       errLogToConsole: true,
       includePaths: [
-        bourbon,
-        neat
+          bourbon,
+          neat
       ]
-    },
-    unCSSOptions: {
-      html: [config.build + '/*html'],
-      ignore: ['*:*']
     }
   },
   js = {
-    in: source + (config.jsDir[--config.jsDir.length] == '/' ? config.jsDir + '**/*' : config.jsDir + '/**/*'),
+    in: src + (config.jsDir[--config.jsDir.length] == '/' ? config.jsDir + '**/*' : config.jsDir + '/**/*'),
     out: dest + config.jsDir,
-    fileName: config.jsName,
-
-    browserifyOptions: {
-      debug: true
-    },
-    renameOptions: {
-      suffix: '.min',
-    }
+    fileName: config.jsName
   },
   images = {
-    in: source + (config.images[--config.images.length] == '/' ? config.images + '**/*.*' : config.images + '/**/*.*'),
+    in: src + (config.images[--config.images.length] == '/' ? config.images + '**/*.*' : config.images + '/**/*.*'),
     out: dest + config.images,
-    imageminOptions: {
-      progressive: true,
-      interlaced: true,
-      svgoPlugins: [{removeViewBox: false}],
-      use: [pngquant()]
-    }
-  }
-  syncOptions = {
-    server: {
-      baseDir: dest,
-      index: config.syncOptions.index || 'index.html'
-    },
-    open: config.syncOptions.open || false,
-    notify: config.syncOptions.notify || true
   },
-  pugOptions = { pretty: devBuild },
   vendors = {
-    in: source + (config.vendors[--config.vendors.length] == '/' ? config.vendors + '**/*' : config.vendors + '/**/*'),
+    in: src + (config.vendors[--config.vendors.length] == '/' ? config.vendors + '**/*' : config.vendors + '/**/*'),
     out: dest + (config.vendors[--config.vendors.length] == '/' ? config.vendors : config.vendors + '/'),
-    watch: [source + (config.vendors[--config.vendors.length] == '/' ? config.vendors + '**/*' : config.vendors + '/**/*')]
-  },
-  plugins = [
-    lost(),
-    rucksack(), 
-    autoprefixer({  
-      browsers: [
-                    '> 1%',
-                    'last 2 versions',
-                    'firefox >= 4',
-                    'safari 7',
-                    'safari 8',
-                    'IE 8',
-                    'IE 9',
-                    'IE 10',
-                    'IE 11'
-                ],
-     })
-  ],
-  ghpagesOptions = {
-    remoteUrl: 'https://' + process.env.GITHUB_TOKEN + 
-      '@github.com/' + ghpagesOptions.username + '/' + ghpagesOptions.repo + '.git',
-    branch: 'gh-pages'
+    watch: [src + (config.vendors[--config.vendors.length] == '/' ? config.vendors + '**/*' : config.vendors + '/**/*')]
   };
 
 log(pkg.name + ' ' + pkg.version + ' ' + config.environment + ' build');
@@ -136,198 +88,40 @@ log(pkg.name + ' ' + pkg.version + ' ' + config.environment + ' build');
  */
 
 //Clean the build folder
-gulp.task('clean', function () {
-  log('-> Cleaning build folder');
-
-  del([
-    dest + '*'
-  ]);
-});
+gulp.task('clean', require(config.tasks + 'clean.js')(gulp, del, log, dest));
 
 //Compile pug templates
-gulp.task('pug', function () {
-  log('-> Compiling Pug Templates');
-
-  var templates = gulp.src(views.in)
-    .pipe($.plumber())
-    .pipe($.newer(views.out));
-  if (!devBuild) {
-    log('-> Compressing templates for Production')
-    templates = templates
-      .pipe($.size({ title: 'Pug Templates Before Compression' }))
-      .pipe($.pug())
-      .pipe($.size({ title: 'Pug Templates After Compression' }));
-  } else {
-    templates.pipe($.pug(pugOptions));
-  }
-  return templates.pipe(gulp.dest(views.out));
-});
+gulp.task('pug', require(config.tasks + 'pug.js')(gulp, $, log, config, STATE, views));
 
 // Compile Sass styles
-gulp.task('sass', function () {
-  log('-> Compiling SASS Styles');
-
-  if (devBuild) {
-    log('-> Compiling SASS for Development');
-
-    return gulp.src(styles.in)
-      .pipe($.sourcemaps.init())
-      .pipe($.plumber())
-      .pipe($.sass(styles.sass))
-      .pipe($.size({ title: 'styles In Size' }))
-      .pipe($.postcss(plugins))
-      .pipe($.uncss(styles.unCSSOptions))
-      .pipe($.size({ title: 'styles Out Size' }))
-      .pipe($.sourcemaps.write())
-      .pipe(gulp.dest(styles.out))
-      .pipe(browserSync.reload({ stream: true }));
-  } else {
-    log('-> Compiling SASS for Production');
-
-    return gulp.src(styles.in)
-      .pipe($.plumber())
-      .pipe($.sass(styles.sass))
-      .pipe($.size({ title: 'styles In Size' }))
-      .pipe($.postcss(plugins))
-      .pipe($.uncss(styles.unCSSOptions))
-      .pipe($.size({ title: 'styles Out Size' }))
-      .pipe(gulp.dest(styles.out))
-      .pipe(browserSync.reload({ stream: true }));
-  }
-});
+gulp.task('sass', require(config.tasks + 'sass.js')(gulp, $, browserSync, log, config, STATE, styles));
 
 // Compile Javascript files
-gulp.task('js', function () {
-  if (devBuild) {
-    log('-> Compiling Javascript for Development');
-
-    return gulp.src(js.in)
-      .pipe($.sourcemaps.init())
-      .pipe($.browserify(js.browserifyOptions))
-      .pipe($.plumber())
-      .pipe($.babel())
-      .pipe($.newer(js.out))
-      .pipe($.jshint())
-      .pipe($.jshint.reporter('jshint-stylish', { verbose: true }))
-      .pipe($.jshint.reporter('fail'))
-      .pipe($.concat(js.fileName))
-      .pipe($.sourcemaps.write())
-      .pipe($.rename(js.renameOptions))
-      .pipe(gulp.dest(js.out));
-  } else {
-    log('-> Compiling Javascript for Production');
-
-    del([
-      dest + 'js/*'
-    ]);
-
-    return gulp.src(js.in)
-      .pipe($.browserify(js.browserifyOptions))
-      .pipe($.plumber())
-      .pipe($.babel())
-      .pipe($.deporder())
-      .pipe($.concat(js.fileName))
-      .pipe($.size({ title: 'Javascript In Size' }))
-      .pipe($.stripDebug())
-      .pipe($.uglify())
-      .pipe($.size({ title: 'Javascript Out Size' }))
-      .pipe($.rename(js.renameOptions))
-      .pipe(gulp.dest(js.out));
-  }
-});
+gulp.task('js', require(config.tasks + 'js.js')(gulp, $, del, log, STATE, dest, js));
 
 // Update images on build folder
-gulp.task('images', function () {
-  log('-> Updating images in build folder');
-
-  return gulp.src(images.in)
-    .pipe($.imagemin(images.imageminOptions))
-    .pipe($.newer(images.out))
-    .pipe(gulp.dest(images.out));
-});
+gulp.task('images', require(config.tasks + 'images.js')(gulp, $, pngquant, log, images));
 
 // Update Favicon on build folder
-gulp.task('favicon', function () {
-  log('-> Updating favicon in build folder');
-
-  return gulp.src(source + config.favicon)
-    .pipe($.newer(dest))
-    .pipe(gulp.dest(dest));
-});
+gulp.task('favicon', require(config.tasks + 'favicon.js')(gulp, $, log, config, src, dest));
 
 // Copy all vendors to build folder
-gulp.task('vendors', function () {
-  log('-> Updating vendors in build folder');
-
-  return gulp.src(vendors.in)
-    .pipe($.newer(vendors.out))
-    .pipe(gulp.dest(vendors.out));
-});
+gulp.task('vendors', require(config.tasks + 'vendors.js')(gulp, $, log, vendors));
 
 // Start browserSync
-gulp.task('browserSync', function () {
-  log('-> Starting browserSync');
-
-  browserSync(syncOptions);
-});
+gulp.task('browserSync', require(config.tasks + 'browserSync.js')(gulp, browserSync, log, config, dest));
 
 // Deploy ./build to a Surge.sh domain
-gulp.task('surge', function() {
-  log('-> Deploying ./build to ' + config.SURGE.domain)
-
-  return $.surge(config.SURGE);
-});
+gulp.task('surge', require(config.tasks + 'surge.js')(gulp, $, log, config));
 
 //Deploy ./build to an FTP server
-gulp.task('ftp', function() {
-  log('-> Deploying ./build to ftp://' + config.FTP.host)
-
-  const conn = ftp.create({
-    host: config.FTP.host,
-    user: config.FTP.user,
-    password: config.FTP.password
-  });
-
-  return gulp.src(config.build + '**', {
-    base: config.build,
-    buffer: false
-  })
-  .pipe($.plumber({
-    errorHandler: $.notify.onError({
-      title: 'Error: deployment to ftp://' + config.FTP.host + ' has failed.',
-      message: error.message
-    })
-  }))
-  .pipe(conn.newer(config.FTP.target))
-  .pipe(conn.dest(config.FTP.target))
-  .pipe($.notify({
-    title: 'Deployment  to ftp://' + config.FTP.host + ' was successful!',
-    message: 'Your project has been deployed to ftp://' + config.FTP.host + '.'
-  }));
-});
+gulp.task('ftp', require(config.tasks + 'ftp.js')(gulp, $, log, config));
 
 // Publish to GitHub Pages
-gulp.task('ghpages', function () {
-  // To deploy with Travis CI:
-  //   1. Generate OAuth token on GitHub > Settings > Application page
-  //   2. Encrypt and save that token into the `.travis.yml` file by running:
-  //      `travis encrypt GITHUB_TOKEN="<your-oauth-token>" --add`
+gulp.task('ghpages', require(config.tasks + 'ghpages.js')(gulp, $, log, config));
 
-  return gulp.src(config.build + '**/*')
-    .pipe($.if('**/robots.txt', !argv.production ? $.replace('Disallow:', 'Disallow: /') : $.util.noop()))
-    .pipe($.ghPages(ghpagesOptions));
-});
-
-// Run PageSpeed Insights
-gulp.task('pagespeed', function (cb) {
-  // Update the below URL to the public URL of your site
-  require('psi').output(config.URL, {
-    strategy: 'mobile'
-    // By default we use the PageSpeed Insights free (no API key) tier.
-    // Use a Google Developer API key if you have one: http://goo.gl/RkN0vE
-    // key: 'YOUR_API_KEY'
-  }, cb);
-});
+// Run Google PageSpeed Insights
+gulp.task('pagespeed', require(config.tasks + 'pagespeed.js')(log, config));
 
 // Build Task
 gulp.task('build', ['sass', 'pug', 'js', 'images', 'vendors', 'favicon']);

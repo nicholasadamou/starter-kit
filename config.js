@@ -25,6 +25,7 @@ module.exports = function() {
         domain: 'YOURDOMAIN.surge.sh' // Your domain or Surge subdomain
     },
     URL: 'example.com',
+    tasks: './gulp-tasks/',
     // Source code directory.
     source: 'src/',
     // Build directory, is where the compiled code will be outputted.
