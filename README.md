@@ -108,6 +108,9 @@ The project has a very simple and flexible structure. If the default place for a
 │   ├───index.pug -> Un-Compiled Pug file
 ├───.bowerrc -> Defines where the dependencies will be installed
 ├───bower.json -> Bower configuration file for managing bower dependencies
+├───.csscomb.json -> CSSComb style guide configuration file
+├───.babelrc -> Babel configuration file\
+├───.travis.yml -> travis CLI configuration file
 ├───package.json -> NodeJS configuration file for managing node dependencies
 ├───gulpfile.js -> Gulp tasks
 ```
