@@ -93,9 +93,7 @@ The project has a very simple and flexible structure. If the default place for a
 ├───src -> All of the un-compiled files will be placed here (Development)
 │   ├───assets -> Assets for the project
 │   │   ├───images -> Images
-│   │   └───js -> Scripts
-├───js/ -> Uncompiled Javascript directory
-│   ├───functions.js -> Un-Compiled Javascript file
+│   │   └───js ->  uncompiled Javascript directory
 ├───sass/ -> Uncompiled SASS directory
 │   ├───partials/ -> Tools/Frameworks
 │   ├───index.sass -> Uncompiled sass file
