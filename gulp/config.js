@@ -37,7 +37,7 @@ module.exports = function() {
         // They will be copied to the same dir on the dist folder.
         iamges: 'assets/images',
         // Favicon
-        favicon: 'favicon' + '.' + 'ico|png|jpg|jpeg',
+        favicon: 'favicon' + '.' + 'ico|png|jpg|jpeg|svg',
         /**
          * Views directory. This is the dir where all the Pug files should live
          * Important: only *.pug files will be compiled in this exact dir and not any sub dir.
