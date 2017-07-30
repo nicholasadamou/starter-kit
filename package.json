@@ -34,6 +34,7 @@
     "gulp-babel": "^6.1.2",
     "gulp-browserify": "^0.5.1",
     "gulp-concat": "^2.6.1",
+    "gulp-csscomb": "^3.0.8",
     "gulp-deporder": "^1.1.0",
     "gulp-gh-pages": "^0.5.4",
     "gulp-htmlclean": "^2.7.14",
@@ -63,8 +64,10 @@
     "lost": "^8.2.0",
     "node-bourbon": "^4.2.8",
     "node-neat": "^2.0.0-beta.0",
+    "path": "^0.12.7",
     "postcss-cli": "^4.1.0",
     "psi": "^1.0.6",
+    "require-dir": "^0.3.2",
     "rucksack-css": "^0.9.1",
     "vinyl-ftp": "^0.6.0",
     "yarn": "^0.27.5"
