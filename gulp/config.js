@@ -69,7 +69,7 @@ module.exports = function() {
             // Sass precision
             precision: 3,
         },
-        js: 'assets/js',
+        js: 'js',
         /**
          * This is the relative to build dir for vendors assets like jQuery. Vendors are
          * managed by bower and if the directory should be changed, you should change the

@@ -19,7 +19,7 @@ module.exports = {
 		},
 		js: {
 			in: src + config.js + '/**/*.js',
-			out: dest + config.js
+			out: dest + 'assets/' + config.js
 		},
 		images: {
 			in: src + config.images + '/**/*.*',
