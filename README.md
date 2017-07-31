@@ -67,7 +67,7 @@ Every command has to be executed on the root directory of the project using the 
 * **images**: Copy the newer to the dist folder
 * **favicon**: Copy the favicon to the dist folder
 * **vendors**: Copy the vendors to the dist folder
-* **dist**: dist the project
+* **build**: build the project
 * **watch**: Watch for any changes on the each section
 * **pagespeed**: Run Google PageSpeed Insights
 * **help**: Print this message
@@ -82,7 +82,7 @@ The project has a very simple and flexible structure. If the default place for a
 ├───gulp -> The containing folder for all things 'gulp'
 │   ├───tasks -> All of the different gulp tasks used in 'gulpfile.js'
 │   │   ├───base -> basic tasks, such as 'help' and 'watch'
-│   │   ├───dist -> tasks used for compiling 'pug' or 'sass'
+│   │   ├───build -> tasks used for compiling 'pug' or 'sass'
 │   │   ├───deploy -> tasks used for deploying to servers such as 'surge' or 'GitHub pages'
 │   │   ├───util -> utility tasks, such as 'Google PageSpeed Insights'
 │   ├───config.js -> Project configuration
