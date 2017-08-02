@@ -1,6 +1,6 @@
 'use-strict';
 
-var gulp = require('gulp')
+var gulp = require('gulp'),
     $ = require('gulp-load-plugins')({ lazy: true }),
     del = require('del');
 
@@ -11,10 +11,10 @@ var path = require('../../paths.js'),
 gulp.task('jslint', function() {
     console.log('-> Running jslint on ' + config.js.name);
 
-    return gulp.src(path.to.js.src)
+    return gulp.src(path.to.js.in)
         .pipe($.jshint())
         .pipe($.jshint.reporter('jshint-stylish', { verbose: true }))
-        .pipe($.jshint.reporter('fail'))
+        .pipe($.jshint.reporter('fail'));
 });
 
 gulp.task('js', ['jslint'], function() {
@@ -36,7 +36,7 @@ gulp.task('js', ['jslint'], function() {
     } else {
         console.log('-> Compiling Javascript for Production');
 
-        del([
+        del.sync([
             path.to.dist + 'assets/js/*'
         ]);
 

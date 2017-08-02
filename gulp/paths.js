@@ -25,7 +25,10 @@ module.exports = {
 			in: src + config.images + '/**/*.*',
 			out: dest + config.images
         },
-       	vendors: src + config.vendors,
+       	vendors: {
+       		in: src + config.vendors,
+       		out: dest + config.vendors
+       	},
 		favicon: {
 			in: src + config.favicon,
 			out: dest

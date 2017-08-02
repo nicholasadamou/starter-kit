@@ -21,7 +21,7 @@ module.exports = function() {
             target: 'FTP-DIRECTORY'
         },
         SURGE: {
-            project: './dist', // Path to your static build directory
+            project: './', // Path to your static build directory
             domain: 'YOURDOMAIN.surge.sh' // Your domain or Surge subdomain
         },
         // Google PageSpeed Insights URL Option
@@ -32,12 +32,12 @@ module.exports = function() {
         // Source code dir
         src: 'src/',
         // Build dir is where the compiled code will be outputted.
-        dist: 'dist/',
+        dist: './',
         // Where the images are inside the src folder.
         // They will be copied to the same dir on the dist folder.
         images: 'assets/images',
         // Favicon
-        favicon: 'favicon' + '.' + 'ico|png|jpg|jpeg',
+        favicon: 'favicon' + '.' + 'ico|png|jpg|jpeg|svg',
         /**
          * Views directory. This is the dir where all the Pug files should live
          * Important: only *.pug files will be compiled in this exact dir and not any sub dir.
@@ -69,7 +69,10 @@ module.exports = function() {
             // Sass precision
             precision: 3,
         },
-        js: 'js',
+        js: {
+            dir: 'js',
+            name: 'index.js'
+        },
         /**
          * This is the relative to build dir for vendors assets like jQuery. Vendors are
          * managed by bower and if the directory should be changed, you should change the
