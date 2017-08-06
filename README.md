@@ -8,10 +8,12 @@
 
 ## About
 Starter Kit is a simple, responsive boilerplate to kickstart any responsive project.
-It is built on [Skeleton](https://github.com/dhg/Skeleton), to provide a simplistic start to any web development project. This kit is built to be used in conjunction with [gulp](http://gulpjs.com/) to automate different tasks as a web developer.
+It is built on [Scotch\box](https://github.com/scotch-io/scotch-box), to provide a simplistic start to any web development project. This kit is built to be used in conjunction with [gulp](http://gulpjs.com/) to automate different tasks as a web developer.
 
 ## Technologies
 
+- [**Vagrant**](https://www.vagrantup.com/) - Development Environments Made Easy
+- [**Scotch\box**](https://box.scotch.io/) - The Perfect / Easiest Local Dev Environment
 - [**NodeJS**](https://nodejs.org) - JavaScript runtime built on Chrome's V8 JavaScript engine.
 - [**Gulp**](http://gulpjs.com) - Automate and enhance your workflow.
 - [**Yarn**](https://yarnpkg.com/en/docs/install) - Fast, Reliable, and secure dependency management.
