@@ -30,8 +30,8 @@ module.exports = {
        		out: dest + config.vendors
        	},
 		favicon: {
-			in: src + config.favicon,
-			out: dest
+			in: src + config.favicon + '/**/*.*',
+			out: dest + config.favicon + '/**/*.*'
 		}
 	}
 };
