@@ -54,8 +54,10 @@ In order to start using this project, you need to clone/download it to your mach
 Now after you have cloned/downloaded the kit to a desirable location, you will need to navigate to the `Starter Kit` folder using terminal and execute the following commands to gather all the dependencies, bring up the vagrant box and open the `Gulp Help` screen.
 
 ```
-yarn install
 vagrant up
+vagrant ssh
+cd /var/www
+yarn install
 gulp help
 ```
 After the processes finish, you can now proceed into the `How to Use` section to understand each option the kit presents to you.
