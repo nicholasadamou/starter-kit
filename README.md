@@ -56,7 +56,7 @@ yarn install
 vagrant up
 gulp help
 ```
-After the two processes finish, you can now proceed into the `How to Use` section to understand each option the kit presents to you.
+After the processes finish, you can now proceed into the `How to Use` section to understand each option the kit presents to you.
 
 ## How to use
 To start using the kit, open the project on the code editor of your choice and start coding.
