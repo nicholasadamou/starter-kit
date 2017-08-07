@@ -29,15 +29,21 @@ It is built on [Scotch\box](https://github.com/scotch-io/scotch-box), to provide
 
 ## Requirements
 
+- [Virtualbox](https://www.virtualbox.org/)
+- [Vagrant](https://www.vagrantup.com/)
 - [Node.js](https://nodejs.org/en/)
 - [Gulp](http://gulpjs.com)
 - [Yarn](https://yarnpkg.com/en/docs/install)
 
 ```bash
-npm install -g gulp yarn bower
+npm install -g gulp yarn bower'
 ```
 
-Gulp is the process that will run all the task of compilation, watchers, and others. Bower will get the dependencies for the client-side like jQuery. Yarn is an alternative to npm for dependency managment. It is much more reliable when compared to npm, so we will use yarn for dependency management instead of npm. Those are the only requirements to run this project.
+```powershell
+cinst -y virtualbox virtualbox.extensionpack vagrant
+```
+
+Gulp is the process that will run all the task of compilation, watchers, and others. Bower will get the dependencies for the client-side like jQuery. Yarn is an alternative to npm for dependency managment. It is much more reliable when compared to npm, so we will use yarn for dependency management instead of npm. Virtualbox and Vagrant are used for the spin-up development environment. Those are the only requirements to run this project.
 
 ## Install
 In order to start using this project, you need to clone/download it to your machine.
