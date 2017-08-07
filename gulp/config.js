@@ -26,6 +26,8 @@ module.exports = function() {
         },
         // Google PageSpeed Insights URL Option
         URL: 'example.com',
+        VAGRANT_URL: '192.168.33.10',
+        VAGRANT_PORT: '8080',
         pkg: require('../package.json'),
         // Root dir
         root: require('path').dirname(__dirname),
