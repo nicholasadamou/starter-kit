@@ -51,7 +51,7 @@ Gulp is the process that will run all the task of compilation, watchers, and oth
 In order to start using this project, you need to clone/download it to your machine.
 
 ## Set Up
-Now after you have cloned/downloaded the kit to a desirable location, you will need to navigate to the `Starter Kit` folder using terminal and execute the following commands to gather all the dependencies, bring up the vagrant box and open the `Gulp Help` screen.
+Now after you have cloned/downloaded the kit to a desirable location, you will need to navigate to the `Starter Kit` folder using terminal and execute the following commands to gather all the dependencies, bring up the vagrant box and open `Gulp Help`.
 
 ```
 vagrant up
