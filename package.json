@@ -27,6 +27,7 @@
     "install-dependencies": "yarn install && bower install"
   },
   "devDependencies": {
+    "argv": "^0.0.2",
     "autoprefixer": "^7.1.2",
     "browser-sync": "^2.18.13",
     "del": "^3.0.0",

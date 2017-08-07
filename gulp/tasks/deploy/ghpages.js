@@ -1,7 +1,8 @@
 'use-strict';
 
 var gulp = require('gulp'),
-    $ = require('gulp-load-plugins')({ lazy: true });
+    $ = require('gulp-load-plugins')({ lazy: true }),
+    argv = require('argv');
 
 var path = require('../../paths.js'),
     config = require('../../config.js')();
