@@ -17,7 +17,7 @@ gulp.task('help', function() {
     console.log('    pug: Compile the Pug templates');
     console.log('    sass: Compile the Sass styles');
     console.log('    images: Copy the newer to the build folder');
-    console.log('    favicon: Copy the favicon to the build folder');
+    console.log('    favicons: Copy the favicon to the build folder');
     console.log('    vendors: Copy the vendors to the build folder');
     console.log('    build: Build the project');
     console.log('    watch: Watch for any changes on the each section');

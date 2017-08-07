@@ -26,20 +26,18 @@ module.exports = function() {
         },
         // Google PageSpeed Insights URL Option
         URL: 'example.com',
-        VAGRANT_URL: '192.168.33.10',
-        VAGRANT_PORT: '8080',
         pkg: require('../package.json'),
         // Root dir
-        root: require('path').dirname(__dirname),
+        root: require('path').dirname(__dirname) + '/',
         // Source code dir
         src: 'src/',
-        // Build dir is where the compiled code will be outputted.
+        // dist dir is where the compiled code will be outputted.
         dist: 'public/',
         // Where the images are inside the src folder.
         // They will be copied to the same dir on the dist folder.
         images: 'assets/images',
-        // Favicon
-        favicon: 'assets/images/favicon',
+        // Favicons
+        favicons: 'assets/images/favicons',
         /**
          * Views directory. This is the dir where all the Pug files should live
          * Important: only *.pug files will be compiled in this exact dir and not any sub dir.

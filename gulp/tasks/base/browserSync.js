@@ -11,12 +11,8 @@ gulp.task('browserSync', function() {
 
     browserSync({
         server: {
-            baseDir: path.to.dest,
+            baseDir: path.to.dist,
             index: config.syncOptions.index || 'index.html'
-        },
-        proxy: {
-            host: config.VAGRANT_URL,
-            port: config.VAGRANT_PORT
         },
         open: config.syncOptions.open || false,
         notify: config.syncOptions.notify || true

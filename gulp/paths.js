@@ -7,8 +7,8 @@ var dest = config.root + config.dist;
 
 module.exports = {
 	to: {
-		src: config.src,
-        dist: config.dist,
+		src: src,
+        dist: dest,
 		pug: {
 			in: src +  config.views + '*.pug',
 			out: dest
@@ -29,9 +29,9 @@ module.exports = {
        		in: src + config.vendors,
        		out: dest + config.vendors
        	},
-		favicon: {
-			in: src + config.favicon + '/**/*.*',
-			out: dest + config.favicon + '/**/*.*'
+		favicons: {
+			in: src + config.favicons + '/**/*.*',
+			out: dest + config.favicons
 		}
 	}
 };
