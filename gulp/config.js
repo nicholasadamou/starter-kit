@@ -21,7 +21,7 @@ module.exports = function() {
             target: 'FTP-DIRECTORY'
         },
         SURGE: {
-            project: './', // Path to your static build directory
+            project: require('path').dirname(__dirname) + '/public/', // Path to your static build directory
             domain: 'YOURDOMAIN.surge.sh' // Your domain or Surge subdomain
         },
         // Google PageSpeed Insights URL Option

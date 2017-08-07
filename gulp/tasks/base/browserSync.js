@@ -12,10 +12,7 @@ gulp.task('browserSync', function() {
     browserSync.init({
         server: {
             baseDir: path.to.dist,
-        },
-        proxy: {
-            target: 'localhost:8080',
-            ws: true
+            index: 'index.html'
         },
         open: config.syncOptions.open || false,
         notify: config.syncOptions.notify || true
