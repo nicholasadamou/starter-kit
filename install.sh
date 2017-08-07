@@ -135,15 +135,15 @@ if [ $INSTALL_NGINX_INSTEAD == 1 ]; then
     sudo apt-get -y install nginx
     sudo systemctl enable nginx
 
-    # Remove "html" and add public
-    mv /var/www/html /var/www/public
+    # Remove "html" and add dist
+    mv /var/www/html /var/www/dist
 
     # Make sure your web server knows you did this...
     MY_WEB_CONFIG='server {
         listen 80 default_server;
         listen [::]:80 default_server;
 
-        root /var/www/public;
+        root /var/www/dist;
         index index.html index.htm index.nginx-debian.html;
 
         server_name _;
