@@ -9,10 +9,13 @@ var path = require('../../paths.js'),
 gulp.task('browserSync', function() {
     console.log('-> Starting browserSync');
 
-    browserSync({
+    browserSync.init({
         server: {
             baseDir: path.to.dist,
-            index: config.syncOptions.index || 'index.html'
+        },
+        proxy: {
+            target: 'localhost:8080',
+            ws: true
         },
         open: config.syncOptions.open || false,
         notify: config.syncOptions.notify || true

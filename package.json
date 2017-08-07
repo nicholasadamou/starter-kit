@@ -29,6 +29,7 @@
   "devDependencies": {
     "argv": "^0.0.2",
     "autoprefixer": "^7.1.2",
+    "bower": "^1.8.0",
     "browser-sync": "^2.18.13",
     "del": "^3.0.0",
     "favicons": "^4.8.6",
@@ -74,8 +75,5 @@
     "rucksack-css": "^0.9.1",
     "vinyl-ftp": "^0.6.0",
     "yarn": "^0.27.5"
-  },
-  "dependencies": {
-    "bower": "^1.8.0"
   }
 }
