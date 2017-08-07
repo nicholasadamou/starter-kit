@@ -66,8 +66,37 @@ reboot_webserver_helper() {
 # /*=========================================
 # =            CORE / BASE STUFF            =
 # =========================================*/
-sudo apt-get update
-sudo apt-get -y upgrade
+x=apt
+
+sudo "$x" update
+sudo "$x" upgrade
+sudo "$x" full-upgrade
+sudo "$x" autoremove
+
+x=apt-get
+
+sudo "$x" update
+sudo "$x" -y upgrade
+sudo "$x" -y dist-upgrade
+sudo "$x" -y dselect-upgrade
+sudo "$x" -f install
+sudo "$x" update --fix-missing
+sudo "$x" clean
+sudo "$x" autoclean
+sudo "$x" autoremove
+sudo "$x" check
+
+x=aptitude
+
+if ! [ $(which "$x") ]; then
+  apt-get install -y "$x"
+fi
+
+sudo "$x" update
+sudo "$x" -y upgrade
+sudo "$x" -y dist-upgrade
+sudo "$x" autoclean
+
 sudo apt-get install -y build-essential
 sudo apt-get install -y tcl
 sudo apt-get install -y software-properties-common
