@@ -57,7 +57,7 @@ Now after you have cloned/downloaded the kit to a desirable location, you will n
 vagrant up
 vagrant ssh
 cd /var/www
-yarn install
+npm install -g gulp yarn bower && yarn install
 gulp help
 ```
 After the processes finish, you can now proceed into the `How to Use` section to understand each option the kit presents to you.
