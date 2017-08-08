@@ -7,10 +7,10 @@ var gulp = require('gulp'),
 var path = require('../../paths.js'),
     config = require('../../config.js')();
 
-gulp.task('ftp', function() {
-    console.log('-> Deploying to ftp://' + config.FTP.host)
+gulp.task('ftp', ['build'], function() {
+    console.log('-> Deploying to ftp://' + config.FTP.host);
 
-    const conn = ftp.create({
+    var conn = ftp.create({
         host: config.FTP.host,
         user: config.FTP.user,
         password: config.FTP.password

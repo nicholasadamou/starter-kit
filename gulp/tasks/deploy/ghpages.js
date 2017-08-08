@@ -7,7 +7,7 @@ var gulp = require('gulp'),
 var path = require('../../paths.js'),
     config = require('../../config.js')();
 
-gulp.task('ghpages', function() {
+gulp.task('ghpages', ['build'], function() {
     console.log('->  Deploying to Github Pages');
     // To deploy with Travis CI:
     //   1. Generate OAuth token on GitHub > Settings > Application page

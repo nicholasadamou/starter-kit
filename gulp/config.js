@@ -48,7 +48,7 @@ module.exports = function() {
          * As this is a sass-based project, this is the dir for the sass files. Every file
          * under this dir will be watched for changes, but only the index file will be compiled.
          */
-        sass: 'sass/index.s(a|c)ss',
+        sass: 'sass/index.sass',
          // Dir where the sass will be compiled to
         css: 'assets/css',
         // This are the options that will be passed to the sass compiler

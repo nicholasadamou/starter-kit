@@ -6,7 +6,7 @@ var gulp = require('gulp'),
 var path = require('../../paths.js'),
     config = require('../../config.js')();
 
-gulp.task('surge', function() {
+gulp.task('surge', ['build'], function() {
     console.log('-> Deploying to ' + config.SURGE.domain);
 
     return $.surge(config.SURGE);
