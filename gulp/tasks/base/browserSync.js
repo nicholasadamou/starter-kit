@@ -14,7 +14,7 @@ gulp.task('browserSync', function() {
             baseDir: path.to.dist,
             index: 'index.html'
         },
-        open: config.syncOptions.open || false,
-        notify: config.syncOptions.notify || true
+        open: config.syncOptions.open,
+        notify: config.syncOptions.notify
     });
 });

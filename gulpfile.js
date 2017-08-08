@@ -22,7 +22,7 @@
 
 // Include gulp plugins
 var gulp = require('gulp'),
-      requireDir  = require('require-dir');
+    requireDir  = require('require-dir');
 
 var config = require('./gulp/config.js')();
 

@@ -6,7 +6,7 @@ var gulp = require('gulp'),
 var path = require('../../paths.js');
 
 gulp.task('favicons', function() {
-    console.log('-> Updating favicons in build folder');
+    console.log('-> Updating favicons');
 
     return gulp.src(path.to.favicons.in)
         .pipe($.newer(path.to.favicons.in))

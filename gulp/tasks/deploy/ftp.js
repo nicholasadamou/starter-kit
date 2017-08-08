@@ -8,7 +8,7 @@ var path = require('../../paths.js'),
     config = require('../../config.js')();
 
 gulp.task('ftp', function() {
-    console.log('-> Deploying ./dist to ftp://' + config.FTP.host)
+    console.log('-> Deploying to ftp://' + config.FTP.host)
 
     const conn = ftp.create({
         host: config.FTP.host,

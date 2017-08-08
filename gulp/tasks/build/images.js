@@ -7,7 +7,7 @@ var gulp = require('gulp'),
 var path = require('../../paths.js');
 
 gulp.task('images', function() {
-    console.log('-> Updating images in build folder');
+    console.log('-> Updating images');
 
     return gulp.src(path.to.images.in)
         .pipe($.imagemin({
