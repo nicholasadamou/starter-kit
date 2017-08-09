@@ -58,7 +58,7 @@ vagrant up
 vagrant ssh
 cd /var/www
 gem install travis
-yarn install
+yarn install && bower install
 gulp help
 ```
 After the processes finish, you can now proceed into the `How to Use` section to understand each option the kit presents to you.
