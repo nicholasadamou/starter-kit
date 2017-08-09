@@ -35,10 +35,6 @@ gulp.task('js', ['jslint'], function() {
     } else {
         console.log('-> Compiling Javascript for Production');
 
-        del.sync([
-            paths.to.dist + 'assets/js/*'
-        ]);
-
         return gulp.src(paths.to.js.in)
             .pipe($.browserify({ debug: true }))
             .pipe($.plumber())

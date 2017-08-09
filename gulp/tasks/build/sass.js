@@ -6,8 +6,8 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync'),
     autoprefixer = require('autoprefixer'),
     rucksack = require('rucksack-css'),
-    bourbon = require('node-bourbon').includepathss,
-    neat = require('node-neat').includepathss,
+    bourbon = require('node-bourbon').includePaths,
+    neat = require('node-neat').includePaths,
     lost = require('lost');
 
 var paths = require('../../paths.js'),
@@ -19,10 +19,10 @@ gulp.task('sass', function() {
     sass = {
       sourceComments: (config.sassOptions.sourceComments).trim().toLowerCase() ? !env : '',
       outputStyle: (config.sassOptions.outputStyle).trim().toLowerCase() ? !env : 'compressed',
-      imagepaths: config.sassOptions.imagepaths,
+      imagePath: config.sassOptions.imagePath,
       precision: config.sassOptions.precision || 3,
       errLogToConsole: true,
-      includepathss: [
+      includePaths: [
           bourbon,
           neat
       ]

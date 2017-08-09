@@ -9,7 +9,7 @@ var paths = require('../../paths.js');
 gulp.task('favicons', function() {
     console.log('-> Updating favicons');
 
-    return gulp.src(pathss.to.favicons.in)
+    return gulp.src(paths.to.favicons.in)
         .pipe($.imagemin({
             progressive: true,
             interlaced: true,
@@ -17,7 +17,7 @@ gulp.task('favicons', function() {
             use: [pngquant()]
         }))
         .pipe($.newer(paths.to.favicons.out))
-        .pipe(gulp.dest(pathss.to.favicons.out));
+        .pipe(gulp.dest(paths.to.favicons.out));
 });
 
 gulp.task('images', ['favicons'], function() {
