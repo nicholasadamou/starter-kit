@@ -24,6 +24,10 @@ module.exports = function() {
             project: require('path').dirname(__dirname) + '/public/', // Path to your static build directory
             domain: 'YOURDOMAIN.surge.sh' // Your domain or Surge subdomain
         },
+        GHPAGES: {
+            username: 'USERNAME',
+            repo: 'REPO'
+        },
         // Google PageSpeed Insights URL Option
         URL: 'example.com',
         pkg: require('../package.json'),

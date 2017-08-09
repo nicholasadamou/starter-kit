@@ -3,17 +3,17 @@
 var gulp = require('gulp'),
     browserSync = require('browser-sync');
 
-var path = require('../../paths.js');
+var paths = require('../../paths.js');
 
 gulp.task('watch', ['browserSync'], function() {
     // Watch for pug changes and compile
-    gulp.watch(path.to.pug.in, ['pug', browserSync.reload]);
+    gulp.watch(paths.to.pug.in, ['pug', browserSync.reload]);
     // Watch for style changes and compile
-    gulp.watch(path.to.sass.in, ['sass']);
+    gulp.watch(paths.to.sass.in, ['sass']);
     // Watch for javascript changes and compile
-    gulp.watch(path.to.js.in, ['js', browserSync.reload]);
+    gulp.watch(paths.to.js.in, ['js', browserSync.reload]);
     // Watch for new images and copy
-    gulp.watch(path.to.images.in, ['images']);
+    gulp.watch(paths.to.images.in, ['images']);
     // Watch for new vendors and copy
-    gulp.watch(path.to.vendors.in, ['vendors']);
+    gulp.watch(paths.to.vendors.in, ['vendors']);
 });

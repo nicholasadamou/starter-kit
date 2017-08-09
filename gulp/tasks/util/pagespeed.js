@@ -3,8 +3,7 @@
 var gulp = require('gulp'),
     $ = require('gulp-load-plugins')({ lazy: true });
 
-var path = require('../../paths.js'),
-    config = require('../../config.js')();
+var config = require('../../config.js')();
 
 gulp.task('pagespeed', function() {
     console.log('-> Running Google PageSpeed Insights');

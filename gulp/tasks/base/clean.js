@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     $ = require('gulp-load-plugins')({ lazy: true }),
     del = require('del');
 
-var path = require('../../paths.js');
+var paths = require('../../paths.js');
 
 gulp.task('clean', function() {
     console.log('-> Cleaning build folder');
@@ -12,6 +12,6 @@ gulp.task('clean', function() {
     $.cache.caches = { };
     
     del.sync([
-        path.to.dist + '*'
+        paths.to.dist + '*'
     ]);
 });

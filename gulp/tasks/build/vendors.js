@@ -3,12 +3,12 @@
 var gulp = require('gulp'),
     $ = require('gulp-load-plugins')({ lazy: true });
 
-var path = require('../../paths.js');
+var paths = require('../../paths.js');
 
 gulp.task('vendors', function() {
 	console.log('-> Updating vendors');
 
-	return gulp.src(path.to.vendors.in)
-    	.pipe($.newer(path.to.vendors.out))
-    	.pipe(gulp.dest(path.to.vendors.out));
+	return gulp.src(paths.to.vendors.in)
+    	.pipe($.newer(paths.to.vendors.out))
+    	.pipe(gulp.dest(paths.to.vendors.out));
 });

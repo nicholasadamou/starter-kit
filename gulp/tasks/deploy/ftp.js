@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     $ = require('gulp-load-plugins')({ lazy: true }),
     ftp = require('vinyl-ftp');
 
-var path = require('../../paths.js'),
+var paths = require('../../paths.js'),
     config = require('../../config.js')();
 
 gulp.task('ftp', ['build'], function() {
@@ -16,8 +16,8 @@ gulp.task('ftp', ['build'], function() {
         password: config.FTP.password
     });
 
-    return gulp.src(path.to.dist + '**', {
-        base: path.to.dist,
+    return gulp.src(paths.to.dist + '**', {
+        base: paths.to.dist,
         buffer: false
     })
     .pipe($.plumber({

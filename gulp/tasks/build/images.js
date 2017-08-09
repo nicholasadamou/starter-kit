@@ -4,32 +4,32 @@ var gulp = require('gulp'),
     $ = require('gulp-load-plugins')({ lazy: true }),
     pngquant = require('imagemin-pngquant');
 
-var path = require('../../paths.js');
+var paths = require('../../paths.js');
 
 gulp.task('favicons', function() {
     console.log('-> Updating favicons');
 
-    return gulp.src(path.to.favicons.in)
+    return gulp.src(pathss.to.favicons.in)
         .pipe($.imagemin({
             progressive: true,
             interlaced: true,
             svgoPlugins: [{removeViewBox: false}],
             use: [pngquant()]
         }))
-        .pipe($.newer(path.to.favicons.out))
-        .pipe(gulp.dest(path.to.favicons.out));
+        .pipe($.newer(paths.to.favicons.out))
+        .pipe(gulp.dest(pathss.to.favicons.out));
 });
 
 gulp.task('images', ['favicons'], function() {
     console.log('-> Updating images');
 
-    return gulp.src(path.to.images.in)
+    return gulp.src(paths.to.images.in)
         .pipe($.imagemin({
             progressive: true,
             interlaced: true,
             svgoPlugins: [{removeViewBox: false}],
             use: [pngquant()]
         }))
-        .pipe($.newer(path.to.images.out))
-        .pipe(gulp.dest(path.to.images.out));
+        .pipe($.newer(paths.to.images.out))
+        .pipe(gulp.dest(paths.to.images.out));
 });

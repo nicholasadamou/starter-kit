@@ -3,7 +3,7 @@
 var gulp = require('gulp'),
     browserSync = require('browser-sync');
 
-var path = require('../../paths.js'),
+var paths = require('../../paths.js'),
     config = require('../../config.js')();
 
 gulp.task('browserSync', function() {
@@ -11,7 +11,7 @@ gulp.task('browserSync', function() {
 
     browserSync.init({
         server: {
-            baseDir: path.to.dist,
+            baseDir: paths.to.dist,
             index: 'index.html'
         },
         open: config.syncOptions.open,

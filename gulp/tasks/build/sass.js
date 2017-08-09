@@ -6,11 +6,11 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync'),
     autoprefixer = require('autoprefixer'),
     rucksack = require('rucksack-css'),
-    bourbon = require('node-bourbon').includePaths,
-    neat = require('node-neat').includePaths,
+    bourbon = require('node-bourbon').includepathss,
+    neat = require('node-neat').includepathss,
     lost = require('lost');
 
-var path = require('../../paths.js'),
+var paths = require('../../paths.js'),
     error = require('../../error_handler.js'),
     config = require('../../config.js')();
 
@@ -19,10 +19,10 @@ gulp.task('sass', function() {
     sass = {
       sourceComments: (config.sassOptions.sourceComments).trim().toLowerCase() ? !env : '',
       outputStyle: (config.sassOptions.outputStyle).trim().toLowerCase() ? !env : 'compressed',
-      imagePath: config.sassOptions.imagePath,
+      imagepaths: config.sassOptions.imagepaths,
       precision: config.sassOptions.precision || 3,
       errLogToConsole: true,
-      includePaths: [
+      includepathss: [
           bourbon,
           neat
       ]
@@ -48,19 +48,19 @@ gulp.task('sass', function() {
     if (env) {
         console.log('-> Compiling SASS for Development');
 
-        return gulp.src(path.to.sass.in)
+        return gulp.src(paths.to.sass.in)
             .pipe($.sourcemaps.init())
             .pipe($.plumber())
             .pipe($.sass(sass)).on('error', error.handler)
             .pipe($.postcss(plugins))
             .pipe($.csscomb(config.root + '.csscomb.json'))
             .pipe($.sourcemaps.write())
-            .pipe(gulp.dest(path.to.sass.out))
+            .pipe(gulp.dest(paths.to.sass.out))
             .pipe(browserSync.reload({ stream: true }));
     } else {
         console.log('-> Compiling SASS for Production');
 
-        return gulp.src(path.to.sass.in)
+        return gulp.src(paths.to.sass.in)
             .pipe($.plumber())
             .pipe($.sass(sass)).on('error', error.handler)
             .pipe($.postcss(plugins))
@@ -68,7 +68,7 @@ gulp.task('sass', function() {
             .pipe($.size({ title: 'styles In Size' }))
             .pipe(cleanCSS())
             .pipe($.size({ title: 'styles Out Size' }))
-            .pipe(gulp.dest(path.to.sass.out))
+            .pipe(gulp.dest(paths.to.sass.out))
             .pipe(browserSync.reload({ stream: true }));
     }
 });
