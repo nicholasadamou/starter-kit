@@ -31,7 +31,6 @@ gulp.task('js', ['jslint'], function() {
             .pipe($.newer(path.to.js.out))
             .pipe($.concat(config.js.name))
             .pipe($.sourcemaps.write())
-            .pipe($.rename({ suffix: '.min' }))
             .pipe(gulp.dest(path.to.js.out));
     } else {
         console.log('-> Compiling Javascript for Production');
@@ -46,8 +45,8 @@ gulp.task('js', ['jslint'], function() {
             .pipe($.babel())
             .pipe($.deporder())
             .pipe($.concat(config.js.name))
-            .pipe($.size({ title: 'Javascript In Size' }))
             .pipe($.stripDebug())
+            .pipe($.size({ title: 'Javascript In Size' }))
             .pipe($.uglify())
             .pipe($.size({ title: 'Javascript Out Size' }))
             .pipe($.rename({ suffix: '.min' }))

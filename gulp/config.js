@@ -61,7 +61,7 @@ module.exports = function() {
              * - compact
              * - compressed
              */
-            outputStyle: 'compressed',
+            outputStyle: 'expanded',
             //Source Mapping Support
             sourceComments: 'map',
             // Relative path to the css where the images dir is.

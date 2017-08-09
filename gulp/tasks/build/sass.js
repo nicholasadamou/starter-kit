@@ -2,6 +2,7 @@
 
 var gulp = require('gulp'),
     $ = require('gulp-load-plugins')({ lazy: true }),
+    cleanCSS = require('gulp-clean-css'),
     browserSync = require('browser-sync'),
     autoprefixer = require('autoprefixer'),
     rucksack = require('rucksack-css'),
@@ -14,8 +15,6 @@ var path = require('../../paths.js'),
     config = require('../../config.js')();
 
 gulp.task('sass', function() {
-    console.log('-> Compiling SASS Styles');
-    
     var env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production'),
     sass = {
       sourceComments: (config.sassOptions.sourceComments).trim().toLowerCase() ? !env : '',
@@ -32,18 +31,18 @@ gulp.task('sass', function() {
             lost(),
             rucksack(),
             autoprefixer({  
-            browsers: [
-                        '> 1%',
-                        'last 2 versions',
-                        'firefox >= 4',
-                        'safari 7',
-                        'safari 8',
-                        'IE 8',
-                        'IE 9',
-                        'IE 10',
-                        'IE 11'
-                    ],
-            })
+                browsers: [
+                            '> 1%',
+                            'last 2 versions',
+                            'firefox >= 4',
+                            'safari 7',
+                            'safari 8',
+                            'IE 8',
+                            'IE 9',
+                            'IE 10',
+                            'IE 11'
+                        ],
+            }),
         ];
 
     if (env) {
@@ -52,11 +51,9 @@ gulp.task('sass', function() {
         return gulp.src(path.to.sass.in)
             .pipe($.sourcemaps.init())
             .pipe($.plumber())
-            .pipe($.sass(sass))
-                .on('error', error.handler)
-            .pipe($.size({ title: 'styles In Size' }))
+            .pipe($.sass(sass)).on('error', error.handler)
             .pipe($.postcss(plugins))
-            .pipe($.size({ title: 'styles Out Size' }))
+            .pipe($.csscomb(config.root + '.csscomb.json'))
             .pipe($.sourcemaps.write())
             .pipe(gulp.dest(path.to.sass.out))
             .pipe(browserSync.reload({ stream: true }));
@@ -65,15 +62,11 @@ gulp.task('sass', function() {
 
         return gulp.src(path.to.sass.in)
             .pipe($.plumber())
-            .pipe($.sass(sass))
-                .on('error', error.handler)
-            .pipe($.size({ title: 'styles In Size' }))
+            .pipe($.sass(sass)).on('error', error.handler)
             .pipe($.postcss(plugins))
-            .pipe($.uncss({
-                html: [path.to.dist + '*html'],
-                ignore: ['*:*']
-            }))
-            .pipe($.csscomb())
+            .pipe($.csscomb(config.root + '.csscomb.json'))
+            .pipe($.size({ title: 'styles In Size' }))
+            .pipe(cleanCSS())
             .pipe($.size({ title: 'styles Out Size' }))
             .pipe(gulp.dest(path.to.sass.out))
             .pipe(browserSync.reload({ stream: true }));
