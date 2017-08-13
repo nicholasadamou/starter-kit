@@ -9,7 +9,7 @@ var paths = require('../../paths.js'),
     config = require('../../config.js')();
 
 gulp.task('jslint', function() {
-    console.log('-> Running jslint on ' + config.js.name);
+     console.log('-> Running JSLint');
 
     return gulp.src(paths.to.js.in)
         .pipe($.jshint())
@@ -23,29 +23,30 @@ gulp.task('js', ['jslint'], function() {
     if (env) {
         console.log('-> Compiling Javascript for Development');
 
-        return gulp.src(paths.to.js.in)
-            .pipe($.sourcemaps.init())
+        return gulp.src([
+            paths.to.js.in,
+            paths.to.vendors.js
+            ])
+            .pipe($.concat(config.js.name))
             .pipe($.browserify({ debug: true }))
             .pipe($.plumber())
-            .pipe($.babel())
             .pipe($.newer(paths.to.js.out))
-            .pipe($.concat(config.js.name))
-            .pipe($.sourcemaps.write())
             .pipe(gulp.dest(paths.to.js.out));
     } else {
         console.log('-> Compiling Javascript for Production');
 
-        return gulp.src(paths.to.js.in)
-            .pipe($.browserify({ debug: true }))
-            .pipe($.plumber())
-            .pipe($.babel())
-            .pipe($.deporder())
+        return gulp.src([
+            paths.to.js.in,
+            paths.to.vendors.js
+            ])
             .pipe($.concat(config.js.name))
+            .pipe($.browserify({ debug: false }))
+            .pipe($.plumber())
+            .pipe($.deporder())
             .pipe($.stripDebug())
             .pipe($.size({ title: 'Javascript In Size' }))
             .pipe($.uglify())
             .pipe($.size({ title: 'Javascript Out Size' }))
-            .pipe($.rename({ suffix: '.min' }))
             .pipe(gulp.dest(paths.to.js.out));
     }
 });

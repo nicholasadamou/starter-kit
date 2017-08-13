@@ -52,7 +52,7 @@ module.exports = function() {
          * As this is a sass-based project, this is the dir for the sass files. Every file
          * under this dir will be watched for changes, but only the index file will be compiled.
          */
-        sass: 'sass/index.sass',
+        sass: 'sass/index.scss',
          // Dir where the sass will be compiled to
         css: 'assets/css',
         // This are the options that will be passed to the sass compiler
@@ -75,7 +75,7 @@ module.exports = function() {
         },
         js: {
             dir: 'js',
-            name: 'index.js'
+            name: 'app.js'
         },
         /**
          * This is the relative to build dir for vendors assets like jQuery. Vendors are

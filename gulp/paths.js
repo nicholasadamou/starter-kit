@@ -18,19 +18,19 @@ module.exports = {
 			out: dest + config.css
 		},
 		js: {
-			in: src + config.js + '/**/*.js',
-			out: dest + 'assets/' + config.js
+			in: src + config.js.dir + config.js.name,
+			out: dest + 'assets/' + config.js.dir
 		},
 		images: {
-			in: src + config.images + '/**/*.*',
+			in: src + config.images + '*.*',
 			out: dest + config.images
         },
        	vendors: {
-       		in: src + config.vendors,
-       		out: dest + config.vendors
+       		sass: src + config.vendors + '/sass/*.*',
+   			js: src + config.vendors + '/js/*.*'
        	},
 		favicons: {
-			in: src + config.favicons + '/**/*.*',
+			in: src + config.favicons + '/*.*',
 			out: dest + config.favicons
 		}
 	}
