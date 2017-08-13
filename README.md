@@ -105,17 +105,16 @@ The project has a very simple and flexible structure. If the default place for a
 │   ├───index.html -> Compiled Pug files
 │   ├───vendors -> Project dependencies
 ├───src -> All of the un-compiled files will be placed here (Development)
-│   ├───assets -> Assets for the project
-│   │   ├───images -> Images
-│   │   └───js ->  Uncompiled Javascript directory
-│   ├───vendors -> Third-party plugins used in the project
-│   │   ├───sass -> SASS-specific plugins
-│   │   ├───js -> Javascript-specific plugins
+│   ├───assets/ -> Assets for the project
+│   │   ├───images/ -> Images
+│   │   └───js/ ->  Uncompiled Javascript directory
+│   ├───vendors/ -> Third-party plugins used in the project
+│   │   ├───sass/ -> SASS-specific plugins
+│   │   ├───js/ -> Javascript-specific plugins
 ├───sass/ -> Uncompiled SASS directory
 │   ├───partials/ -> Tools/Frameworks
 │   ├───index.sass -> Uncompiled sass file
 │   │   index.sass -> Main sass file, where all other sass files should be included.
-│   ├───vendors -> Vendors folder for all the dependencies (Managed by Bower)
 ├───views/ -> Uncompiled Pug directory
 │   ├───includes/ -> Un-Compiled Pug files to be included inside the `index.pug` file
 │   │   └───partials/ -> Contains the main `_head.pug` and `_scripts.pug` file(s)

@@ -49,8 +49,8 @@ gulp.task('sass', function() {
         console.log('-> Compiling SASS for Development');
 
         return gulp.src([
-            paths.to.sass.in,
-            paths.to.vendors.sass
+            paths.to.vendors.sass,
+            paths.to.sass.in
             ])
             .pipe($.concat('index.css'))
             .pipe($.sourcemaps.init())
@@ -65,14 +65,14 @@ gulp.task('sass', function() {
         console.log('-> Compiling SASS for Production');
 
         return gulp.src([
-            paths.to.sass.in,
-            paths.to.vendors.sass
+            paths.to.vendors.sass,
+            paths.to.sass.in
             ])
+            .pipe($.concat('index.css'))
             .pipe($.plumber())
             .pipe($.sass(sass)).on('error', error.handler)
             .pipe($.postcss(plugins))
             .pipe($.csscomb(config.root + '.csscomb.json'))
-            .pipe($.concat('index.css'))
             .pipe($.size({ title: 'styles In Size' }))
             .pipe($.stripCssComments({preserve: false}))
             .pipe(cleanCSS())
