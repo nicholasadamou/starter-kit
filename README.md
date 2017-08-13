@@ -108,6 +108,9 @@ The project has a very simple and flexible structure. If the default place for a
 │   ├───assets -> Assets for the project
 │   │   ├───images -> Images
 │   │   └───js ->  Uncompiled Javascript directory
+│   ├───vendors -> Third-party plugins used in the project
+│   │   ├───sass -> SASS-specific plugins
+│   │   ├───js -> Javascript-specific plugins
 ├───sass/ -> Uncompiled SASS directory
 │   ├───partials/ -> Tools/Frameworks
 │   ├───index.sass -> Uncompiled sass file
