@@ -6,6 +6,10 @@
 ![license](https://img.shields.io/apm/l/vim-mode.svg)
 [![Say Thanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/NicholasAdamou)
 
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/9xfHBCXLLneQfkK8qiHeHcLd/nicholasadamou/Starter-Kit'>
+  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/9xfHBCXLLneQfkK8qiHeHcLd/nicholasadamou/Starter-Kit.svg' />
+</a>
+
 ## About
 Starter Kit is a simple, responsive boilerplate to kickstart any responsive project.
 It is built on [Scotch\box](https://github.com/scotch-io/scotch-box), to provide a simplistic start to any web development project. This kit is built to be used in conjunction with [Gulp](http://gulpjs.com/) and [Vagrant](https://www.vagrantup.com/) to automate different tasks as a web developer.
