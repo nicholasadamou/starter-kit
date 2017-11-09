@@ -1,4 +1,4 @@
-# Nicholas Adamou's Starter Kit
+# Nicholas Adamou's Starter Kit [![Build Status](https://travis-ci.org/nicholasadamou/Starter-Kit.svg?branch=master)](https://travis-ci.org/nicholasadamou/Starter-Kit)
 
 ![Project Preview](https://cloud.githubusercontent.com/assets/7629661/9838465/89626e74-5a5e-11e5-9b7d-e0ce76856732.gif)
 ![Alt text](http://www.kolszewski.com/images/vendors_v2.png)
