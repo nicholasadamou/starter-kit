@@ -74,7 +74,7 @@ module.exports = function() {
             precision: 3,
         },
         js: {
-            dir: 'js',
+            dir: 'js/',
             name: 'app.js'
         },
         /**
