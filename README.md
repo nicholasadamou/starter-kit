@@ -140,7 +140,6 @@ This project has some nice configuration options to meet all you needs. To confi
 
 ## License
 
-
 © 2018 Nicholas Adamou.
 
 It is free software, and may be redistributed under the terms specified in the [LICENSE] file.
