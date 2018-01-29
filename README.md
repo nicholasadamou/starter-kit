@@ -5,6 +5,8 @@
 ![license](https://img.shields.io/apm/l/vim-mode.svg)
 [![Say Thanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/NicholasAdamou)
 
+[About](https://github.com/nicholasadamou/nicholasadamou.github.io/blob/master/README.md#about) / [Technologies](https://github.com/nicholasadamou/nicholasadamou.github.io/blob/master/README.md#technologies) / [Requirements](https://github.com/nicholasadamou/nicholasadamou.github.io/blob/master/README.md#requirements) / [Install](https://github.com/nicholasadamou/nicholasadamou.github.io/blob/master/README.md#install) / [Set Up/Workflow](https://github.com/nicholasadamou/nicholasadamou.github.io/blob/master/README.md#set-upworkflow) / [How to Use](https://github.com/nicholasadamou/nicholasadamou.github.io/blob/master/README.md#how-to-use) / [Structure](https://github.com/nicholasadamou/nicholasadamou.github.io/blob/master/README.md#structure) / [Configuration](https://github.com/nicholasadamou/nicholasadamou.github.io/blob/master/README.md#configuration) / [Inspiration](https://github.com/nicholasadamou/nicholasadamou.github.io/blob/master/README.md#inspiration) / [License](https://github.com/nicholasadamou/nicholasadamou.github.io/blob/master/README.md#license)
+
 ## About
 Starter Kit is a simple, responsive boilerplate to kickstart any responsive project.
 It is built on [Scotch\box](https://github.com/scotch-io/scotch-box), to provide a simplistic start to any web development project. This kit is built to be used in conjunction with [Gulp](http://gulpjs.com/) and [Vagrant](https://www.vagrantup.com/) to automate different tasks as a web developer.
@@ -135,3 +137,12 @@ This project has some nice configuration options to meet all you needs. To confi
 ## Inspiration
 
 - [**carloscuesta/starterkit**](https://github.com/carloscuesta/starterkit) - A Front End development Gulp.js based workflow. 🚀
+
+## License
+
+
+© 2018 Nicholas Adamou.
+
+It is free software, and may be redistributed under the terms specified in the [LICENSE] file.
+
+[LICENSE]: LICENSE
