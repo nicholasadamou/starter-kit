@@ -18,12 +18,16 @@ module.exports = {
 			out: dest + config.css
 		},
 		js: {
-			in: src + config.js.dir + config.js.name,
+			in: src + config.js.dir + "*.js",
 			out: dest + 'assets/' + config.js.dir
 		},
 		images: {
 			in: src + config.images + '*.*',
 			out: dest + config.images
+		},
+		docs : {
+        	in: src + config.docs + '/**/*.*',
+        	out: dest + config.docs
         },
        	vendors: {
        		sass: src + config.vendors + '/sass/*.*',

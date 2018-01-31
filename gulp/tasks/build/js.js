@@ -24,8 +24,8 @@ gulp.task('js', ['jslint'], function() {
         console.log('-> Compiling Javascript for Development');
 
         return gulp.src([
-            paths.to.js.in,
-            paths.to.vendors.js
+            paths.to.vendors.js,
+            paths.to.js.in
             ])
             .pipe($.concat(config.js.name))
             .pipe($.browserify({ debug: true }))
@@ -36,8 +36,8 @@ gulp.task('js', ['jslint'], function() {
         console.log('-> Compiling Javascript for Production');
 
         return gulp.src([
-            paths.to.js.in,
-            paths.to.vendors.js
+            paths.to.vendors.js,
+            paths.to.js.in
             ])
             .pipe($.concat(config.js.name))
             .pipe($.browserify({ debug: false }))

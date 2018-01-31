@@ -30,6 +30,6 @@ requireDir('./gulp/tasks', { recurse: true });
 
 console.log(config.pkg.name + ' ' + config.pkg.version + ' ' + config.environment + ' build');
 
-gulp.task('build', ['pug', 'sass', 'js', 'images']);
+gulp.task('build', ['js', 'pug', 'sass', 'images', 'docs']);
 gulp.task('start', ['build', 'watch']);
 gulp.task('default', ['help']);
