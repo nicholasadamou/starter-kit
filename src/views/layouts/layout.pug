@@ -1,0 +1,20 @@
+block mixins
+
+//- Global Variables
+- var assets = 'assets/'
+- var css = assets + 'css/'
+- var js = assets + 'js/'
+- var docs = assets + 'docs/'
+- var images = assets + 'images/'
+- var favicons = images + 'favicons/'
+
+block variables
+
+doctype html
+html(lang='en' class='#{pageName}')
+	head
+		include ../includes/partials/head.pug
+		body
+			block content
+			include ../includes/partials/scripts.pug
+		
