@@ -22,16 +22,16 @@ module.exports = {
 			out: dest + 'assets/' + config.js.dir
 		},
 		images: {
-			in: src + config.images + '*.*',
+			in: src + config.images + '/**/*.*',
 			out: dest + config.images
 		},
 		docs : {
-        	in: src + config.docs + '/**/*.*',
+        	in: src + config.docs + '/*.pdf',
         	out: dest + config.docs
         },
        	vendors: {
-       		sass: src + config.vendors + '/sass/*.*',
-   			js: src + config.vendors + '/js/*.*'
+       		sass: src + config.vendors + '/**/*.min.css',
+   			js: src + config.vendors + '/**/*.min.js'
        	},
 		favicons: {
 			in: src + config.favicons + '/*.*',
