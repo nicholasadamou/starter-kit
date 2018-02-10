@@ -36,7 +36,7 @@ It is built on [Scotch\box](https://github.com/scotch-io/scotch-box), to provide
 - [Yarn](https://yarnpkg.com/en/docs/install)
 
 ```bash
-npm install -g gulp yarn bower
+npm install -g gulp yarn bower localtunnel
 ```
 
 Using [Chocolatey](https://chocolatey.org/) to install Virtualbox and Vagrant:

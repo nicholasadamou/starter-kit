@@ -90,7 +90,11 @@ module.exports = function() {
             // If this option is true, the project will be open in browser after compile.
             open: false,
             // Notify on all the browsers when the page updates.
-            notify: true
+            notify: true,
+            // Whether or not B.S. should use localtunnel
+            shouldTunnel: false,
+            // The name of the localtunnel sub-domain (e.g. <example-name>.localtunnel.me)
+            tunnelName: "starter-kit"
         }
     };
 

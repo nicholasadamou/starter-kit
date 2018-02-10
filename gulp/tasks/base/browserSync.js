@@ -15,6 +15,8 @@ gulp.task('browserSync', function() {
             index: 'index.html'
         },
         open: config.syncOptions.open,
-        notify: config.syncOptions.notify
+        notify: config.syncOptions.notify,
+        tunnel: config.syncOptions.shouldTunnel,
+        tunnel: config.syncOptions.tunnelName 
     });
 });
