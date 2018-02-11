@@ -91,7 +91,7 @@ module.exports = function() {
             open: false,
             // Notify on all the browsers when the page updates.
             notify: true,
-            // The local-tunnel sub-domain (e.g. <example-name>.localtunnel.me)
+            // The local-tunnel sub-domain (e.g. <example>.localtunnel.me)
             tunnelName: 'starterkit'
         }
     };
