@@ -43,7 +43,7 @@ To install `Virtualbox` and `Vagrant`:
 
 1. if on `Windows`, use [Chocolatey](https://chocolatey.org/):
     ```powershell
-    cinst -y virtualbox virtualbox.extensionpack vagrant
+    cinst -y virtualbox virtualbox.extensionpack vagrant vagrant-manager
     ```
 2. if on `MacOS`, use [homebrew](https://brew.sh/):
     ```bash
