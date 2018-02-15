@@ -2,6 +2,7 @@
     "exclude": [
         ".git/**",
         "node_modules/**",
+        "src/vendors/**",
         "bower_components/**"
     ],
     "always-semicolon": true,

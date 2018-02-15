@@ -17,9 +17,8 @@ gulp.task('help', function() {
     console.log('    js: Compile the JavaScript files');
     console.log('    pug: Compile the Pug templates');
     console.log('    sass: Compile the SASS styles');
-    console.log('    images: Transfer and minify any image/favicon to ' + config.dist);
-    console.log('    vendors: Transfer vendors to ' + config.dist);
-    console.log('    build: build the project (for prod.)');
+    console.log('    images: Transfer and minify any image/favicon to ' + config.dist + config.images);
+    console.log('    build: build the project');
     console.log('    watch: Watch for any changes');
     console.log('    start: Compile and watch for changes (for dev.)');
     console.log('    pagespeed: Run Google PageSpeed Insights');  

@@ -18,18 +18,11 @@
  *  limitations under the License
  */
 
-'use-strict';
+/**
+ * Each task has been broken out into its own file in `gulp/tasks`.
+ * to add a new task, simply add a new task file to gulp/tasks.
+ *
+ * @version 1.0.0
+ */
 
-// Include gulp plugins
-var gulp = require('gulp'),
-    requireDir  = require('require-dir');
-
-var config = require('./gulp/config.js')();
-
-requireDir('./gulp/tasks', { recurse: true });
-
-console.log(config.pkg.name + ' ' + config.pkg.version + ' ' + config.environment + ' build');
-
-gulp.task('build', ['js', 'pug', 'sass', 'images', 'docs']);
-gulp.task('start', ['build', 'watch']);
-gulp.task('default', ['help']);
+require('./gulp');

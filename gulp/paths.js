@@ -25,17 +25,13 @@ module.exports = {
 			in: src + config.images + '/**/*.*',
 			out: dest + config.images
 		},
-		docs : {
-        	in: src + config.docs + '/*.pdf',
-        	out: dest + config.docs
-        },
-       	vendors: {
-       		sass: src + config.vendors + '/**/*.min.css',
-   			js: src + config.vendors + '/**/*.min.js'
-       	},
 		favicons: {
 			in: src + config.favicons + '/*.*',
 			out: dest + config.favicons
-		}
+		},
+		docs : {
+        	in: src + config.docs + '/*.pdf',
+        	out: dest + config.docs
+        }
 	}
 };

@@ -42,6 +42,9 @@ module.exports = function() {
         images: 'assets/images',
         // Favicons
         favicons: 'assets/images/favicons',
+        // Where the (*.pdf) are inside the src folder .
+        // They will be copied to the same dir on the dist folder.
+        docs: 'assets/docs',
         /**
          * Views directory. This is the dir where all the Pug files should live
          * Important: only *.pug files will be compiled in this exact dir and not any sub dir.
@@ -88,11 +91,19 @@ module.exports = function() {
             // Entry point for the application
             index: 'index.html',
             // If this option is true, the project will be open in browser after compile.
-            open: false,
+            open: true,
             // Notify on all the browsers when the page updates.
             notify: true,
             // The local-tunnel sub-domain (e.g. <example>.localtunnel.me)
             tunnelName: 'starterkit'
+        },
+        files: {
+            fonts: ["**/*.{woff2,woff,svg,eot,ttf,otf}"],
+            images: ["**/*.{png,jpg,jpeg,gif,svg,ico}"],
+            pug: ["**/*.pug"],
+            js: ["**/*.js"],
+            styles: ["**/*.{scss,sass,css}"],
+            docs: ["**/*.pdf"]
         }
     };
 

@@ -39,11 +39,18 @@ It is built on [Scotch\box](https://github.com/scotch-io/scotch-box), to provide
 npm install -g gulp yarn bower localtunnel
 ```
 
-Using [Chocolatey](https://chocolatey.org/) to install Virtualbox and Vagrant:
+To install `Virtualbox` and `Vagrant`:
 
-```powershell
-cinst -y virtualbox virtualbox.extensionpack vagrant
-```
+1. if on `Windows`, use [Chocolatey](https://chocolatey.org/):
+    ```powershell
+    cinst -y virtualbox virtualbox.extensionpack vagrant
+    ```
+2. if on `MacOS`, use [homebrew](https://brew.sh/):
+    ```bash
+    brew cask install virtualbox virtualbox-extension-pack vagrant vagrant-manager
+    ```
+
+**Note**: **(`Windows` Users)** In order for **`localtunnel`** to work properly, please configure `Windows Firewall` to *allow* `port 3000, 3001` to *allow* **in-bound** and **out-bound** connections (`port 3000, 3001` is **Browsersync**'s default port allocation). For *Security* reasons, only *allow* **in-bound** and **out-bound** connections on `port 3000, 3001` on your home network.
 
 Gulp is the process that will run all the task of compilation, watchers, and others. Bower will get the dependencies for the client-side like jQuery. Yarn is an alternative to npm for dependency managment. It is much more reliable when compared to npm, so we will use yarn for dependency management instead of npm. Virtualbox and Vagrant are used for the spin-up development environment. Those are the only requirements to run this project.
 
@@ -79,7 +86,6 @@ Every command has to be executed on the root directory of the project using the 
 * **pug**: Compile the Pug templates
 * **sass**: Compile the SASS styles
 * **images**: Transfer and minify any image/favicon to public/
-* **vendors**: Transfer vendors to public/
 * **build**: build the project (for prod.)
 * **watch**: Watch for any changes
 * **pagespeed**: Run Google PageSpeed Insights
@@ -101,26 +107,27 @@ The project has a very simple and flexible structure. If the default place for a
 │   ├───config.js -> Project configuration
 │   ├───error_handler.js -> Used for handling any error that arises in the gulp process.
 │   ├───paths.js -> Contains routes to different paths, such as the 'sass' path.
+│   ├───index.js -> Main task runner, handles all tasks in 'gulp/tasks'.
 ├───public -> All of the compiled files will be placed here (Distribution)
 │   ├───assets -> Compiled Assets
+│   │   ├───css/ -> Compiled css directory
+│   │   ├───images/ -> Optimized Images directory
+│   │   └───js/ ->  Compiled Javascript directory
 │   ├───index.html -> Compiled Pug files
-│   ├───vendors -> Project dependencies
 ├───src -> All of the un-compiled files will be placed here (Development)
 │   ├───assets/ -> Assets for the project
 │   │   ├───images/ -> Images
 │   │   └───js/ ->  Uncompiled Javascript directory
 │   ├───vendors/ -> Third-party plugins used in the project
-│   │   ├───sass/ -> SASS-specific plugins
-│   │   ├───js/ -> Javascript-specific plugins
 ├───sass/ -> Uncompiled SASS directory
-│   ├───partials/ -> Tools/Frameworks
-│   ├───index.sass -> Uncompiled sass file
-│   │   index.sass -> Main sass file, where all other sass files should be included.
+│   ├───base/ -> Where base styles/vendors are included
+│   │   index.scss -> Main sass file, where all other sass files should be included.
 ├───views/ -> Uncompiled Pug directory
 │   ├───includes/ -> Un-Compiled Pug files to be included inside the `index.pug` file
 │   │   └───partials/ -> Contains the main `_head.pug` and `_scripts.pug` file(s)
 │   ├───layouts/ -> Contains the main '_layout.pug' file to be added as an 'extension' to the 'index.pug' file
 │   ├───index.pug -> Un-Compiled Pug file
+│   robots.txt -> Web crawler file
 ├───.bowerrc -> Defines where the dependencies will be installed
 ├───bower.json -> Bower configuration file for managing bower dependencies
 ├───.csscomb.json -> CSSComb style guide configuration file

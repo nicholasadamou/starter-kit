@@ -2,8 +2,9 @@
 
 var gulp = require('gulp'),
     $ = require('gulp-load-plugins')({ lazy: true }),
+    bower = require('main-bower-files'),
+    merge = require('merge-stream')
     cleanCSS = require('gulp-clean-css'),
-    browserSync = require('browser-sync'),
     autoprefixer = require('autoprefixer'),
     rucksack = require('rucksack-css'),
     bourbon = require('node-bourbon'),
@@ -45,39 +46,32 @@ gulp.task('sass', function() {
         }),
     ];
 
+    var app = gulp.src(paths.to.sass.in)
+        .pipe($.plumber())
+        .pipe($.sass(sass)).on('error', error.handler)
+        .pipe($.postcss(plugins))
+        .pipe($.csscomb(config.root + '.csscomb.json'));
+
     if (env) {
         console.log('-> Compiling SASS for Development');
 
-        return gulp.src([
-            paths.to.vendors.sass,
-            paths.to.sass.in
-            ])
+        return merge(gulp.src(bower(config.files.styles)), app)
             .pipe($.concat('index.css'))
             .pipe($.sourcemaps.init())
             .pipe($.plumber())
-            .pipe($.sass(sass)).on('error', error.handler)
-            .pipe($.postcss(plugins))
-            .pipe($.csscomb(config.root + '.csscomb.json'))
             .pipe($.sourcemaps.write(paths.to.sass.out))
-            .pipe(gulp.dest(paths.to.sass.out))
-            .pipe(browserSync.reload({ stream: true }));
+            .pipe(gulp.dest(paths.to.sass.out));
+
     } else {
         console.log('-> Compiling SASS for Production');
 
-        return gulp.src([
-            paths.to.vendors.sass,
-            paths.to.sass.in
-            ])
+        return merge(gulp.src(bower(config.files.styles)), app)
             .pipe($.concat('index.css'))
             .pipe($.plumber())
-            .pipe($.sass(sass)).on('error', error.handler)
-            .pipe($.postcss(plugins))
-            .pipe($.csscomb(config.root + '.csscomb.json'))
             .pipe($.size({ title: 'styles In Size' }))
-            .pipe($.stripCssComments({preserve: false}))
+            .pipe($.stripCssComments({ preserve: false }))
             .pipe(cleanCSS())
             .pipe($.size({ title: 'styles Out Size' }))
-            .pipe(gulp.dest(paths.to.sass.out))
-            .pipe(browserSync.reload({ stream: true }));
+            .pipe(gulp.dest(paths.to.sass.out));
     }
 });

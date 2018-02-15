@@ -10,7 +10,7 @@
     "url": "https://github.com/NicholasAdamou/Starter-Kit/issues"
   },
   "homepage": "https://github.com/NicholasAdamou/Starter-Kit",
-  "author": "Nicholas Adamou <nicholasadamouemail@gmail.com> (http://nicholasadamou.github.io/)",
+  "author": "Nicholas Adamou <nicholasadamouemail@gmail.com> (https://nicholasadamou.com/)",
   "keywords": [
     "starter-kit",
     "nicholas adamou",
@@ -65,6 +65,8 @@
     "jshint": "^2.9.5",
     "jshint-stylish": "^2.2.1",
     "lost": "^8.2.0",
+    "main-bower-files": "^2.13.1",
+    "merge-stream": "^1.0.1",
     "node-bourbon": "^4.2.8",
     "node-neat": "^2.0.0-beta.0",
     "path": "^0.12.7",

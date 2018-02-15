@@ -2,7 +2,8 @@
 
 var gulp = require('gulp'),
     $ = require('gulp-load-plugins')({ lazy: true }),
-    del = require('del');
+    bower = require('main-bower-files'),
+    merge = require('merge-stream');
 
 var paths = require('../../paths.js'),
     error = require('../../error_handler.js'),
@@ -23,30 +24,23 @@ gulp.task('js', ['jslint'], function() {
     if (env) {
         console.log('-> Compiling Javascript for Development');
 
-        return gulp.src([
-            paths.to.vendors.js,
-            paths.to.js.in
-            ])
+        return merge(gulp.src(bower(config.files.js)), gulp.src(paths.to.js.in))
             .pipe($.concat(config.js.name))
-            .pipe($.browserify({ debug: true }))
             .pipe($.plumber())
-            .pipe($.newer(paths.to.js.out))
+            .pipe($.browserify({ debug: true }))
             .pipe(gulp.dest(paths.to.js.out));
     } else {
         console.log('-> Compiling Javascript for Production');
 
-        return gulp.src([
-            paths.to.vendors.js,
-            paths.to.js.in
-            ])
+        return merge(gulp.src(bower(config.files.js)), gulp.src(paths.to.js.in))
             .pipe($.concat(config.js.name))
-            .pipe($.browserify({ debug: false }))
             .pipe($.plumber())
             .pipe($.deporder())
             .pipe($.stripDebug())
             .pipe($.size({ title: 'Javascript In Size' }))
             .pipe($.uglify())
             .pipe($.size({ title: 'Javascript Out Size' }))
+            .pipe($.browserify({ debug: false }))
             .pipe(gulp.dest(paths.to.js.out));
     }
 });

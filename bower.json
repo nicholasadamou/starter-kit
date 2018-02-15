@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "homepage": "https://github.com/NicholasAdamou/Starter-Kit",
   "authors": [
-    "Nicholas Adamou <nicholasadamouemail@gmail.com> (http://nicholasadamou.github.io/)"
+    "Nicholas Adamou <nicholasadamouemail@gmail.com> (https://nicholasadamou.com/)"
   ],
   "description": "A Dead Simple, Responsive Boilerplate for Mobile-Friendly Development",
   "keywords": [
@@ -24,5 +24,13 @@
     "bower_components",
     "src/vendors"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "animate-css": "latest",
+    "brand-colors": "latest",
+    "colors": "latest",
+    "normalize-css": "latest",
+    "skeleton": "latest",
+    "jQuery": "latest"
+  },
+  "overrides": {}
 }
