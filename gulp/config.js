@@ -102,7 +102,7 @@ module.exports = function() {
             images: ["**/*.{png,jpg,jpeg,gif,svg,ico}"],
             pug: ["**/*.pug"],
             js: ["**/*.js"],
-            styles: ["**/*.{scss,sass,css}"],
+            styles: ["**/*.css"],
             docs: ["**/*.pdf"]
         }
     };
