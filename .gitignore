@@ -4,4 +4,3 @@ package-lock.json
 yarn.lock
 .vagrant
 .DS_Store
-src/vendors/*
