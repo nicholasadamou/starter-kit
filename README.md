@@ -219,7 +219,7 @@ Run a series of sub-tasks to generate final JavaScript files. See `gulp/tasks/bu
 
 Run: `gulp js`
 
-## Sass
+## SASS
 
 Run a series of sub-tasks to generate final CSS files. See [`gulp/tasks/build/sass.js`](gulp/tasks/build/sass.js) for reference.
 
