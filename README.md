@@ -16,7 +16,7 @@ Starter Kit is an opinionated build automation for front-end web development bas
 1. [Set Up/Workflow](#set-upworkflow)
 1. [How to Use](#how-to-use)
 1. [Build](#build)
-    1. [Environments](#enviro	nments)
+    1. [Environments](#environments)
         1. [Development](#development)
         1. [Production](#production)
 1. [Browsersync](#browsersync)
