@@ -17,7 +17,7 @@ gulp.task('ftp', ['build'], function() {
     });
 
     return gulp.src(paths.to.dist + '**', {
-        base: paths.to.dist,
+        base: paths.to.build,
         buffer: false
     })
     .pipe($.plumber({
