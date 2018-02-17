@@ -117,6 +117,12 @@ jspm_packages
 # Yarn Integrity file
 .yarn-integrity
 
+# Yarn Lock file
+yarn.lock
+
+# NPM Lock file
+package-lock.json
+
 ### Bower ###
 bower_components
 .bower-cache
