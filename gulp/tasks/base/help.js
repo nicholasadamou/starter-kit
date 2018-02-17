@@ -18,7 +18,12 @@ gulp.task('help', () => {
     console.log('    pug: Compile the Pug templates');
     console.log('    sass: Compile the SASS styles');
     console.log('    assets: copy static files from ' + config.src + ' to ' + config.build);
-    console.log('    build: build the project');
+	console.log('    images: copy image files from ' + config.images + ' to ' + config.build + 'assets/images');
+	console.log('    fonts: copy fonts files from ' + config.src + 'assets/fonts' + ' to ' + config.build + 'assets/fonts');
+	console.log('    data: copy data files from ' + config.src + 'assets/data' + ' to ' + config.build + 'assets/data');
+	console.log('    media: copy media files from ' + config.src + 'assets/media' + ' to ' + config.build + 'assets/media');
+	console.log('    misc: copy misc files from ' + config.src + 'assets/misc' + ' to ' + config.build);
+	console.log('    build: build the project');
     console.log('    start: Compile and watch for changes (for dev.)');
     console.log('    pagespeed: Run Google PageSpeed Insights');
     console.log('    help: Print a list of available Gulp tasks');

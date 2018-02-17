@@ -120,7 +120,12 @@ Every command has to be executed on the root directory of the project using the 
 * **js**: Compile the JavaScript files
 * **pug**: Compile the Pug templates
 * **sass**: Compile the SASS styles
-* **assets**: copy static files from src/ to public/
+* **assets**: copy static files from src/assets to public/assets
+* **images**: copy and optomize image files from src/assets/images to public/assets/images
+* **data**: copy data files from src/assets/data to public/assets/data
+* **fonts**: copy font files from src/assets/fonts to public/assets/fonts
+* **media**: copy media files from src/assets/media to public/assets/media
+* **misc**: copy misc files from src/assets/misc to public/
 * **build**: build the project
 * **pagespeed**: Run Google PageSpeed Insights
 * **help**: Print a list of available Gulp tasks
