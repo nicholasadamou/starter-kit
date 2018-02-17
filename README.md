@@ -125,7 +125,7 @@ Every command has to be executed on the root directory of the project using the 
 * **data**: copy data files from src/assets/data to public/assets/data
 * **fonts**: copy font files from src/assets/fonts to public/assets/fonts
 * **media**: copy media files from src/assets/media to public/assets/media
-* **misc**: copy misc files from src/assets/misc to public/
+* **misc**: copy misc files from src/assets/misc to ./public
 * **build**: build the project
 * **pagespeed**: Run Google PageSpeed Insights
 * **help**: Print a list of available Gulp tasks
