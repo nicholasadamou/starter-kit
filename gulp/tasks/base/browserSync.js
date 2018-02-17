@@ -21,13 +21,13 @@ gulp.task('browsersync', function() {
 	// Watch for build changes and reload browser
 	browserSync.watch(`${paths.to.build}/**/*`).on('change', browserSync.reload);
 	// Watch for source changes and execute associated tasks
-	gulp.watch(`./${paths.to.assets.in}/data/**/*`, ['data']);
-	gulp.watch(`./${paths.to.assets.in}/fonts/**/*`, ['fonts']);
-	gulp.watch(`./${paths.to.assets.in}/images/**/*`, ['images']);
-	gulp.watch(`./${paths.to.assets.in}/media/**/*`, ['media']);
-	gulp.watch(`./${paths.to.assets.in}/misc/**/*`, ['misc']);
-	gulp.watch(`./${paths.to.js.in}/**/*.js`, ['js']);
-	gulp.watch(`./${paths.to.sass.in}/**/*.scss`, ['sass']);
-	gulp.watch(`./${paths.to.vendors}/*.js`, ['vendors']);
-	gulp.watch(`./${paths.to.pug.in}/**/*.pug`, ['pug']);
+	gulp.watch(`${paths.to.assets.in}/data/**/*`, ['data']);
+	gulp.watch(`${paths.to.assets.in}/fonts/**/*`, ['fonts']);
+	gulp.watch(`${paths.to.assets.in}/images/**/*`, ['images']);
+	gulp.watch(`${paths.to.assets.in}/media/**/*`, ['media']);
+	gulp.watch(`${paths.to.assets.in}/misc/**/*`, ['misc']);
+	gulp.watch(`${paths.to.js.in}/**/*.js`, ['js']);
+	gulp.watch(`${paths.to.sass.in}/**/*.scss`, ['sass']);
+	gulp.watch(`${paths.to.vendors}/*.js`, ['vendors']);
+	gulp.watch(`${paths.to.pug.in}/**/*.pug`, ['pug']);
 });
