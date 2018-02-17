@@ -6,7 +6,7 @@ var gulp = require('gulp'),
 var paths = require('../../paths.js'),
 	config = require('../../config.js')();
 
-gulp.task('data', function() {
+gulp.task('fonts', function() {
 	// Select files
 	gulp.src(`${paths.to.assets.in}/fonts/**/*`)
 	// Check for changes
