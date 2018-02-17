@@ -1,15 +1,20 @@
 //- Basic Page Needs
 title #{title}
 meta(charset="utf-8")
+meta(http-equiv="X-UA-Compatible", content="IE=edge")
 meta(name="description" content=description)
 meta(name="author" content=author)
 meta(name="tags" content=tags)
 
 //- Mobile Specific Meta
-meta(name="viewport" content="width=device-width")
+meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
 
 //- CSS
-link(rel="stylesheet" href=css + "index.css")
+case env
+  when "development"
+    link(href=css + "index.css", rel="stylesheet")
+  when "production"
+    link(href=css + "index.min.css", rel="stylesheet")
 
 //- Favicon
 link(rel="shortcut icon" href=favicons + "favicon.ico" type="image/x-icon")

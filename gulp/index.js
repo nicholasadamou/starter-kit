@@ -2,7 +2,8 @@
 
 // Include gulp plugins
 var gulp = require('gulp'),
-    requireDir = require('require-dir');
+	requireDir = require('require-dir'),
+	minimist = require('minimist');
 
 var config = require('./config.js')();
 
@@ -19,6 +20,7 @@ console.log(config.pkg.name + ' ' + config.pkg.version + ' ' + config.environmen
 /**
  * Default set of tasks.
  */
-gulp.task('build', ['js', 'pug', 'sass', 'images', 'docs']);
-gulp.task('start', ['build', 'watch']);
+gulp.task('assets', ['data', 'docs', 'fonts', 'images', 'media', 'misc']);
+gulp.task('build', ['clean', 'assets', 'vendors', 'js', 'sass', 'pug']);
+gulp.task('start', ['clean', 'build', 'watch']);
 gulp.task('default', ['help']);

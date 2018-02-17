@@ -17,7 +17,7 @@ gulp.task('ghpages', ['build'], function() {
     return gulp.src(paths.to.dist + '**/*')
         .pipe($.if('**/robots.txt', !argv.production ? $.replace('Disallow:', 'Disallow: /') : $.util.noop()))
         .pipe($.ghPages({
-            remoteUrl: 'https://' + process.env.GITHUB_TOKEN + 
+            remoteUrl: 'https://' + process.env.GITHUB_TOKEN +
                     '@github.com/' + config.GHPAGES.username + '/' + config.GHPAGES.repo + '.git',
                     branch: 'gh-pages'
         }));

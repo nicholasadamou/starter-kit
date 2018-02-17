@@ -1,46 +1,69 @@
 'use-strict';
 
 var gulp = require('gulp'),
-    $ = require('gulp-load-plugins')({ lazy: true }),
-    bower = require('main-bower-files'),
-    merge = require('merge-stream');
+	$ = require('gulp-load-plugins')({ lazy: true });
 
 var paths = require('../../paths.js'),
-    error = require('../../error_handler.js'),
-    config = require('../../config.js')();
+	config = require('../../config.js')();
 
-gulp.task('jslint', function() {
-     console.log('-> Running JSLint');
+gulp.task('es-lint', function() {
+	console.log('-> Running eslint');
 
-    return gulp.src(paths.to.js.in)
-        .pipe($.jshint())
-        .pipe($.jshint.reporter('jshint-stylish', { verbose: true }))
-        .pipe($.jshint.reporter('fail'));
+	// Select files
+	gulp.src(`${paths.js}/**/*.js`)
+	// Check for errors
+	.pipe($.eslint())
+	// Format errors
+	.pipe($.eslint.format())
 });
 
-gulp.task('js', ['jslint'], function() {
-    var env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production');
-    
-    if (env) {
-        console.log('-> Compiling Javascript for Development');
+gulp.task('jslint', function() {
+	console.log('-> Running JSLint');
 
-        return merge(gulp.src(bower(config.files.js)), gulp.src(paths.to.js.in))
-            .pipe($.concat(config.js.name))
-            .pipe($.plumber())
-            .pipe($.browserify({ debug: true }))
-            .pipe(gulp.dest(paths.to.js.out));
-    } else {
-        console.log('-> Compiling Javascript for Production');
+	// Select files
+	gulp.src(`${paths.js}/**/*.js`)
+	// Check for errors
+	.pipe($.jshint())
+	// Format errors
+	.pipe($.jshint.reporter('jshint-stylish', { verbose: true }))
+	.pipe($.jshint.reporter('fail'));
+});
 
-        return merge(gulp.src(bower(config.files.js)), gulp.src(paths.to.js.in))
-            .pipe($.concat(config.js.name))
-            .pipe($.plumber())
-            .pipe($.deporder())
-            .pipe($.stripDebug())
-            .pipe($.size({ title: 'Javascript In Size' }))
-            .pipe($.uglify())
-            .pipe($.size({ title: 'Javascript Out Size' }))
-            .pipe($.browserify({ debug: false }))
-            .pipe(gulp.dest(paths.to.js.out));
-    }
+gulp.task('js', ['es-lint', 'jslint'], function() {
+	var env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production');
+
+	console.log('-> Compiling Javascript for ' + config.environment);
+
+	if (env) {
+		// Select files
+		gulp.src(`${paths.to.js.in}/*.js`)
+		// Concatenate includes
+		.pipe($.include())
+		// Transpile
+		.pipe($.babel())
+		// Save unminified file
+		.pipe(gulp.dest(`${paths.to.js.out}`))
+	} else {
+		// Select files
+		gulp.src(`${paths.to.js.in}/*.js`)
+		// Concatenate includes
+		.pipe($.include())
+		// Transpile
+		.pipe($.babel())
+		// Save unminified file
+		.pipe(gulp.dest(`${paths.to.js.out}`))
+		// Show file-size before compression
+		.pipe($.size({ title: 'Javascript In Size' }))
+		// Optimize and minify
+		.pipe($.uglify())
+		// Show file-size after compression
+		.pipe($.size({ title: 'Javascript Out Size' }))
+		// Append suffix
+		.pipe($.rename({
+			suffix: '.min',
+		}))
+		// Save minified file
+		.pipe(gulp.dest(`${paths.to.js.out}`))
+	}
+
 });

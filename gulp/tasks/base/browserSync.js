@@ -1,21 +1,33 @@
 'use-strict';
 
 var gulp = require('gulp'),
-    browserSync = require('browser-sync');
+	browserSync = require('browser-sync');
 
 var paths = require('../../paths.js'),
     config = require('../../config.js')();
 
 gulp.task('browserSync', function() {
-    console.log('-> Starting browserSync');
+	console.log('-> Starting browserSync');
 
-    browserSync.init({
-        server: {
-            baseDir: paths.to.dist,
-            index: 'index.html'
-        },
-        open: config.syncOptions.open,
-        notify: config.syncOptions.notify,
-        tunnel: config.syncOptions.tunnelName
-    });
+	// Create and initialize local server
+	browserSync.create();
+	browserSync.init({
+		notify: config.syncOptions.notify,
+		server: `./${paths.to.build}`,
+		ui: config.syncOptions.ui,
+		open: config.syncOptions.open,
+		tunnel: config.syncOptions.tunnelName
+	});
+	// Watch for build changes and reload browser
+	browserSync.watch(`${paths.to.build}/**/*`).on('change', browserSync.reload);
+	// Watch for source changes and execute associated tasks
+	gulp.watch(`./${paths.to.assets.in}/data/**/*`, ['data']);
+	gulp.watch(`./${paths.to.assets.in}/fonts/**/*`, ['fonts']);
+	gulp.watch(`./${paths.to.assets.in}/images/**/*`, ['images']);
+	gulp.watch(`./${paths.to.assets.in}/media/**/*`, ['media']);
+	gulp.watch(`./${paths.to.assets.in}/misc/**/*`, ['misc']);
+	gulp.watch(`./${paths.to.js.in}/**/*.js`, ['scripts']);
+	gulp.watch(`./${paths.to.sass.in}/**/*.scss`, ['styles']);
+	gulp.watch(`./${paths.to.vendors}/*.js`, ['vendors']);
+	gulp.watch(`./${paths.to.views.in}/**/*.pug`, ['views']);
 });

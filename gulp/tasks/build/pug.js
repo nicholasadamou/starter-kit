@@ -1,32 +1,56 @@
 'use-strict';
 
 var gulp = require('gulp'),
-    $ = require('gulp-load-plugins')({ lazy: true });
+	$ = require('gulp-load-plugins')({ lazy: true });
 
 var paths = require('../../paths.js'),
-    error = require('../../error_handler.js'),
-    config = require('../../config.js')();
+	config = require('../../config.js')();
 
 gulp.task('pug', function() {
-    var env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production');
+	var env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production');
 
-    if (env) {
-        console.log('-> Compiling Pug Templates for Development');
+	console.log('-> Compiling Pug Templates for ' + config.environment);
 
-        return gulp.src(paths.to.pug.in)
-            .pipe($.plumber())
-            .pipe($.pug({ pretty: true })).on('error', error.handler)
-            .pipe(gulp.dest(paths.to.pug.out));
+	if (env) {
+		// Select files
+		gulp.src(`${paths.to.pug.in}/*.pug`)
+		// Check which files have changed
+		.pipe($.changed(paths.to.pug.in, {
+			extension: '.html'
+		}))
+		// Compile Pug
+		.pipe($.pug({
+			basedir: `${__dirname}/${paths.to.pug.in}`,
+			pretty: (config.environment === 'development'),
+			data: {
+				env: config.environment,
+			},
+		}))
+		// Save files
+		.pipe(gulp.dest(paths.to.build))
+	} else {
+		// Select files
+		gulp.src(`${paths.to.pug.in}/*.pug`)
+		// Check which files have changed
+		.pipe($.changed(paths.to.pug.in, {
+			extension: '.html'
+		}))
+		// Compile Pug
+		.pipe($.pug({
+			basedir: `${__dirname}/${paths.to.pug.in}`,
+			pretty: (config.environment === 'development'),
+			data: {
+				env: config.environment
+			},
+		}))
+		// Show file-size before compression
+		.pipe($.size({ title: 'Pug Templates Before Compression' }))
+		// Optomize and minify
+		.pipe($.htmlmin({collapseWhitespace: true}))
+		// Show file-size after compression
+		.pipe($.size({ title: 'Pug Templates After Compression' }))
+		// Save minified file
+		.pipe(gulp.dest(paths.to.build))
+	}
 
-    } else {
-        console.log('-> Compiling Pug Templates for Production');
-
-        return gulp.src(paths.to.pug.in)
-            .pipe($.plumber())
-            .pipe($.pug()).on('error', error.handler)
-            .pipe($.size({ title: 'Pug Templates Before Compression' }))
-            .pipe($.htmlmin({collapseWhitespace: true}))
-            .pipe($.size({ title: 'Pug Templates After Compression' }))
-            .pipe(gulp.dest(paths.to.pug.out));
-    }
 });

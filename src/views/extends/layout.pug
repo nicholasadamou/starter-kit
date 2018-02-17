@@ -5,16 +5,19 @@ block mixins
 - var css = assets + 'css/'
 - var js = assets + 'js/'
 - var docs = assets + 'docs/'
+- var data = assets + 'data/'
+- var media = assets + 'media/'
+- var fonts = assets + 'fonts/'
 - var images = assets + 'images/'
 - var favicons = images + 'favicons/'
 
 block variables
 
 doctype html
-html(lang='en' class='#{pageName}')
-	head
-		include ../includes/partials/head.pug
-		body
-			block content
-			include ../includes/partials/scripts.pug
-		
+html(lang="en")
+  head
+    include ../includes/partials/head
+  body
+    block content
+    include ../includes/partials/scripts
+

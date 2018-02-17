@@ -5,7 +5,39 @@
 ![license](https://img.shields.io/apm/l/vim-mode.svg)
 [![Say Thanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/NicholasAdamou)
 
-[About](https://github.com/nicholasadamou/Starter-Kit/blob/master/README.md#about) / [Technologies](https://github.com/nicholasadamou/Starter-Kit/blob/master/README.md#technologies) / [Requirements](https://github.com/nicholasadamou/Starter-Kit/blob/master/README.md#requirements) / [Install](https://github.com/nicholasadamou/Starter-Kit/blob/master/README.md#install) / [Set Up/Workflow](https://github.com/nicholasadamou/Starter-Kit/blob/master/README.md#set-upworkflow) / [How to Use](https://github.com/nicholasadamou/Starter-Kit/blob/master/README.md#how-to-use) / [Structure](https://github.com/nicholasadamou/Starter-Kit/blob/master/README.md#structure) / [Configuration](https://github.com/nicholasadamou/Starter-Kit/blob/master/README.md#configuration) / [Inspiration](https://github.com/nicholasadamou/Starter-Kit/blob/master/README.md#inspiration) / [License](https://github.com/nicholasadamou/Starter-Kit/blob/master/README.md#license)
+Starter Kit is an opinionated build automation for front-end web development based on [Gulp](http://gulpjs.com/), [Node](https://nodejs.org/), [NPM](https://www.npmjs.com/), [Bower](http://bower.io/), [Babel](https://babeljs.io/), [Sass](http://sass-lang.com/), and [Pug](https://pugjs.org/).
+
+*Note: Starter Kit is simply a guideline and it doesn't solve everything. It is up to you to modify whatever necessary to achieve your project goals.*
+
+1. [About](#about)
+1. [Technologies](#technologies)
+1. [Requirements](#requirements)
+1. [Install](#install)
+1. [Set Up/Workflow](#set-upworkflow)
+1. [How to Use](#how-to-use)
+1. [Build](#build)
+    1. [Environments](#environments)
+        1. [Development](#development)
+        1. [Production](#production)
+1. [Browsersync](#browsersync)
+    1. [Local URLs](#local-urls)
+    1. [Options](#options)
+1. [Assets](#assets)
+    1. [Data](#data)
+    1. [Fonts](#fonts)
+    1. [Images](#images)
+    1. [Media](#media)
+    1. [Miscellaneous](#miscellaneous)
+    1. [Vendors](#vendors)
+1. [JS](#js)
+1. [SASS](#sass)
+    1. [BEM Structure](#bem-structure)
+1. [Pug](#pug)
+    1. [Pug Structure](#pug-structure)
+    1. [Environment Variables](#environment-variables)
+1. [Configuration](#configuration)
+1. [Inspiration](#inspiration)
+1. [License](#license)
 
 ## About
 Starter Kit is a simple, responsive boilerplate to kickstart any responsive project.
@@ -26,6 +58,7 @@ It is built on [Scotch\box](https://github.com/scotch-io/scotch-box), to provide
 - [**SASS**](http://sass-lang.com) - CSS with superpowers.
 - [**Rucksack**](https://simplaio.github.io/rucksack/) - A little bag of CSS superpowers.
 - [**Skeleton**](https://github.com/dhg/Skeleton) - A simple, responsive boilerplate to kickstart any responsive project.
+- [**Babel**](https://babeljs.io/) - Babel is a JavaScript compiler; use next generation JavaScript, today.
 
 ## Requirements
 
@@ -34,9 +67,11 @@ It is built on [Scotch\box](https://github.com/scotch-io/scotch-box), to provide
 - [Node.js](https://nodejs.org/en/)
 - [Gulp](http://gulpjs.com)
 - [Yarn](https://yarnpkg.com/en/docs/install)
+- [Bower](https://bower.io/)
+- [localtunnel](https://github.com/localtunnel/localtunnel)
 
 ```bash
-npm install -g gulp yarn bower localtunnel
+npm install -g yarn bower gulp localtunnel
 ```
 
 To install `Virtualbox` and `Vagrant`:
@@ -65,6 +100,7 @@ vagrant up
 vagrant ssh
 cd /var/www
 gem install travis
+npm cache clear && bower cache clean
 yarn install && bower install
 gulp help
 ```
@@ -85,61 +121,134 @@ Every command has to be executed on the root directory of the project using the 
 * **js**: Compile the JavaScript files
 * **pug**: Compile the Pug templates
 * **sass**: Compile the SASS styles
-* **images**: Transfer and minify any image/favicon to public/
-* **build**: build the project (for prod.)
-* **watch**: Watch for any changes
+* **assets**: copy static files from src/ to public/
+* **build**: build the project
 * **pagespeed**: Run Google PageSpeed Insights
 * **help**: Print a list of available Gulp tasks
 * **browserSync**: Start the browser-sync server
 
 If you are in the development process, the `gulp start` command is the best option for you. Go to the project folder in the console and execute `gulp start`, it will compile the project and start server that will refresh every time you change something in the code. The command will be waiting for changes and will tell you how to access the project from local and public url. Every browser that points to that url will be auto refreshed. As an extra feature for testing purpose any interaction on one browser will be reflected on any others. Try it on a phone, tablet, and pc at the same time.
 
-## Structure
-The project has a very simple and flexible structure. If the default place for any file or directory needs to be moved, be sure to update the new position on the config file.
+## Build
 
-```
-├───gulp -> The containing folder for all things 'gulp'
-│   ├───tasks -> All of the different gulp tasks used in 'gulpfile.js'
-│   │   ├───base -> basic tasks, such as 'help' and 'watch'
-│   │   ├───build -> tasks used for compiling 'pug' or 'sass'
-│   │   ├───deploy -> tasks used for deploying to servers such as 'surge' or 'GitHub-Pages'
-│   │   ├───util -> utility tasks, such as 'Google PageSpeed Insights'
-│   ├───config.js -> Project configuration
-│   ├───error_handler.js -> Used for handling any error that arises in the gulp process.
-│   ├───paths.js -> Contains routes to different paths, such as the 'sass' path.
-│   ├───index.js -> Main task runner, handles all tasks in 'gulp/tasks'.
-├───public -> All of the compiled files will be placed here (Distribution)
-│   ├───assets -> Compiled Assets
-│   │   ├───css/ -> Compiled css directory
-│   │   ├───images/ -> Optimized Images directory
-│   │   └───js/ ->  Compiled Javascript directory
-│   ├───index.html -> Compiled Pug files
-├───src -> All of the un-compiled files will be placed here (Development)
-│   ├───assets/ -> Assets for the project
-│   │   ├───images/ -> Images
-│   │   └───js/ ->  Uncompiled Javascript directory
-│   ├───vendors/ -> Third-party plugins used in the project
-├───sass/ -> Uncompiled SASS directory
-│   ├───base/ -> Where base styles/vendors are included
-│   │   index.scss -> Main sass file, where all other sass files should be included.
-├───views/ -> Uncompiled Pug directory
-│   ├───includes/ -> Un-Compiled Pug files to be included inside the `index.pug` file
-│   │   └───partials/ -> Contains the main `_head.pug` and `_scripts.pug` file(s)
-│   ├───layouts/ -> Contains the main '_layout.pug' file to be added as an 'extension' to the 'index.pug' file
-│   ├───index.pug -> Un-Compiled Pug file
-│   robots.txt -> Web crawler file
-├───.bowerrc -> Defines where the dependencies will be installed
-├───bower.json -> Bower configuration file for managing bower dependencies
-├───.csscomb.json -> CSSComb style guide configuration file
-├───.travis.yml -> travis CLI configuration file
-├───package.json -> NodeJS configuration file for managing node dependencies
-├───gulpfile.js -> Gulp tasks
-├───Vagrantfile -> Scotch Vagrant box configuration file
-```
-All the files in the dist folder will be auto-generated by the different tasks when you compile the project. Be sure to not modify any files manually in the dist folder because changes will be replaced in the compilation process.
+Generate a fresh build of your project. Task will run several individual tasks on files within `./src` and then output them to `./public`.
+
+Run: `gulp build`
+
+### Environments
+
+You can specify which environment you want to build in [`config.js`](gulp/config.js). By default, `config.environment` is set to `development`.
+
+#### Development
+
+`environment: development`
+
+#### Production
+
+`environment: production`
+
+## Browsersync
+
+Start a local dev server. Additionally, gulp will watch for any changes to files and reload browser while server is running.
+
+Run: `gulp browsersync`
+
+### Local URLs
+
+* Local - http://localhost:3000
+* UI - Set to `false` by default
+
+### Options
+
+You can modify port, proxy, tunnel, and many other settings in [`config.js`](gulp/config.js). For more information about BrowserSync go to [http://www.browsersync.io/](http://www.browsersync.io/).
+
+## Assets
+
+Run several individual tasks to copy static files from `src/assets` to `public/assets`.
+
+Run: `gulp assets`
+
+### Data
+
+Copy data files to `public/assets/data`.
+
+Run: `gulp data`
+
+### Fonts
+
+Copy font files to `public/assets/fonts`.
+
+Run: `gulp fonts`
+
+### Images
+
+Copy images to `public/assets/images`. As a personal preference Starter Kit uses [imagemin](https://github.com/sindresorhus/gulp-imagemin) and [`imagemin-pngquant`](https://github.com/imagemin/imagemin-pngquant) to automate image optimization. However, it is strongly recommended to use services like [TinyPNG](https://tinypng.com/) and [TinyJPG](https://tinyjpg.com/) to optimize images manually.
+
+Run: `gulp images`
+
+### Media
+
+Copy media files to `public/assets/media`.
+
+Run: `gulp media`
+
+### Miscellaneous
+
+Copy miscellaneous files, such as `.htaccess` or `robots.txt`, to the root of `./public`. If your project require custom settings per environment, then you can save individual files into appropriate directory within `src/assets/misc`.
+
+### Vendors
+
+Bundle vendor files to `public/vendors`. You can install new client-side vendors using [`Bower`](https://bower.io/search/) or [`yarn`](https://yarnpkg.com/en/packages), then reference appropriate files in `./src/vendors/bundle.js` and in `src/sass/settings/_vendors.scss`. Follow the guidelines for [`gulp-include`](https://www.npmjs.com/package/gulp-include) to properly add the plugins to your project. 
+
+Starter Kit comes with the following tools by default.
+
+1. [`jQuery`](https://jquery.com/)
+1. [`animate-css`](https://daneden.github.io/animate.css/)
+1. [`brand-colors`](https://github.com/Reimertz/brand-colors.git) 
+1. [`colors`](https://github.com/mrmrs/colors.git)
+1. [`normalize-css`](https://github.com/necolas/normalize.css.git)
+1. [`skeleton`](https://github.com/dhgamache/Skeleton.git)
+
+Run: `gulp vendors`
+
+## js
+
+Run a series of sub-tasks to generate final JavaScript files. See `gulp/tasks/build/js.js` for reference.
+
+*Note: Each file on the root of `src/js` will be compiled to its own file in `public/assets/js`. Each file can have own includes, just like Sass with `@import` functionality. See [`src/js/index.js`](src/js/index.js) as an example.*
+
+Run: `gulp js`
+
+## Sass
+
+Run a series of sub-tasks to generate final CSS files. See [`gulp/tasks/build/sass.js`](gulp/tasks/build/sass.js) for reference.
+
+*Note: Each file on the root of `src/sass` will be compiled to its own file in `public/assets/css`.*
+
+Run: `gulp sass`
+
+### BEM Structure
+
+Starter Kit follows a strict naming convention using [BEM](https://en.bem.info/) methodology.
+
+Directory structure and selector names are divided into namespaces based on [More Transparent UI Code with Namespaces](http://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/) article by Harry Roberts.
+
+## Pug
+
+Run a series of sub-tasks to generate final HTML files. See [`gulp/tasks/build/pug.js`](gulp/tasks/build/pug.js) for reference.
+
+Run: `gulp pug`
+
+### Pug Structure
+
+Starter Kit follows an opinionated directory structure. To learn more about Pug go to [https://pugjs.org/api/getting-started.html/](https://pugjs.org/api/getting-started.html/).
+
+### Environment Variables
+
+Every Pug file has access to global `env` variable. You can use it to conditionally load unminified/minified assets. See [`src/views/includes/head.pug`](src/views/includes/head.pug) as an example.
 
 ## Configuration
-This project has some nice configuration options to meet all you needs. To configure, you will need to edit the `./gulp/config.js` file and change any value you need. Every aspect of this configuration is described in the file so that you can understand their functions.
+This project has some nice configuration options to meet all you needs. To configure, you will need to edit the [`gulp/config.js`](gulp/config.js) file and change any value you need. Every aspect of this configuration is described in the file so that you can understand their functions.
 
 ## Inspiration
 

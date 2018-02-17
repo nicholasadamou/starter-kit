@@ -3,12 +3,12 @@ node_js:
   - 'lts/*'
 
 before script:
-  - npm install -g yarn bower gulp
+  - npm install -g yarn bower gulp localtunnel
 after script:
   - yarn install && bower install
 after success:
   - gulp build
-  
+
 notifications:
   email:
     on_failure: always

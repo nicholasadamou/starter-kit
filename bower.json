@@ -1,36 +1,11 @@
 {
-  "name": "starter-kit",
-  "version": "1.0.0",
-  "homepage": "https://github.com/NicholasAdamou/Starter-Kit",
-  "authors": [
-    "Nicholas Adamou <nicholasadamouemail@gmail.com> (https://nicholasadamou.com/)"
-  ],
-  "description": "A Dead Simple, Responsive Boilerplate for Mobile-Friendly Development",
-  "keywords": [
-    "starter-kit",
-    "nicholas adamou",
-    "sass",
-    "scss",
-    "pug",
-    "gulp",
-    "responsive",
-    "boilerplate"
-  ],
-  "license": "MIT",
-  "main": "build/index.html",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "src/vendors"
-  ],
-  "dependencies": {
-    "animate-css": "latest",
-    "brand-colors": "latest",
-    "colors": "latest",
-    "normalize-css": "latest",
-    "skeleton": "latest",
-    "jQuery": "latest"
-  },
-  "overrides": {}
+    "name": "starter-kit",
+    "dependencies": {
+		"animate-css": "latest",
+		"brand-colors": "latest",
+		"colors": "latest",
+		"normalize-css": "latest",
+		"skeleton": "latest",
+		"jquery": "latest"
+    }
 }
