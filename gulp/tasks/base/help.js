@@ -17,7 +17,7 @@ gulp.task('help', () => {
     console.log('    js: Compile the JavaScript files');
     console.log('    pug: Compile the Pug templates');
     console.log('    sass: Compile the SASS styles');
-    console.log('    assets: copy static files from ' + config.src + ' to ' + config.build);
+    console.log('    assets: copy static files from ' + config.src + 'assets' + ' to ' + config.build + 'assets');
 	console.log('    images: copy image files from ' + config.images + ' to ' + config.build + 'assets/images');
 	console.log('    fonts: copy fonts files from ' + config.src + 'assets/fonts' + ' to ' + config.build + 'assets/fonts');
 	console.log('    data: copy data files from ' + config.src + 'assets/data' + ' to ' + config.build + 'assets/data');
