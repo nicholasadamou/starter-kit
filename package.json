@@ -3,24 +3,18 @@
 	"title": "Starter Kit",
 	"description": "Starter Kit",
 	"version": "1.0.0",
-	"homepage": "http://www.domain.com",
+	"homepage": "https://nicholasadamou.com/",
 	"author": {
-		"name": "Company",
-		"url": "http://www.company.com"
+		"name": "Nicholas Adamou",
+		"url": "https://nicholasadamou.com/"
 	},
-	"contributors": [
-		{
-			"name": "Name",
-			"email": "alias@company.com"
-		}
-	],
 	"repository": {
 		"type": "git",
-		"url": "git@github.com:USER/REPOSITORY.git"
+		"url": "git@github.com:nicholasadamou/Starter-Kit.git"
 	},
 	"license": "MIT",
 	"scripts": {
-		"install-dependencies": "yarn install && bower install"
+		"install-dependencies": "yarn install && bower cache clean && bower install"
 	},
 	"devDependencies": {
 		"argv": "^0.0.2",
@@ -28,13 +22,11 @@
 		"babel-preset-latest": "^6.24.1",
 		"browser-sync": "^2.18.13",
 		"del": "^3.0.0",
-		"eslint": "^3.12.0",
-		"eslint-config-airbnb-base": "^11.0.0",
-		"eslint-plugin-import": "^2.2.0",
 		"gulp": "^3.9.1",
 		"gulp-babel": "^6.1.2",
 		"gulp-changed": "^1.3.2",
 		"gulp-cssnano": "^2.1.2",
+		"gulp-error-handle": "^1.0.0",
 		"gulp-eslint": "^3.0.1",
 		"gulp-gh-pages": "^0.5.4",
 		"gulp-htmlmin": "^3.0.0",
@@ -74,10 +66,11 @@
 	},
 	"dependencies": {
 		"animate.css": "latest",
-		"brand-colors": "latest",
-		"colors": "latest",
-		"normalize.css": "latest",
-		"skeleton": "latest",
-		"jquery": "latest"
-    }
+		"bulma": "latest",
+		"hamburgers": "latest",
+		"hover": "latest",
+		"isinviewport": "latest",
+		"jquery": "latest",
+		"vanilla-lazyload": "latest"
+	}
 }

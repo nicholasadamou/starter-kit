@@ -6,22 +6,13 @@ var gulp = require('gulp'),
 var paths = require('../../paths.js'),
 	config = require('../../config.js')();
 
-gulp.task('es-lint', function() {
-	console.log('-> Running eslint');
-
-	// Select files
-	gulp.src(`${paths.js}/**/*.js`)
-	// Check for errors
-	.pipe($.eslint())
-	// Format errors
-	.pipe($.eslint.format())
-});
-
 gulp.task('jslint', function() {
 	console.log('-> Running JSLint');
 
 	// Select files
-	gulp.src(`${paths.js}/**/*.js`)
+	gulp.src(`${paths.to.js.in}/**/*.js`)
+	// Prevent pipe breaking caused by errors from gulp plugins
+	.pipe($.plumber())
 	// Check for errors
 	.pipe($.jshint())
 	// Format errors
@@ -29,7 +20,7 @@ gulp.task('jslint', function() {
 	.pipe($.jshint.reporter('fail'));
 });
 
-gulp.task('js', ['es-lint', 'jslint'], function() {
+gulp.task('js', ['jslint'], function() {
 	var env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production');
 
 	console.log('-> Compiling Javascript for ' + config.environment);
@@ -37,19 +28,27 @@ gulp.task('js', ['es-lint', 'jslint'], function() {
 	if (env) {
 		// Select files
 		gulp.src(`${paths.to.js.in}/*.js`)
+		// Prevent pipe breaking caused by errors from gulp plugins
+		.pipe($.plumber())
 		// Concatenate includes
 		.pipe($.include())
 		// Transpile
 		.pipe($.babel())
+		// Catch errors
+		.pipe($.errorHandle())
 		// Save unminified file
 		.pipe(gulp.dest(`${paths.to.js.out}`))
 	} else {
 		// Select files
 		gulp.src(`${paths.to.js.in}/*.js`)
+		// Prevent pipe breaking caused by errors from gulp plugins
+		.pipe($.plumber())
 		// Concatenate includes
 		.pipe($.include())
 		// Transpile
 		.pipe($.babel())
+		// Catch errors
+		.pipe($.errorHandle())
 		// Save unminified file
 		.pipe(gulp.dest(`${paths.to.js.out}`))
 		// Show file-size before compression

@@ -14,6 +14,8 @@ gulp.task('pug', function() {
 	if (env) {
 		// Select files
 		gulp.src(`${paths.to.pug.in}/*.pug`)
+		// Prevent pipe breaking caused by errors from gulp plugins
+		.pipe($.plumber())
 		// Check which files have changed
 		.pipe($.changed(paths.to.pug.in, {
 			extension: '.html'
@@ -26,11 +28,15 @@ gulp.task('pug', function() {
 				env: config.environment,
 			},
 		}))
+		// Catch errors
+		.pipe($.errorHandle())
 		// Save files
 		.pipe(gulp.dest(paths.to.build))
 	} else {
 		// Select files
 		gulp.src(`${paths.to.pug.in}/*.pug`)
+		// Prevent pipe breaking caused by errors from gulp plugins
+		.pipe($.plumber())
 		// Check which files have changed
 		.pipe($.changed(paths.to.pug.in, {
 			extension: '.html'
@@ -43,6 +49,8 @@ gulp.task('pug', function() {
 				env: config.environment
 			},
 		}))
+		// Catch errors
+		.pipe($.errorHandle())
 		// Show file-size before compression
 		.pipe($.size({ title: 'Pug Templates Before Compression' }))
 		// Optomize and minify

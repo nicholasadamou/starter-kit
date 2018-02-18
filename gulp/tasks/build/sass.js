@@ -46,10 +46,12 @@ gulp.task('sass', function() {
 	if (env) {
 		// Select files
 		gulp.src(`${paths.to.sass.in}/*.scss`)
+		// Prevent pipe breaking caused by errors from gulp plugins
+		.pipe($.plumber())
 		// Initialize sourcemaps
 		.pipe($.sourcemaps.init())
 		// Compile Sass
-		.pipe($.sass(sass))
+		.pipe($.sass(sass).on('error', $.sass.logError))
 		// Add vendor prefixes
 		.pipe($.postcss(plugins))
 		// Concatenate includes
@@ -66,8 +68,10 @@ gulp.task('sass', function() {
 	} else {
 		// Select files
 		gulp.src(`${paths.to.sass.in}/*.scss`)
+		// Prevent pipe breaking caused by errors from gulp plugins
+		.pipe($.plumber())
 		// Compile Sass
-		.pipe($.sass(sass))
+		.pipe($.sass(sass).on('error', $.sass.logError))
 		// Add vendor prefixes
 		.pipe($.postcss(plugins))
 		// Concatenate includes
