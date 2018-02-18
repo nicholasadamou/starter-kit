@@ -21,6 +21,7 @@ gulp.task('help', () => {
 	console.log('    images: copy image files from ' + config.images + ' to ' + config.build + 'assets/images');
 	console.log('    fonts: copy fonts files from ' + config.src + 'assets/fonts' + ' to ' + config.build + 'assets/fonts');
 	console.log('    data: copy data files from ' + config.src + 'assets/data' + ' to ' + config.build + 'assets/data');
+	console.log('    data: copy (.pdf) files from ' + config.src + 'assets/docs' + ' to ' + config.build + 'assets/docs');
 	console.log('    media: copy media files from ' + config.src + 'assets/media' + ' to ' + config.build + 'assets/media');
 	console.log('    misc: copy misc files from ' + config.src + 'assets/misc' + ' to ' + './' + config.build);
 	console.log('    build: build the project');

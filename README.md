@@ -24,6 +24,7 @@ Starter Kit is an opinionated build automation for front-end web development bas
     1. [Options](#options)
 1. [Assets](#assets)
     1. [Data](#data)
+	1. [Docs](#docs)
     1. [Fonts](#fonts)
     1. [Images](#images)
     1. [Media](#media)
@@ -123,6 +124,7 @@ Every command has to be executed on the root directory of the project using the 
 * **assets**: copy static files from src/assets to public/assets
 * **images**: copy and optomize image files from src/assets/images to public/assets/images
 * **data**: copy data files from src/assets/data to public/assets/data
+* **docs**: copy (.pdf) files from src/assets/docs to public/assets/docs
 * **fonts**: copy font files from src/assets/fonts to public/assets/fonts
 * **media**: copy media files from src/assets/media to public/assets/media
 * **misc**: copy misc files from src/assets/misc to ./public
@@ -175,6 +177,12 @@ Run: `gulp assets`
 ### Data
 
 Copy data files to `public/assets/data`.
+
+Run: `gulp data`
+
+### Docs
+
+Copy (.pdf) files to `public/assets/docs`.
 
 Run: `gulp data`
 
