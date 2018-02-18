@@ -15,7 +15,7 @@ module.exports = {
 		},
 		vendors: {
 			in: src + config.vendors,
-			out: build + config.vendors
+			out: build + config.assets + config.vendors
 		},
 		js: {
 			in:  src + config.js.dir,
