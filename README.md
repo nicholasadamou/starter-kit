@@ -206,7 +206,7 @@ Run: `gulp media`
 
 ### Miscellaneous
 
-Copy miscellaneous files, such as `.htaccess` or `robots.txt`, to the root of `./public`. If your project require custom settings per environment, then you can save individual files into appropriate directory within `src/assets/misc`.
+Copy miscellaneous files, such as `.htaccess` or `robots.txt`, to the root of `./public`.
 
 ### Vendors
 
@@ -260,7 +260,7 @@ Starter Kit follows an opinionated directory structure. To learn more about Pug 
 Every Pug file has access to global `env` variable. You can use it to conditionally load unminified/minified assets. See [`src/views/includes/head.pug`](src/views/includes/head.pug) as an example.
 
 ## Configuration
-This project has some nice configuration options to meet all you needs. To configure, you will need to edit the [`gulp/config.js`](gulp/config.js) file and change any value you need. Every aspect of this configuration is described in the file so that you can understand their functions.
+This project has some nice configuration options to meet all your needs. To configure, you will need to edit the [`gulp/config.js`](gulp/config.js) file and change any value you need. Every aspect of this configuration is described in the file so that you can understand their functions.
 
 ## Inspiration
 
