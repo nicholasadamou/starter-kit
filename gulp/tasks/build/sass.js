@@ -54,6 +54,11 @@ gulp.task('sass', function() {
 		.pipe($.sass(sass).on('error', $.sass.logError))
 		// Add vendor prefixes
 		.pipe($.postcss(plugins))
+		// Purify and remove unecessary CSS
+		.pipe($.purifyCss([
+			`${paths.to.js.out}/*.js`,
+			`${paths.to.pug.out}/*.html`
+		]))
 		// Concatenate includes
 		.pipe($.include({
 			includePaths: [
@@ -74,6 +79,11 @@ gulp.task('sass', function() {
 		.pipe($.sass(sass).on('error', $.sass.logError))
 		// Add vendor prefixes
 		.pipe($.postcss(plugins))
+		// Purify and remove unecessary CSS
+		.pipe($.purifyCss([
+			`${paths.to.js.out}/*.js`,
+			`${paths.to.pug.out}/*.html`
+		]))
 		// Concatenate includes
 		.pipe($.include({
 			includePaths: [
