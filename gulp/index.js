@@ -22,5 +22,5 @@ console.log(config.pkg.name + ' ' + config.pkg.version + ' ' + config.environmen
  */
 gulp.task('assets', ['data', 'docs', 'fonts', 'images', 'media', 'misc']);
 gulp.task('build', ['clean', 'assets', 'vendors', 'js', 'sass', 'pug']);
-gulp.task('start', ['clean', 'build', 'browsersync']);
+gulp.task('start', ['build', 'browsersync']);
 gulp.task('default', ['help']);
