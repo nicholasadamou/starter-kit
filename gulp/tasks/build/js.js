@@ -49,8 +49,6 @@ gulp.task('js', ['jslint'], function() {
 		.pipe($.babel())
 		// Catch errors
 		.pipe($.errorHandle())
-		// Save unminified file
-		.pipe(gulp.dest(`${paths.to.js.out}`))
 		// Show file-size before compression
 		.pipe($.size({ title: 'Javascript In Size' }))
 		// Optimize and minify
