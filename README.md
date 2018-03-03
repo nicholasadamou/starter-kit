@@ -105,7 +105,7 @@ gulp help
 ```
 After the processes finish, you can now proceed into the `How to Use` section to understand each option the kit presents to you.
 
-## How to use
+## How to Use
 To start using the kit, open the project on the code editor of your choice and start coding.
 
 To compile and live-preview all of your changes, you have some commands that will help you. Here is a list of commands you should know.
