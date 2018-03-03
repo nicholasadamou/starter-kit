@@ -54,7 +54,6 @@ It is built on [Scotch\box](https://github.com/scotch-io/scotch-box), to provide
 - [**Surge**](https://surge.sh) - Simple, single-command web publishing. Publish HTML, CSS, and JS for free, without leaving the command line.
 - [**GitHub Pages**](https://pages.github.com/) - Websites for you and your projects. Hosted directly from your GitHub repository. Just edit, push, and your changes are live.
 - [**PostCSS**](http://postcss.org/) - A tool for transforming CSS with JavaScript.
-- [**CSScomb**](csscomb.com) - Beautifies CSS syntax
 - [**Pug**](https://pugjs.org) - Simple language for writing HTML templates.
 - [**SASS**](http://sass-lang.com) - CSS with superpowers.
 - [**Rucksack**](https://simplaio.github.io/rucksack/) - A little bag of CSS superpowers.
