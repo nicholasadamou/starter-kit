@@ -1,6 +1,7 @@
 'use-strict';
 
 var gulp = require('gulp'),
+	moment = require('moment'),
 	$ = require('gulp-load-plugins')({ lazy: true });
 
 var paths = require('../../paths.js'),
@@ -27,6 +28,7 @@ gulp.task('pug', function() {
 			data: {
 				env: config.environment,
 			},
+			locals: {moment: moment}, 
 		}))
 		// Catch errors
 		.pipe($.errorHandle())
@@ -48,6 +50,7 @@ gulp.task('pug', function() {
 			data: {
 				env: config.environment
 			},
+			locals: {moment: moment},
 		}))
 		// Catch errors
 		.pipe($.errorHandle())

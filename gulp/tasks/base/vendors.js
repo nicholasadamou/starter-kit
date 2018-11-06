@@ -36,7 +36,7 @@ gulp.task('vendors', function() {
 		// Show file-size before compression
 		.pipe($.size({ title: 'Javascript In Size' }))
 		// Optimize and minify
-		.pipe($.uglify())
+		.pipe($.terser())
 		// Show file-size after compression
 		.pipe($.size({ title: 'Javascript Out Size' }))
 		// Append suffix

@@ -22,7 +22,7 @@ gulp.task('images', function() {
 	} else {
 		// Select files
 		gulp.src(`${paths.to.assets.in}/images/**/*`)
-		// Optomize images
+		// Optimize images
 		.pipe($.imagemin({
 			progressive: true,
 			interlaced: true,
