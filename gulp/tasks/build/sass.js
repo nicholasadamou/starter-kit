@@ -83,6 +83,8 @@ gulp.task('sass', function() {
 		}))
 		// Show file-size before compression
 		.pipe($.size({ title: 'sass In Size' }))
+		// Remove unused CSS
+		.pipe($.purifycss(['./public/assets/js/index.min.js', './public/*.html']))
 		// Optimize and minify
 		.pipe($.cssnano())
 		// Show file-size after compression
