@@ -3,8 +3,8 @@ var gulp = require('gulp'),
 	autoprefixer = require('autoprefixer'),
 	rucksack = require('rucksack-css'),
 	bourbon = require('node-bourbon'),
-    neat = require('node-neat'),
-    lost = require('lost');
+	neat = require('node-neat'),
+	lost = require('lost');
 
 var paths = require('../../paths.js'),
 	config = require('../../config.js')();
@@ -38,7 +38,7 @@ gulp.task('sass', function() {
                 'IE 10',
                 'IE 11'
             ],
-        }),
+		}),
 	];
 
 	console.log('-> Compiling SASS for ' + config.environment);
@@ -83,8 +83,6 @@ gulp.task('sass', function() {
 		}))
 		// Show file-size before compression
 		.pipe($.size({ title: 'sass In Size' }))
-		// Remove unused CSS
-		.pipe($.purifycss(['./public/assets/js/index.min.js', './public/*.html']))
 		// Optimize and minify
 		.pipe($.cssnano())
 		// Show file-size after compression
