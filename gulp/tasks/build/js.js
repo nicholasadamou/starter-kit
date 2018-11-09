@@ -6,15 +6,6 @@ const $ = require('gulp-load-plugins')({ lazy: true });
 const paths = require('../../paths.js');
 const config = require('../../config.js')();
 
-const options = {
-  eslint: {
-    globals: [
-      'jQuery',
-      '$',
-    ],
-  },
-};
-
 gulp.task('eslint', () => {
   console.log('-> Running eslint');
 
@@ -23,7 +14,7 @@ gulp.task('eslint', () => {
   // Prevent pipe breaking caused by errors from gulp plugins
     .pipe($.plumber())
   // Check for lint errors
-    .pipe($.eslint(options.eslint))
+    .pipe($.eslint())
   // eslint.format() outputs the lint results to the console.
   // Alternatively use eslint.formatEach() (see Docs).
     .pipe($.eslint.format())
