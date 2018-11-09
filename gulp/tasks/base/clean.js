@@ -1,15 +1,15 @@
 'use-strict';
 
-var gulp = require('gulp'),
-    $ = require('gulp-load-plugins')({ lazy: true }),
-    del = require('del');
+const gulp = require('gulp');
 
-var paths = require('../../paths.js');
+const del = require('del');
 
-gulp.task('clean', function() {
-    console.log('-> Cleansing compiled files');
+const paths = require('../../paths.js');
 
-    del.sync([
-        paths.to.build + "*"
-    ]);
+gulp.task('clean', () => {
+  console.log('-> Cleansing compiled files');
+
+  del.sync([
+    `${paths.to.build}*`,
+  ]);
 });

@@ -1,37 +1,38 @@
 'use-strict';
 
-var gulp = require('gulp'),
-	$ = require('gulp-load-plugins')({ lazy: true }),
-	pngquant = require('imagemin-pngquant');
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')({ lazy: true });
 
-var paths = require('../../paths.js'),
-	config = require('../../config.js')();
+const pngquant = require('imagemin-pngquant');
 
-gulp.task('images', function() {
-	var env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production');
+const paths = require('../../paths.js');
+const config = require('../../config.js')();
 
-	console.log('-> Updating images for ' + config.environment);
+gulp.task('images', () => {
+  const env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production');
 
-	if (env) {
-		// Select files
-		gulp.src(`${paths.to.assets.in}/images/**/*`)
-		// Check for changes
-		.pipe($.changed(`${paths.to.assets.out}/images`))
-		// Save files
-		.pipe(gulp.dest(`${paths.to.assets.out}/images`))
-	} else {
-		// Select files
-		gulp.src(`${paths.to.assets.in}/images/**/*`)
-		// Optimize images
-		.pipe($.imagemin({
-			progressive: true,
-			interlaced: true,
-			svgoPlugins: [{ removeViewBox: false }],
-			use: [pngquant()]
-		}))
-		// Check for changes
-		.pipe($.changed(`${paths.to.assets.out}/images`))
-		// Save files
-		.pipe(gulp.dest(`${paths.to.assets.out}/images`))
-	}
+  console.log(`-> Updating images for ${config.environment}`);
+
+  if (env) {
+    // Select files
+    gulp.src(`${paths.to.assets.in}/images/**/*`)
+    // Check for changes
+      .pipe($.changed(`${paths.to.assets.out}/images`))
+    // Save files
+      .pipe(gulp.dest(`${paths.to.assets.out}/images`));
+  } else {
+    // Select files
+    gulp.src(`${paths.to.assets.in}/images/**/*`)
+    // Optimize images
+      .pipe($.imagemin({
+        progressive: true,
+        interlaced: true,
+        svgoPlugins: [{ removeViewBox: false }],
+        use: [pngquant()],
+      }))
+    // Check for changes
+      .pipe($.changed(`${paths.to.assets.out}/images`))
+    // Save files
+      .pipe(gulp.dest(`${paths.to.assets.out}/images`));
+  }
 });
