@@ -8,10 +8,6 @@
 ![javascript style guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)
 [![Say Thanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/NicholasAdamou)
 
-Starter Kit is an opinionated build automation for front-end web development based on [Gulp](http://gulpjs.com/), [Node](https://nodejs.org/), [NPM](https://www.npmjs.com/), [Bower](http://bower.io/), [Babel](https://babeljs.io/), [SASS](http://sass-lang.com/), and [Pug](https://pugjs.org/).
-
-_⚠️ Note: Starter Kit is simply a guideline and it doesn't solve everything. It is up to you to modify whatever necessary to achieve your project goals._
-
 </div>
 
 ## Table of Contents
@@ -51,6 +47,8 @@ _⚠️ Note: Starter Kit is simply a guideline and it doesn't solve everything.
 
 Starter Kit is a simple, responsive boilerplate to kickstart any responsive project.
 It is built on [Scotch\box](https://github.com/scotch-io/scotch-box), to provide a simplistic start to any web development project. This kit is built to be used in conjunction with [Gulp](http://gulpjs.com/) and [Vagrant](https://www.vagrantup.com/) to automate different tasks as a web developer.
+
+_⚠️ Note: Starter Kit is simply a guideline and it doesn't solve everything. It is up to you to modify whatever necessary to achieve your project goals._
 
 ## Technologies
 
