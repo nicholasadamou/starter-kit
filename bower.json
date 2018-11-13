@@ -1,11 +1,12 @@
 {
-    "name": "starter-kit",
-    "dependencies": {
+	"name": "starter-kit",
+	"dependencies": {
 		"animate-css": "latest",
+		"babel-polyfill": "latest",
 		"brand-colors": "latest",
 		"colors": "latest",
 		"normalize-css": "latest",
 		"skeleton": "latest",
 		"jquery": "latest"
-    }
+	}
 }

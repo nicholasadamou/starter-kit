@@ -1,18 +1,17 @@
-const gulp = require('gulp');
-const $ = require('gulp-load-plugins')({ lazy: true });
+const gulp = require('gulp')
+const $ = require('gulp-load-plugins')({ lazy: true })
 
-const autoprefixer = require('autoprefixer');
-const rucksack = require('rucksack-css');
-const bourbon = require('node-bourbon');
-const neat = require('node-neat');
-const lost = require('lost');
+const autoprefixer = require('autoprefixer')
+const rucksack = require('rucksack-css')
+const bourbon = require('node-bourbon')
+const neat = require('node-neat')
+const lost = require('lost')
 
-const paths = require('../../paths.js');
-const config = require('../../config.js')();
+const paths = require('../../paths.js')
+const config = require('../../config.js')()
 
 gulp.task('sass', () => {
-  const env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production');
-
+  const env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production')
 
   const sass = {
     sourceComments: (config.sassOptions.sourceComments).trim().toLowerCase() ? !env : '',
@@ -21,31 +20,18 @@ gulp.task('sass', () => {
     precision: config.sassOptions.precision || 3,
     includePaths: [
       bourbon.includePaths,
-      neat.includePaths,
+      neat.includePaths
     ],
-    errLogToConsole: true,
-  };
-
+    errLogToConsole: true
+  }
 
   const plugins = [
     lost(),
     rucksack(),
-    autoprefixer({
-      browsers: [
-        '> 1%',
-        'last 2 versions',
-        'firefox >= 4',
-        'safari 7',
-        'safari 8',
-        'IE 8',
-        'IE 9',
-        'IE 10',
-        'IE 11',
-      ],
-    }),
-  ];
+    autoprefixer()
+  ]
 
-  console.log(`-> Compiling SASS for ${config.environment}`);
+  console.log(`-> Compiling SASS for ${config.environment}`)
 
   if (env) {
     // Select files
@@ -62,13 +48,13 @@ gulp.task('sass', () => {
       .pipe($.include({
         includePaths: [
           `${config.root}/bower_components`,
-          `${config.root}/node_modules`,
-        ],
+          `${config.root}/node_modules`
+        ]
       }))
     // Save sourcemaps
-      .pipe($.sourcemaps.write(paths.to.sass.out))
+      .pipe($.sourcemaps.write('.'))
     // Save unminified file
-      .pipe(gulp.dest(`${paths.to.sass.out}`));
+      .pipe(gulp.dest(`${paths.to.sass.out}`))
   } else {
     // Select files
     gulp.src(`${paths.to.sass.in}/*.scss`)
@@ -82,8 +68,8 @@ gulp.task('sass', () => {
       .pipe($.include({
         includePaths: [
           `${config.root}/bower_components`,
-          `${config.root}/node_modules`,
-        ],
+          `${config.root}/node_modules`
+        ]
       }))
     // Show file-size before compression
       .pipe($.size({ title: 'sass In Size' }))
@@ -93,9 +79,9 @@ gulp.task('sass', () => {
       .pipe($.size({ title: 'sass Out Size' }))
     // Append suffix
       .pipe($.rename({
-        suffix: '.min',
+        suffix: '.min'
       }))
     // Save minified file
-      .pipe(gulp.dest(`${paths.to.sass.out}`));
+      .pipe(gulp.dest(`${paths.to.sass.out}`))
   }
-});
+})

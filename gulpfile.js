@@ -3,7 +3,7 @@
  *  Feel free to modify this file as you need.
  *  If you find any bugs or errors, please submit an issue.
  *
- *  Copyright 2017 Nicholas Adamou. All rights reserved.
+ *  Copyright 2018 Nicholas Adamou. All rights reserved.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -25,4 +25,4 @@
  * @version 1.0.0
  */
 
-require('./gulp');
+require('./gulp')

@@ -1,15 +1,15 @@
-'use-strict';
+'use-strict'
 
-const gulp = require('gulp');
-const $ = require('gulp-load-plugins')({ lazy: true });
+const gulp = require('gulp')
+const $ = require('gulp-load-plugins')({ lazy: true })
 
-const paths = require('../../paths.js');
-const config = require('../../config.js')();
+const paths = require('../../paths.js')
+const config = require('../../config.js')()
 
 gulp.task('vendors', () => {
-  const env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production');
+  const env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production')
 
-  console.log(`-> Compiling Javascript Plugins for ${config.environment}`);
+  console.log(`-> Compiling Javascript Plugins for ${config.environment}`)
 
   if (env) {
     // Select files
@@ -18,11 +18,11 @@ gulp.task('vendors', () => {
       .pipe($.include({
         includePaths: [
           `${config.root}/bower_components`,
-          `${config.root}/node_modules`,
-        ],
+          `${config.root}/node_modules`
+        ]
       }))
     // Save files
-      .pipe(gulp.dest(`${paths.to.vendors.out}`));
+      .pipe(gulp.dest(`${paths.to.vendors.out}`))
   } else {
     // Select files
     gulp.src(`${paths.to.vendors.in}/bundle.js`)
@@ -30,8 +30,8 @@ gulp.task('vendors', () => {
       .pipe($.include({
         includePaths: [
           `${config.root}/bower_components`,
-          `${config.root}/node_modules`,
-        ],
+          `${config.root}/node_modules`
+        ]
       }))
     // Show file-size before compression
       .pipe($.size({ title: 'Javascript In Size' }))
@@ -41,9 +41,9 @@ gulp.task('vendors', () => {
       .pipe($.size({ title: 'Javascript Out Size' }))
     // Append suffix
       .pipe($.rename({
-        suffix: '.min',
+        suffix: '.min'
       }))
     // Save files
-      .pipe(gulp.dest(`${paths.to.vendors.out}`));
+      .pipe(gulp.dest(`${paths.to.vendors.out}`))
   }
-});
+})

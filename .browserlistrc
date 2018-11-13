@@ -1,0 +1,12 @@
+# Browsers we support via Babel, Autoprefixer etc.
+# https://github.com/ai/browserslist
+
+> 1%
+last 2 versions
+firefox >= 4
+safari 7
+safari 8
+IE 8
+IE 9
+IE 10
+IE 11

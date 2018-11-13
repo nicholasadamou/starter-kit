@@ -1,21 +1,21 @@
-'use-strict';
+'use-strict'
 
-const gulp = require('gulp');
-const $ = require('gulp-load-plugins')({ lazy: true });
+const gulp = require('gulp')
+const $ = require('gulp-load-plugins')({ lazy: true })
 
-const paths = require('../../paths.js');
+const paths = require('../../paths.js')
 
 gulp.task('misc', () => {
-  console.log('-> Updating misc. files');
+  console.log('-> Updating misc. files')
 
   // Select files
   gulp.src([
-    `${paths.to.assets.in}/misc/**/*`,
+    `${paths.to.assets.in}/misc/**/*`
   ], {
-    dot: true,
+    dot: true
   })
   // Check for changes
     .pipe($.changed(paths.to.build))
   // Save files
-    .pipe(gulp.dest(paths.to.build));
-});
+    .pipe(gulp.dest(paths.to.build))
+})

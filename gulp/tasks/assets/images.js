@@ -1,17 +1,17 @@
-'use-strict';
+'use-strict'
 
-const gulp = require('gulp');
-const $ = require('gulp-load-plugins')({ lazy: true });
+const gulp = require('gulp')
+const $ = require('gulp-load-plugins')({ lazy: true })
 
-const pngquant = require('imagemin-pngquant');
+const pngquant = require('imagemin-pngquant')
 
-const paths = require('../../paths.js');
-const config = require('../../config.js')();
+const paths = require('../../paths.js')
+const config = require('../../config.js')()
 
 gulp.task('images', () => {
-  const env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production');
+  const env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production')
 
-  console.log(`-> Updating images for ${config.environment}`);
+  console.log(`-> Updating images for ${config.environment}`)
 
   if (env) {
     // Select files
@@ -19,7 +19,7 @@ gulp.task('images', () => {
     // Check for changes
       .pipe($.changed(`${paths.to.assets.out}/images`))
     // Save files
-      .pipe(gulp.dest(`${paths.to.assets.out}/images`));
+      .pipe(gulp.dest(`${paths.to.assets.out}/images`))
   } else {
     // Select files
     gulp.src(`${paths.to.assets.in}/images/**/*`)
@@ -28,11 +28,11 @@ gulp.task('images', () => {
         progressive: true,
         interlaced: true,
         svgoPlugins: [{ removeViewBox: false }],
-        use: [pngquant()],
+        use: [pngquant()]
       }))
     // Check for changes
       .pipe($.changed(`${paths.to.assets.out}/images`))
     // Save files
-      .pipe(gulp.dest(`${paths.to.assets.out}/images`));
+      .pipe(gulp.dest(`${paths.to.assets.out}/images`))
   }
-});
+})

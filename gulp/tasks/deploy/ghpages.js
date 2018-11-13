@@ -1,15 +1,15 @@
-'use-strict';
+'use-strict'
 
-const gulp = require('gulp');
-const $ = require('gulp-load-plugins')({ lazy: true });
+const gulp = require('gulp')
+const $ = require('gulp-load-plugins')({ lazy: true })
 
-const argv = require('argv');
+const argv = require('argv')
 
-const paths = require('../../paths.js');
-const config = require('../../config.js')();
+const paths = require('../../paths.js')
+const config = require('../../config.js')()
 
 gulp.task('ghpages', ['build'], () => {
-  console.log('->  Deploying to Github Pages');
+  console.log('->  Deploying to Github Pages')
   // To deploy with Travis CI:
   //   1. Generate OAuth token on GitHub > Settings > Application page
   //   2. Encrypt and save that token into the `.travis.yml` file by running:
@@ -20,6 +20,6 @@ gulp.task('ghpages', ['build'], () => {
     .pipe($.ghPages({
       remoteUrl: `https://${process.env.GITHUB_TOKEN
       }@github.com/${config.GHPAGES.username}/${config.GHPAGES.repo}.git`,
-      branch: 'gh-pages',
-    }));
-});
+      branch: 'gh-pages'
+    }))
+})

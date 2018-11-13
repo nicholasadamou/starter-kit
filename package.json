@@ -10,23 +10,24 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git@github.com:nicholasadamou/Starter-Kit.git"
+		"url": "git@github.com:nicholasadamou/starter-kit.git"
 	},
 	"license": "MIT",
 	"scripts": {
-		"install-dependencies": "yarn install && bower cache clean && bower install"
+		"install-dependencies": "yarn install && bower cache clean && bower install",
+		"clean": "sudo rm -rf node_modules/ bower_components/ yarn.lock package-lock.json"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.1.5",
-		"@babel/preset-env": "^7.1.5",
+		"@babel/core": "^7.0.0",
+		"@babel/preset-env": "^7.0.0",
 		"babel-eslint": "^10.0.1",
-		"babel-preset-latest": "^6.24.1",
+		"babel-preset-env": "^1.7.0",
 		"bower": "^1.8.2",
-		"eslint-config-airbnb": "^17.1.0",
+		"eslint-config-standard": "^12.0.0",
 		"eslint-plugin-import": "^2.14.0",
-		"eslint-plugin-jsx-a11y": "^6.1.2",
-		"eslint-plugin-prettier": "^3.0.0",
-		"eslint-plugin-react": "^7.11.1",
+		"eslint-plugin-node": "^8.0.0",
+		"eslint-plugin-promise": "^4.0.1",
+		"eslint-plugin-standard": "^4.0.0",
 		"gulp-babel": "^8.0.0",
 		"gulp-changed": "^3.2.0",
 		"gulp-cssnano": "^2.1.2",
@@ -58,27 +59,31 @@
 	},
 	"dependencies": {
 		"animate.css": "latest",
-		"autoprefixer": "^9.3.1",
 		"argv": "^0.0.2",
-		"bulma": "latest",
+		"autoprefixer": "^9.3.1",
+		"babel-polyfill": "^6.26.0",
 		"browser-sync": "^2.18.13",
+		"browserify": "^16.2.3",
+		"bulma": "latest",
 		"del": "^3.0.0",
 		"gulp": "^3.9.1",
 		"gulp-load-plugins": "^1.5.0",
 		"hamburgers": "latest",
 		"hover": "latest",
-		"isinviewport": "latest",
 		"imagemin-pngquant": "^6.0.0",
+		"isinviewport": "latest",
 		"jquery": "latest",
 		"lost": "^8.2.0",
-		"moment": "^2.22.2",
 		"minimist": "^1.2.0",
+		"moment": "^2.22.2",
 		"node-bourbon": "^4.2.8",
 		"node-neat": "^2.0.0-beta.0",
 		"psi": "^3.1.0",
 		"require-dir": "^1.1.0",
 		"rucksack-css": "^1.0.2",
 		"vanilla-lazyload": "latest",
-		"vinyl-ftp": "^0.6.0"
+		"vinyl-buffer": "^1.0.1",
+		"vinyl-ftp": "^0.6.0",
+		"vinyl-source-stream": "^2.0.0"
 	}
 }

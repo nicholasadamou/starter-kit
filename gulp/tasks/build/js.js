@@ -1,13 +1,17 @@
-'use-strict';
+'use-strict'
 
-const gulp = require('gulp');
-const $ = require('gulp-load-plugins')({ lazy: true });
+const gulp = require('gulp')
+const $ = require('gulp-load-plugins')({ lazy: true })
 
-const paths = require('../../paths.js');
-const config = require('../../config.js')();
+const browserify = require('browserify')
+const source = require('vinyl-source-stream')
+const buffer = require('vinyl-buffer')
+
+const paths = require('../../paths.js')
+const config = require('../../config.js')()
 
 gulp.task('eslint', () => {
-  console.log('-> Running eslint');
+  console.log('-> Running eslint')
 
   // Select files
   gulp.src(`${paths.to.js.in}/**/*.js`)
@@ -20,38 +24,52 @@ gulp.task('eslint', () => {
     .pipe($.eslint.format())
   // To have the process exit with an error code (1) on
   // lint error, return the stream and pipe to failAfterError last.
-    .pipe($.eslint.failAfterError());
-});
+    .pipe($.eslint.failAfterError())
+})
 
 gulp.task('js', ['eslint'], () => {
-  const env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production');
+  const env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production')
 
-  console.log(`-> Compiling JavaScript for ${config.environment}`);
+  console.log(`-> Compiling JavaScript for ${config.environment}`)
+
+  // Obtain a readable stream containing the processed browserified bundle
+  const bundle = browserify({
+    entries: paths.to.js.in,
+    debug: env
+  })
+    .bundle()
+  // Convert browserify stream to a gulp-readable steam & buffer
+    .pipe(source(config.js.name))
+    .pipe(buffer())
 
   if (env) {
-    // Select files
-    gulp.src(`${paths.to.js.in}/*.js`)
+    // Select bundle
+    bundle
     // Initialize sourcemaps
       .pipe($.sourcemaps.init())
     // Prevent pipe breaking caused by errors from gulp plugins
       .pipe($.plumber())
     // Concatenate includes
-      .pipe($.include())
+      .pipe($.include({
+        includePaths: [`${paths.to.js.in}`]
+      }))
     // Transpile
       .pipe($.babel())
     // Catch errors
       .pipe($.errorHandle())
     // Save sourcemaps
-      .pipe($.sourcemaps.write(paths.to.js.out))
+      .pipe($.sourcemaps.write('.'))
     // Save unminified file
-      .pipe(gulp.dest(`${paths.to.js.out}`));
+      .pipe(gulp.dest(`${paths.to.js.out}`))
   } else {
-    // Select files
-    gulp.src(`${paths.to.js.in}/*.js`)
+    // Select bundle
+    bundle
     // Prevent pipe breaking caused by errors from gulp plugins
       .pipe($.plumber())
     // Concatenate includes
-      .pipe($.include())
+      .pipe($.include({
+        includePaths: [`${paths.to.js.in}`]
+      }))
     // Transpile
       .pipe($.babel())
     // Catch errors
@@ -64,9 +82,9 @@ gulp.task('js', ['eslint'], () => {
       .pipe($.size({ title: 'Javascript Out Size' }))
     // Append suffix
       .pipe($.rename({
-        suffix: '.min',
+        suffix: '.min'
       }))
     // Save minified file
-      .pipe(gulp.dest(`${paths.to.js.out}`));
+      .pipe(gulp.dest(`${paths.to.js.out}`))
   }
-});
+})

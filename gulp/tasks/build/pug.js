@@ -1,17 +1,17 @@
-'use-strict';
+'use-strict'
 
-const gulp = require('gulp');
-const $ = require('gulp-load-plugins')({ lazy: true });
+const gulp = require('gulp')
+const $ = require('gulp-load-plugins')({ lazy: true })
 
-const moment = require('moment');
+const moment = require('moment')
 
-const paths = require('../../paths.js');
-const config = require('../../config.js')();
+const paths = require('../../paths.js')
+const config = require('../../config.js')()
 
 gulp.task('pug', () => {
-  const env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production');
+  const env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production')
 
-  console.log(`-> Compiling Pug Templates for ${config.environment}`);
+  console.log(`-> Compiling Pug Templates for ${config.environment}`)
 
   if (env) {
     // Select files
@@ -20,21 +20,21 @@ gulp.task('pug', () => {
       .pipe($.plumber())
     // Check which files have changed
       .pipe($.changed(paths.to.pug.in, {
-        extension: '.html',
+        extension: '.html'
       }))
     // Compile Pug
       .pipe($.pug({
         basedir: `${__dirname}/${paths.to.pug.in}`,
         pretty: (config.environment === 'development'),
         data: {
-          env: config.environment,
+          env: config.environment
         },
-        locals: { moment },
+        locals: { moment }
       }))
     // Catch errors
       .pipe($.errorHandle())
     // Save files
-      .pipe(gulp.dest(paths.to.build));
+      .pipe(gulp.dest(paths.to.build))
   } else {
     // Select files
     gulp.src(`${paths.to.pug.in}/*.pug`)
@@ -42,16 +42,16 @@ gulp.task('pug', () => {
       .pipe($.plumber())
     // Check which files have changed
       .pipe($.changed(paths.to.pug.in, {
-        extension: '.html',
+        extension: '.html'
       }))
     // Compile Pug
       .pipe($.pug({
         basedir: `${__dirname}/${paths.to.pug.in}`,
         pretty: (config.environment === 'development'),
         data: {
-          env: config.environment,
+          env: config.environment
         },
-        locals: { moment },
+        locals: { moment }
       }))
     // Catch errors
       .pipe($.errorHandle())
@@ -62,6 +62,6 @@ gulp.task('pug', () => {
     // Show file-size after compression
       .pipe($.size({ title: 'Pug Templates After Compression' }))
     // Save minified file
-      .pipe(gulp.dest(paths.to.build));
+      .pipe(gulp.dest(paths.to.build))
   }
-});
+})

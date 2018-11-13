@@ -1,15 +1,15 @@
-'use-strict';
+'use-strict'
 
-const gulp = require('gulp');
+const gulp = require('gulp')
 
-const del = require('del');
+const del = require('del')
 
-const paths = require('../../paths.js');
+const paths = require('../../paths.js')
 
 gulp.task('clean', () => {
-  console.log('-> Cleansing compiled files');
+  console.log('-> Cleansing compiled files')
 
   del.sync([
-    `${paths.to.build}*`,
-  ]);
-});
+    `${paths.to.build}*`
+  ])
+})
