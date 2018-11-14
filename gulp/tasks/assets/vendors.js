@@ -11,9 +11,11 @@ gulp.task('vendors', () => {
 
   console.log(`-> Compiling Javascript Plugins for ${config.environment}`)
 
+  let vendors = null
+
   if (env) {
     // Select files
-    gulp.src(`${paths.to.vendors.in}/bundle.js`)
+    vendors = gulp.src(`${paths.to.vendors.in}/bundle.js`)
     // Concatenate includes
       .pipe($.include({
         includePaths: [
@@ -25,7 +27,7 @@ gulp.task('vendors', () => {
       .pipe(gulp.dest(`${paths.to.vendors.out}`))
   } else {
     // Select files
-    gulp.src(`${paths.to.vendors.in}/bundle.js`)
+    vendors = gulp.src(`${paths.to.vendors.in}/bundle.js`)
     // Concatenate includes
       .pipe($.include({
         includePaths: [
@@ -45,5 +47,7 @@ gulp.task('vendors', () => {
       }))
     // Save files
       .pipe(gulp.dest(`${paths.to.vendors.out}`))
+
+    return vendors
   }
 })

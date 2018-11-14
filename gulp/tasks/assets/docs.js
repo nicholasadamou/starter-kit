@@ -5,7 +5,7 @@ const $ = require('gulp-load-plugins')({ lazy: true })
 
 const paths = require('../../paths.js')
 
-gulp.task('docs', () => {
+gulp.task('docs', (done) => {
   console.log('-> Updating docs')
 
   // Select files
@@ -14,4 +14,6 @@ gulp.task('docs', () => {
     .pipe($.changed(`${paths.to.assets.out}/docs`))
   // Save files
     .pipe(gulp.dest(`${paths.to.assets.out}/docs`))
+
+  done()
 })

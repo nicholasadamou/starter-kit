@@ -4,14 +4,15 @@ const gulp = require('gulp')
 
 const config = require('../../config.js')()
 
-gulp.task('help', () => {
+gulp.task('help', (done) => {
   console.log('')
   console.log("===== Help for Nicholas Adamou's Starter Kit' =====")
   console.log('')
   console.log('Usage: gulp [command]')
   console.log('The commands for the task runner are the following.')
   console.log('------------------------------------------------------')
-  console.log(`    clean: Removes all the compiled files in ${config.build}`)
+  console.log(`    clean:build: Removes all the compiled files in ${config.build}`)
+  console.log(`    clean:compiled-files: Removes all the compiled 'sass' & 'js' files in ${config.build}assets`)
   console.log('    ftp: Deploy to an FTP/SFTP server')
   console.log('    surge: Deploy to a Surge.sh domain')
   console.log('    ghpages: Deploy to Github-Pages')
@@ -31,4 +32,6 @@ gulp.task('help', () => {
   console.log('    help: Print a list of available Gulp tasks')
   console.log('    browserSync: Start the browserSync server')
   console.log('')
+
+  done()
 })

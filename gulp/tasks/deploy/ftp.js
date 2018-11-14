@@ -8,7 +8,7 @@ const ftp = require('vinyl-ftp')
 const paths = require('../../paths.js')
 const config = require('../../config.js')()
 
-gulp.task('ftp', ['build'], () => {
+gulp.task('ftp', gulp.series('build', () => {
   console.log(`-> Deploying to ftp://${config.FTP.host}`)
 
   const conn = ftp.create({
@@ -32,4 +32,4 @@ gulp.task('ftp', ['build'], () => {
       title: `Deployment  to ftp://${config.FTP.host} was successful!`,
       message: `Your project has been deployed to ftp://${config.FTP.host}.`
     }))
-})
+}))

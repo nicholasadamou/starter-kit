@@ -13,9 +13,11 @@ gulp.task('pug', () => {
 
   console.log(`-> Compiling Pug Templates for ${config.environment}`)
 
+  let pug = null
+
   if (env) {
     // Select files
-    gulp.src(`${paths.to.pug.in}/*.pug`)
+    pug = gulp.src(`${paths.to.pug.in}/*.pug`)
     // Prevent pipe breaking caused by errors from gulp plugins
       .pipe($.plumber())
     // Check which files have changed
@@ -30,6 +32,11 @@ gulp.task('pug', () => {
           env: config.environment
         },
         locals: { moment }
+      }))
+    // inline CSS & js
+      .pipe($.inlineSource({
+        compress: env,
+        rootpath: paths.to.build
       }))
     // Catch errors
       .pipe($.errorHandle())
@@ -37,7 +44,7 @@ gulp.task('pug', () => {
       .pipe(gulp.dest(paths.to.build))
   } else {
     // Select files
-    gulp.src(`${paths.to.pug.in}/*.pug`)
+    pug = gulp.src(`${paths.to.pug.in}/*.pug`)
     // Prevent pipe breaking caused by errors from gulp plugins
       .pipe($.plumber())
     // Check which files have changed
@@ -52,6 +59,11 @@ gulp.task('pug', () => {
           env: config.environment
         },
         locals: { moment }
+      }))
+    // inline CSS & js
+      .pipe($.inlineSource({
+        compress: env,
+        rootpath: paths.to.build
       }))
     // Catch errors
       .pipe($.errorHandle())
@@ -64,4 +76,6 @@ gulp.task('pug', () => {
     // Save minified file
       .pipe(gulp.dest(paths.to.build))
   }
+
+  return pug
 })

@@ -5,7 +5,7 @@ const $ = require('gulp-load-plugins')({ lazy: true })
 
 const paths = require('../../paths.js')
 
-gulp.task('misc', () => {
+gulp.task('misc', (done) => {
   console.log('-> Updating misc. files')
 
   // Select files
@@ -18,4 +18,6 @@ gulp.task('misc', () => {
     .pipe($.changed(paths.to.build))
   // Save files
     .pipe(gulp.dest(paths.to.build))
+
+  done()
 })

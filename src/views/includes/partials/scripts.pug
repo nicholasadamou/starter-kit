@@ -1,11 +1,11 @@
 //- JavaScript
 case env
   when "development"
-    script(src=vendors + "bundle.js")
-    script(src=js + "index.js")
+    script(src=vendors + "bundle.js" inline)
+    script(src=js + "index.js" inline)
   when "production"
-    script(src=vendors + "bundle.min.js")
-    script(src=js + "index.min.js")
+    script(src=vendors + "bundle.min.js" inline)
+    script(src=js + "index.min.js" inline)
 
 script(defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js")
 

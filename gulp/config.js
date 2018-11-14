@@ -4,17 +4,17 @@ module.exports = function () {
   // Configuration Options
   const config = {
     /**
-		 * This is the environment in which you are working on
-		 * Options are:
-		 * - development
-		 * - production
-		 * - empty string
-		 * For the development build, the output will be verbose.
-		 * For the production build, the output will be compress and minified
-		 * If it is set to an empty string the environment will be extract from
-		 * the NODE_ENV environment var.
-		 */
-    environment: 'development',
+ *    This is the environment in which you are working on
+ *    Options are:
+ *    - development
+ *    - production
+ *    - empty string
+ *    For the development build, the output will be verbose.
+ *    For the production build, the output will be compress and minified
+ *    If it is set to an empty string the environment will be extract from
+ *    the NODE_ENV environment var.
+ */
+    environment: 'production',
     FTP: {
       host: 'HOST',
       user: 'USER',
@@ -46,18 +46,18 @@ module.exports = function () {
     // They will be copied to the same dir on the dist folder.
     images: 'assets/images',
     /**
-	 * Pug directory. This is the dir where all the Pug files should live
-	 * Important: only *.pug files will be compiled in this exact dir and not any sub dir.
-	 * you could use a sub-dir to include partials and use the include command in Pug to included them.
-	 */
+ *    Pug directory. This is the dir where all the Pug files should live
+ *    Important: only *.pug files will be compiled in this exact dir and not any sub dir.
+ *    you could use a sub-dir to include partials and use the include command in Pug to included them.
+ */
     pug: {
       dir: 'views',
       name: 'index.pug'
     },
     /**
-		 * As this is a sass-based project, this is the dir for the sass files. Every file
-		 * under this dir will be watched for changes, but only the index file will be compiled.
-		 */
+ *     As this is a sass-based project, this is the dir for the sass files. Every file
+ *     under this dir will be watched for changes, but only the index file will be compiled.
+ */
     sass: {
       dir: 'sass',
       name: 'index.scss'
@@ -67,13 +67,13 @@ module.exports = function () {
     // This are the options that will be passed to the sass compiler
     sassOptions: {
       /**
-			 * This is how the compiled version of sass will look like
-			 * Output style options are:
-			 * - expanded
-			 * - nested
-			 * - compact
-			 * - compressed
-			 */
+ *      This is how the compiled version of sass will look like
+ *      Output style options are:
+ *      - expanded
+ *      - nested
+ *      - compact
+ *      - compressed
+ */
       outputStyle: 'expanded',
       // Source Mapping Support
       sourceComments: 'map',
@@ -87,10 +87,10 @@ module.exports = function () {
       name: 'index.js'
     },
     /**
-		 * This is the relative to build dir for vendors assets like jQuery. Vendors are
-		 * managed by bower and if the directory should be changed, you should change the
-		 * .bowerrc file in the root directory as well.
-		 */
+ *    This is the relative to build dir for vendors assets like jQuery. Vendors are
+ *    managed by bower and if the directory should be changed, you should change the
+ *    .bowerrc file in the root directory as well.
+ */
     vendors: 'vendors',
     // This is the browser sync options
     syncOptions: {

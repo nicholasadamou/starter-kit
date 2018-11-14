@@ -12,6 +12,6 @@ meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-sc
 //- CSS
 case env
   when "development"
-    link(href=css + "index.css", rel="stylesheet")
+    link(href=css + "index.css", rel="stylesheet" inline)
   when "production"
-    link(href=css + "index.min.css", rel="stylesheet")
+    link(href=css + "index.min.css", rel="stylesheet" inline)

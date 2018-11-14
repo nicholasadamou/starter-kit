@@ -135,10 +135,11 @@ To start using the kit, open the project on the code editor of your choice and s
 
 To compile and live-preview all of your changes, you have some commands that will help you. Here is a list of commands you should know.
 
-Every command has to be executed on the root directory of the project using the gulp command like `gulp clean` or `gulp build`.
+Every command has to be executed on the root directory of the project using the gulp command like `gulp clean:build` or `gulp build`.
 
 -   **start**: Compile and watch for changes (For dev.)
--   **clean**: Removes all the compiled files in public/
+-   **clean:build**: Removes all the compiled files in public/
+-   **clean:compiled-files**: Removes all the compiled 'sass' & 'js' files in public/assets
 -   **ftp**: Deploy to an FTP/SFTP server
 -   **surge**: Deploy to a Surge.sh domain
 -   **ghpages**: Deploy to Github-Pages

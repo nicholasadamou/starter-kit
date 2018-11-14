@@ -10,7 +10,7 @@ const buffer = require('vinyl-buffer')
 const paths = require('../../paths.js')
 const config = require('../../config.js')()
 
-gulp.task('eslint', () => {
+gulp.task('eslint', (done) => {
   console.log('-> Running eslint')
 
   // Select files
@@ -25,9 +25,11 @@ gulp.task('eslint', () => {
   // To have the process exit with an error code (1) on
   // lint error, return the stream and pipe to failAfterError last.
     .pipe($.eslint.failAfterError())
+
+  done()
 })
 
-gulp.task('js', ['eslint'], () => {
+gulp.task('js', gulp.series('eslint', 'vendors', () => {
   const env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production')
 
   console.log(`-> Compiling JavaScript for ${config.environment}`)
@@ -87,4 +89,6 @@ gulp.task('js', ['eslint'], () => {
     // Save minified file
       .pipe(gulp.dest(`${paths.to.js.out}`))
   }
-})
+
+  return bundle
+}))

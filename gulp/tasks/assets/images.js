@@ -8,7 +8,7 @@ const pngquant = require('imagemin-pngquant')
 const paths = require('../../paths.js')
 const config = require('../../config.js')()
 
-gulp.task('images', () => {
+gulp.task('images', (done) => {
   const env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production')
 
   console.log(`-> Updating images for ${config.environment}`)
@@ -35,4 +35,6 @@ gulp.task('images', () => {
     // Save files
       .pipe(gulp.dest(`${paths.to.assets.out}/images`))
   }
+
+  done()
 })
