@@ -81,6 +81,12 @@ _⚠️ Note: Starter Kit is simply a guideline and it doesn't solve everything.
 npm install -g yarn bower gulp-cli gulp@next localtunnel
 ```
 
+If `yarn` is already installed:
+
+```bash
+yarn global add bower gulp-cli gulp@next localtunnel
+```
+
 To install `Virtualbox` and `Vagrant`:
 
 1. if on `Windows`, use [Chocolatey](https://chocolatey.org/):
