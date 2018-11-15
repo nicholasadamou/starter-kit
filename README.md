@@ -78,7 +78,7 @@ _⚠️ Note: Starter Kit is simply a guideline and it doesn't solve everything.
 -   [localtunnel](https://github.com/localtunnel/localtunnel)
 
 ```bash
-npm install -g yarn bower gulp localtunnel
+npm install -g yarn bower gulp-cli gulp@next localtunnel
 ```
 
 To install `Virtualbox` and `Vagrant`:
