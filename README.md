@@ -139,6 +139,8 @@ Private key: C:/dev/Starter-Kit/.vagrant/machines/default/virtualbox/private_key
 yarn update-dependencies # Uses `yarn-check` to update dependencies & devDependencies.
 ```
 
+👉 See [yhnavein/yarn-check](https://github.com/yhnavein/yarn-check) for more details.
+
 After the processes finish, you can now proceed into the `How to Use` section to understand each option the kit presents to you.
 
 ## How to Use
