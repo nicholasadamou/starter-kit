@@ -110,7 +110,7 @@ In order to start using this project, you need to clone/download it to your mach
 
 Now after you have cloned/downloaded the kit to a desirable location, you will need to navigate to the `Starter Kit` folder using terminal and execute the following commands to gather all the dependencies, bring up the vagrant box and open `Gulp Help`.
 
-```
+```bash
 vagrant up
 vagrant ssh
 cd /var/www
@@ -121,7 +121,7 @@ gulp help
 
 **Note**: **(`Windows` Users)** If after running `vagrant ssh` you are presented with the below error, please follow [How to use vagrant on windows](http://tech.osteel.me/posts/2015/01/25/how-to-use-vagrant-on-windows.html) guide for connecting to the VM via SSH.
 
-```
+```text
 The `ssh` executable found in the PATH is a PuTTY Link SSH client.
 Vagrant is only compatible with OpenSSH SSH clients. Please install
 an OpenSSH SSH client or manually SSH in using your existing client
@@ -131,6 +131,12 @@ Host: 127.0.0.1
 Port: 2222
 Username: vagrant
 Private key: C:/dev/Starter-Kit/.vagrant/machines/default/virtualbox/private_key
+```
+
+**Note**: ⬆ **(Updating & Upgrading Dependencies)** If you would like to update & upgrade all of the `dependencies` & `devDependencies` for this project, please run the following snippet:
+
+```bash
+yarn update-dependencies # Uses `yarn-check` to update dependencies & devDependencies.
 ```
 
 After the processes finish, you can now proceed into the `How to Use` section to understand each option the kit presents to you.

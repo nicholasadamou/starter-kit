@@ -15,6 +15,7 @@
 	"license": "MIT",
 	"scripts": {
 		"install-dependencies": "yarn install && bower cache clean && bower install",
+		"update-dependencies": "yarn-check -u",
 		"clean": "sudo rm -rf node_modules/ bower_components/ yarn.lock package-lock.json"
 	},
 	"devDependencies": {
@@ -57,7 +58,8 @@
 		"postcss-cli": "^6.0.1",
 		"run-sequence": "^2.2.1",
 		"undertaker-forward-reference": "^1.0.2",
-		"yarn": "^1.12.3"
+		"yarn": "^1.12.3",
+		"yarn-check": "^0.0.3"
 	},
 	"dependencies": {
 		"animate.css": "latest",
