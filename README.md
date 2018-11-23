@@ -7,6 +7,7 @@
 ![license](https://img.shields.io/apm/l/vim-mode.svg)
 [![DevDependencies](https://img.shields.io/david/dev/nicholasadamou/Starter-Kit.svg?style=flat-square)](https://david-dm.org/nicholasadamou/Starter-Kit#info=devDependencies)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=nicholasadamou/Starter-Kit)](https://dependabot.com)
+[![Known Vulnerabilities](https://snyk.io/test/github/nicholasadamou/Starter-Kit/badge.svg?targetFile=package.json)](https://snyk.io/test/github/nicholasadamou/Starter-Kit?targetFile=package.json)
 ![javascript style guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)
 [![Say Thanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/NicholasAdamou)
 
