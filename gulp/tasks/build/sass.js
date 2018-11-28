@@ -6,6 +6,7 @@ const rucksack = require('rucksack-css')
 const bourbon = require('node-bourbon')
 const neat = require('node-neat')
 const lost = require('lost')
+const postcssPresetEnv = require('postcss-preset-env')
 
 const paths = require('../../paths.js')
 const config = require('../../config.js')()
@@ -28,7 +29,8 @@ gulp.task('sass', (done) => {
   const plugins = [
     lost(),
     rucksack(),
-    autoprefixer()
+    autoprefixer(),
+    postcssPresetEnv()
   ]
 
   console.log(`-> Compiling SASS for ${config.environment}`)

@@ -58,6 +58,7 @@
     "main-bower-files": "^2.13.1",
     "path": "^0.12.7",
     "postcss-cli": "^6.0.1",
+    "postcss-preset-env": "^6.4.0",
     "run-sequence": "^2.2.1",
     "undertaker-forward-reference": "^1.0.2",
     "yarn": "^1.12.3",
@@ -87,11 +88,11 @@
     "psi": "^3.1.0",
     "require-dir": "^1.1.0",
     "rucksack-css": "^1.0.2",
+    "snyk": "^1.110.2",
     "vanilla-lazyload": "latest",
     "vinyl-buffer": "^1.0.1",
     "vinyl-ftp": "^0.6.0",
-    "vinyl-source-stream": "^2.0.0",
-    "snyk": "^1.110.2"
+    "vinyl-source-stream": "^2.0.0"
   },
   "snyk": true
 }
