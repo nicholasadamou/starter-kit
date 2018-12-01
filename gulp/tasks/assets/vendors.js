@@ -47,7 +47,7 @@ gulp.task('vendors', () => {
       }))
     // Save files
       .pipe(gulp.dest(`${paths.to.vendors.out}`))
-
-    return vendors
   }
+
+  return vendors
 })

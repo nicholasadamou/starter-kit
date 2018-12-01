@@ -33,11 +33,6 @@ gulp.task('pug', () => {
         },
         locals: { moment }
       }))
-    // inline CSS & js
-      .pipe($.inlineSource({
-        compress: env,
-        rootpath: paths.to.build
-      }))
     // Catch errors
       .pipe($.errorHandle())
     // Save files

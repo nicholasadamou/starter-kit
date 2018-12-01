@@ -30,7 +30,11 @@ gulp.task('browsersync', (done) => {
   gulp.watch(`${paths.to.js.in}/**/*.js`, gulp.series('js'))
   gulp.watch(`${paths.to.sass.in}/**/*.scss`, gulp.series('sass'))
   gulp.watch(`${paths.to.vendors}/*.js`, gulp.series('vendors'))
-  gulp.watch(`${paths.to.pug.in}/**/*.pug`, gulp.series('pug'))
+  // Because we inline the CSS and clean the compiled files
+  // from the build folder, we need to re-compile each file-type
+  // and re-inject into the HTML document on each save then, finally
+  // re-clean the build directory.
+  gulp.watch(`${paths.to.pug.in}/**/*.pug`, gulp.series('sass', 'js', 'vendors', 'pug', 'clean:compiled-files'))
 
   done()
 })

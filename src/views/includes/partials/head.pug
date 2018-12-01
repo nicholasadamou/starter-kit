@@ -10,8 +10,46 @@ meta(name="tags" content=tags)
 meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
 
 //- CSS
+//- Because we change between injecting the CSS and JS into the compiled HTML document
+//- during different environments, we must make all `url()` paths relative to the
+//- root of the `public` or 'build' directory. Thus, we inline the `@font-face` CSS
+//- rules within the HTML document.
+style.
+	@font-face {
+		font-family: 'Roboto Slab';
+		font-display: auto;
+		font-style: normal;
+		font-weight: 100;
+		src: local('Roboto Slab Thin'), local('RobotoSlab-Thin'),
+			url('./assets/fonts/Roboto-Slab/woff2/RobotoSlab-Thin.woff2') format('woff2'),
+			url('./assets/fonts/Roboto-Slab/ttf/RobotoSlab-Thin.ttf') format('truetype');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+2215;
+	}
+
+	@font-face {
+		font-family: 'Roboto Slab';
+		font-display: auto;
+		font-style: normal;
+		font-weight: 300;
+		src: local('Roboto Slab Light'), local('RobotoSlab-Light'),
+			url('./assets/fonts/Roboto-Slab/woff2/RobotoSlab-Light.woff2') format('woff2'),
+			url('./assets/fonts/Roboto-Slab/ttf/RobotoSlab-Light.ttf') format('truetype');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+2215;
+	}
+
+	@font-face {
+		font-family: 'Roboto Slab';
+		font-display: auto;
+		font-style: normal;
+		font-weight: 400;
+		src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'),
+			url('./assets/fonts/Roboto-Slab/woff2/RobotoSlab-Regular.woff2') format('woff2'),
+			url('./assets/fonts/Roboto-Slab/ttf/RobotoSlab-Regular.ttf') format('truetype');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+2215;
+	}
+	
 case env
-  when "development"
-    link(href=css + "index.css", rel="stylesheet" inline)
-  when "production"
-    link(href=css + "index.min.css", rel="stylesheet" inline)
+	when "development"
+		link(href=css + "index.css", rel="stylesheet")
+	when "production"
+		link(href=css + "index.min.css", rel="stylesheet" inline)

@@ -1,0 +1,21 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+:root {
+	--color-copy: #{$copy};
+	--color-white: #{$white};
+}
+
+body {
+	font-family: $primary;
+	color: var(--color-copy);
+	text-size-adjust: 100%;
+
+	background: var(--color-white);
+}

@@ -1,8 +1,8 @@
 //- JavaScript
 case env
   when "development"
-    script(src=vendors + "bundle.js" inline)
-    script(src=js + "index.js" inline)
+    script(src=vendors + "bundle.js")
+    script(src=js + "index.js")
   when "production"
     script(src=vendors + "bundle.min.js" inline)
     script(src=js + "index.min.js" inline)
