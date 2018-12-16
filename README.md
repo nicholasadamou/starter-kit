@@ -21,7 +21,7 @@
 1. [Install](#install)
 1. [Set Up/Workflow](#set-upworkflow)
 1. [How to Use](#how-to-use)
-1. [package.json](#package.json)
+1. [package.json](#packagejson)
 1. [Paths](#paths)
 1. [Header](#Header)
 1. [Build](#build)
