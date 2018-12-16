@@ -9,6 +9,7 @@ const lost = require('lost')
 const postcssPresetEnv = require('postcss-preset-env')
 
 const paths = require('../../paths.js')
+const banner = require('../../banner.js')()
 const config = require('../../config.js')()
 
 gulp.task('sass', (done) => {
@@ -42,7 +43,9 @@ gulp.task('sass', (done) => {
     sass = gulp.src(`${paths.to.sass.in}/*.scss`)
     // Prevent pipe breaking caused by errors from gulp plugins
       .pipe($.plumber())
-    // Initialize sourcemaps
+    // Add file-header
+      .pipe($.header(banner.default, { package: config.pkg }))
+    // Initialize sourcemaps *after* header
       .pipe($.sourcemaps.init())
     // Compile Sass
       .pipe($.sass(options).on('error', $.sass.logError))
@@ -64,6 +67,8 @@ gulp.task('sass', (done) => {
     sass = gulp.src(`${paths.to.sass.in}/*.scss`)
     // Prevent pipe breaking caused by errors from gulp plugins
       .pipe($.plumber())
+    // Add file-header
+      .pipe($.header(banner.min, { package: config.pkg }))
     // Compile Sass
       .pipe($.sass(options).on('error', $.sass.logError))
     // Add vendor prefixes

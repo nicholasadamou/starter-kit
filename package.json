@@ -37,6 +37,7 @@
     "gulp-error-handle": "^1.0.0",
     "gulp-eslint": "^5.0.0",
     "gulp-gh-pages": "^0.5.4",
+    "gulp-header": "^2.0.7",
     "gulp-htmlmin": "^5.0.1",
     "gulp-imagemin": "^5.0.3",
     "gulp-include": "^2.3.1",

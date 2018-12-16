@@ -8,6 +8,7 @@ const source = require('vinyl-source-stream')
 const buffer = require('vinyl-buffer')
 
 const paths = require('../../paths.js')
+const banner = require('../../banner.js')()
 const config = require('../../config.js')()
 
 gulp.task('eslint', (done) => {
@@ -47,10 +48,12 @@ gulp.task('js', gulp.series('eslint', 'vendors', () => {
   if (env) {
     // Select bundle
     bundle
-    // Initialize sourcemaps
-      .pipe($.sourcemaps.init())
     // Prevent pipe breaking caused by errors from gulp plugins
       .pipe($.plumber())
+    // Add file-header
+      .pipe($.header(banner.default, { package: config.pkg }))
+    // Initialize sourcemaps *after* header
+      .pipe($.sourcemaps.init())
     // Concatenate includes
       .pipe($.include({
         includePaths: [`${paths.to.js.in}`]
@@ -68,6 +71,8 @@ gulp.task('js', gulp.series('eslint', 'vendors', () => {
     bundle
     // Prevent pipe breaking caused by errors from gulp plugins
       .pipe($.plumber())
+    // Add file-header
+      .pipe($.header(banner.min, { package: config.pkg }))
     // Concatenate includes
       .pipe($.include({
         includePaths: [`${paths.to.js.in}`]

@@ -21,6 +21,9 @@
 1. [Install](#install)
 1. [Set Up/Workflow](#set-upworkflow)
 1. [How to Use](#how-to-use)
+1. [package.json](#package.json)
+1. [Paths](#paths)
+1. [Header](#Header)
 1. [Build](#build)
     1. [Environments](#environments)
         1. [Development](#development)
@@ -48,8 +51,8 @@
 
 ## About
 
-Starter Kit is a simple, responsive boilerplate to kickstart any responsive project.
-It is built on [Scotch\box](https://github.com/scotch-io/scotch-box), to provide a simplistic start to any web development project. This kit is built to be used in conjunction with [Gulp](http://gulpjs.com/) and [Vagrant](https://www.vagrantup.com/) to automate different tasks as a web developer.
+Starter Kit is a simple, responsive boilerplate to kick-start any responsive project.
+It is built on [Scotch\box](https://github.com/scotch-io/scotch-box), to provide a simplistic start to any web development project. This kit is built to be used in conjunction with [Gulp](http://gulpjs.com/) v4.x and [Vagrant](https://www.vagrantup.com/) to automate different tasks as a web developer.
 
 _⚠️ Note: Starter Kit is simply a guideline and it doesn't solve everything. It is up to you to modify whatever necessary to achieve your project goals._
 
@@ -79,6 +82,8 @@ _⚠️ Note: Starter Kit is simply a guideline and it doesn't solve everything.
 -   [Bower](https://bower.io/)
 -   [localtunnel](https://github.com/localtunnel/localtunnel)
 
+️️⚠️ _**Note:** if you've previously installed Gulp globally, run `npm rm --global gulp` to remove it. [Details here.](https://medium.com/gulpjs/gulp-sips-command-line-interface-e53411d4467)_
+
 ```bash
 npm install -g yarn bower gulp-cli gulp@next localtunnel
 ```
@@ -102,7 +107,7 @@ To install `Virtualbox` and `Vagrant`:
 
 **Note**: **(`Windows` Users)** In order for **`localtunnel`** to work properly, please configure `Windows Firewall` to _allow_ `port 3000, 3001` to _allow_ **in-bound** and **out-bound** connections (`port 3000, 3001` is **Browsersync**'s default port allocation). For _Security_ reasons, only _allow_ **in-bound** and **out-bound** connections on `port 3000, 3001` on your home network.
 
-Gulp is the process that will run all the task of compilation, watchers, and others. Bower will get the dependencies for the client-side like jQuery. Yarn is an alternative to npm for dependency managment. It is much more reliable when compared to npm, so we will use yarn for dependency management instead of npm. Virtualbox and Vagrant are used for the spin-up development environment. Those are the only requirements to run this project.
+Gulp is the process that will run all the task of compilation, watchers, and others. Bower will get the dependencies for the client-side like jQuery. Yarn is an alternative to npm for dependency management. It is much more reliable when compared to npm, so we will use yarn for dependency management instead of npm. Virtualbox and Vagrant are used for the spin-up development environment. Those are the only requirements to run this project.
 
 ## Install
 
@@ -175,6 +180,94 @@ Every command has to be executed on the root directory of the project using the 
 -   **browserSync**: Start the browser-sync server
 
 If you are in the development process, the `gulp start` command is the best option for you. Go to the project folder in the console and execute `gulp start`, it will compile the project and start server that will refresh every time you change something in the code. The command will be waiting for changes and will tell you how to access the project from local and public url. Every browser that points to that url will be auto refreshed. As an extra feature for testing purpose any interaction on one browser will be reflected on any others. Try it on a phone, tablet, and pc at the same time.
+
+## package.json
+
+The `package.json` file holds all of the details about your project.
+
+Some information is automatically pulled in from it and added to a header that's injected into the top of your JavaScript and CSS files.
+
+```json
+{
+	"name": "project-name",
+	"version": "0.0.1",
+	"description": "A description for your project.",
+	"author": {
+		"name": "YOUR NAME",
+		"url": "http://link-to-your-website.com"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "http://link-to-your-git-repo.com"
+	},
+	"devDependencies": {}
+}
+```
+
+⚠️ _**Note:** `devDependencies` are the dependencies Gulp uses. Don't change these or you'll break things._
+
+## Paths
+
+Adjust the `input` and `output` paths for all of the Gulp tasks under [`/gulp/config.js`](./gulp/config.js). Paths taken from [`./gulp/config.js`](./gulp/config.js) are then used within [`./gulp/paths.js`](./gulp/paths.js) as seen below. All paths are relative to the root of the project folder.
+
+```js
+"use-strict";
+
+const config = require("./config.js")();
+
+const src = config.root + config.src;
+const build = config.root + config.build;
+
+module.exports = {
+	to: {
+		src,
+		build,
+		assets: {
+			in: src + config.assets,
+			out: build + config.assets
+		},
+		vendors: {
+			in: src + config.vendors,
+			out: build + config.assets + config.vendors
+		},
+		js: {
+			in: src + config.js.dir,
+			out: build + config.assets + config.js.dir
+		},
+		sass: {
+			in: src + config.sass.dir,
+			out: build + config.css
+		},
+		pug: {
+			in: src + config.pug.dir,
+			out: build
+		}
+	}
+};
+```
+
+## Header
+
+Gulp auto-injects a header into all of your JavaScript and CSS files with details from your `package.json` file.
+
+Unminified versions get a fat header, while minified files get a one-liner. You can change what's included under [`./gulp/banner.js`](./gulp/banner.js).
+
+```js
+/**
+ * Template for banner to add to file headers.
+ */
+const banner = {
+	default: `/**!
+		  * <%= package.title %> v<%= package.version %>
+		  * <%= package.description %>
+		  * (c) ${new Date().getFullYear()} <%= package.author.name %>
+		  * <%= package.license %> License
+		  * <%= package.repository.url %>
+		  */`,
+	min: `/**! <%= package.title %> v<%= package.version %> | (c) ${new Date().getFullYear()} <%= package.author.name %> | <%= package.license %> License | <%= package.repository.url %> */`
+};
+```
 
 ## Build
 
