@@ -19,7 +19,14 @@ gulp.task('pug', () => {
     // Select files
     pug = gulp.src(`${paths.to.pug.in}/*.pug`)
     // Prevent pipe breaking caused by errors from gulp plugins
-      .pipe($.plumber())
+      .pipe(
+        $.plumber({
+          errorHandler: function (err) {
+            $.notify.onError('Error: <%= error.message %>')(err)
+            this.emit('end') // End stream if error is found.
+          }
+        })
+      )
     // Check which files have changed
       .pipe($.changed(paths.to.pug.in, {
         extension: '.html'
@@ -37,11 +44,19 @@ gulp.task('pug', () => {
       .pipe($.errorHandle())
     // Save files
       .pipe(gulp.dest(paths.to.build))
+      .pipe($.notify({ message: '\n\n✅   ===> PUG completed!\n\n', onLast: true }))
   } else {
     // Select files
     pug = gulp.src(`${paths.to.pug.in}/*.pug`)
     // Prevent pipe breaking caused by errors from gulp plugins
-      .pipe($.plumber())
+      .pipe(
+        $.plumber({
+          errorHandler: function (err) {
+            $.notify.onError('Error: <%= error.message %>')(err)
+            this.emit('end') // End stream if error is found.
+          }
+        })
+      )
     // Check which files have changed
       .pipe($.changed(paths.to.pug.in, {
         extension: '.html'
@@ -70,6 +85,7 @@ gulp.task('pug', () => {
       .pipe($.size({ title: 'Pug Templates After Compression' }))
     // Save minified file
       .pipe(gulp.dest(paths.to.build))
+      .pipe($.notify({ message: '\n\n✅   ===> PUG completed!\n\n', onLast: true }))
   }
 
   return pug

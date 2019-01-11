@@ -17,7 +17,14 @@ gulp.task('eslint', (done) => {
   // Select files
   gulp.src(`${paths.to.js.in}/**/*.js`)
   // Prevent pipe breaking caused by errors from gulp plugins
-    .pipe($.plumber())
+    .pipe(
+      $.plumber({
+        errorHandler: function (err) {
+          $.notify.onError('Error: <%= error.message %>')(err)
+          this.emit('end') // End stream if error is found.
+        }
+      })
+    )
   // Check for lint errors
     .pipe($.eslint())
   // eslint.format() outputs the lint results to the console.
@@ -26,6 +33,7 @@ gulp.task('eslint', (done) => {
   // To have the process exit with an error code (1) on
   // lint error, return the stream and pipe to failAfterError last.
     .pipe($.eslint.failAfterError())
+    .pipe($.notify({ message: '\n\n✅   ===> ESLINT completed!\n\n', onLast: true }))
 
   done()
 })
@@ -49,7 +57,14 @@ gulp.task('js', gulp.series('eslint', 'vendors', () => {
     // Select bundle
     bundle
     // Prevent pipe breaking caused by errors from gulp plugins
-      .pipe($.plumber())
+      .pipe(
+        $.plumber({
+          errorHandler: function (err) {
+            $.notify.onError('Error: <%= error.message %>')(err)
+            this.emit('end') // End stream if error is found.
+          }
+        })
+      )
     // Add file-header
       .pipe($.header(banner.default, { package: config.pkg }))
     // Initialize sourcemaps *after* header
@@ -66,11 +81,19 @@ gulp.task('js', gulp.series('eslint', 'vendors', () => {
       .pipe($.sourcemaps.write('.'))
     // Save unminified file
       .pipe(gulp.dest(`${paths.to.js.out}`))
+      .pipe($.notify({ message: '\n\n✅   ===> JS completed!\n\n', onLast: true }))
   } else {
     // Select bundle
     bundle
     // Prevent pipe breaking caused by errors from gulp plugins
-      .pipe($.plumber())
+      .pipe(
+        $.plumber({
+          errorHandler: function (err) {
+            $.notify.onError('Error: <%= error.message %>')(err)
+            this.emit('end') // End stream if error is found.
+          }
+        })
+      )
     // Add file-header
       .pipe($.header(banner.min, { package: config.pkg }))
     // Concatenate includes
@@ -93,6 +116,7 @@ gulp.task('js', gulp.series('eslint', 'vendors', () => {
       }))
     // Save minified file
       .pipe(gulp.dest(`${paths.to.js.out}`))
+      .pipe($.notify({ message: '\n\n✅   ===> JS completed!\n\n', onLast: true }))
   }
 
   return bundle

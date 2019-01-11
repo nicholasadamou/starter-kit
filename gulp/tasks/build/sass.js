@@ -42,7 +42,14 @@ gulp.task('sass', (done) => {
     // Select files
     sass = gulp.src(`${paths.to.sass.in}/*.scss`)
     // Prevent pipe breaking caused by errors from gulp plugins
-      .pipe($.plumber())
+      .pipe(
+        $.plumber({
+          errorHandler: function (err) {
+            $.notify.onError('Error: <%= error.message %>')(err)
+            this.emit('end') // End stream if error is found.
+          }
+        })
+      )
     // Add file-header
       .pipe($.header(banner.default, { package: config.pkg }))
     // Initialize sourcemaps *after* header
@@ -62,11 +69,19 @@ gulp.task('sass', (done) => {
       .pipe($.sourcemaps.write('.'))
     // Save unminified file
       .pipe(gulp.dest(`${paths.to.sass.out}`))
+      .pipe($.notify({ message: '\n\n✅   ===> SASS completed!\n\n', onLast: true }))
   } else {
     // Select files
     sass = gulp.src(`${paths.to.sass.in}/*.scss`)
     // Prevent pipe breaking caused by errors from gulp plugins
-      .pipe($.plumber())
+      .pipe(
+        $.plumber({
+          errorHandler: function (err) {
+            $.notify.onError('Error: <%= error.message %>')(err)
+            this.emit('end') // End stream if error is found.
+          }
+        })
+      )
     // Add file-header
       .pipe($.header(banner.min, { package: config.pkg }))
     // Compile Sass
@@ -92,6 +107,7 @@ gulp.task('sass', (done) => {
       }))
     // Save minified file
       .pipe(gulp.dest(`${paths.to.sass.out}`))
+      .pipe($.notify({ message: '\n\n✅   ===> SASS completed!\n\n', onLast: true }))
   }
 
   return sass
