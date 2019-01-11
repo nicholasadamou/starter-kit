@@ -69,7 +69,7 @@ gulp.task('sass', (done) => {
       .pipe($.sourcemaps.write('.'))
     // Save unminified file
       .pipe(gulp.dest(`${paths.to.sass.out}`))
-      .pipe($.notify({ message: '\n\n✅   ===> SASS completed!\n\n', onLast: true }))
+      .pipe($.notify({ message: '\n\n✅   ===> SASS completed!\n', onLast: true }))
   } else {
     // Select files
     sass = gulp.src(`${paths.to.sass.in}/*.scss`)
@@ -107,7 +107,7 @@ gulp.task('sass', (done) => {
       }))
     // Save minified file
       .pipe(gulp.dest(`${paths.to.sass.out}`))
-      .pipe($.notify({ message: '\n\n✅   ===> SASS completed!\n\n', onLast: true }))
+      .pipe($.notify({ message: '\n\n✅   ===> SASS completed!\n', onLast: true }))
   }
 
   return sass

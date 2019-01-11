@@ -33,7 +33,7 @@ gulp.task('eslint', (done) => {
   // To have the process exit with an error code (1) on
   // lint error, return the stream and pipe to failAfterError last.
     .pipe($.eslint.failAfterError())
-    .pipe($.notify({ message: '\n\n✅   ===> ESLINT completed!\n\n', onLast: true }))
+    .pipe($.notify({ message: '\n\n✅   ===> ESLINT completed!\n', onLast: true }))
 
   done()
 })
@@ -81,7 +81,7 @@ gulp.task('js', gulp.series('eslint', 'vendors', () => {
       .pipe($.sourcemaps.write('.'))
     // Save unminified file
       .pipe(gulp.dest(`${paths.to.js.out}`))
-      .pipe($.notify({ message: '\n\n✅   ===> JS completed!\n\n', onLast: true }))
+      .pipe($.notify({ message: '\n\n✅   ===> JS completed!\n', onLast: true }))
   } else {
     // Select bundle
     bundle
@@ -116,7 +116,7 @@ gulp.task('js', gulp.series('eslint', 'vendors', () => {
       }))
     // Save minified file
       .pipe(gulp.dest(`${paths.to.js.out}`))
-      .pipe($.notify({ message: '\n\n✅   ===> JS completed!\n\n', onLast: true }))
+      .pipe($.notify({ message: '\n\n✅   ===> JS completed!\n', onLast: true }))
   }
 
   return bundle

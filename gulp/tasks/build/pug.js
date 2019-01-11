@@ -44,7 +44,7 @@ gulp.task('pug', () => {
       .pipe($.errorHandle())
     // Save files
       .pipe(gulp.dest(paths.to.build))
-      .pipe($.notify({ message: '\n\n✅   ===> PUG completed!\n\n', onLast: true }))
+      .pipe($.notify({ message: '\n\n✅   ===> PUG completed!\n', onLast: true }))
   } else {
     // Select files
     pug = gulp.src(`${paths.to.pug.in}/*.pug`)
@@ -85,7 +85,7 @@ gulp.task('pug', () => {
       .pipe($.size({ title: 'Pug Templates After Compression' }))
     // Save minified file
       .pipe(gulp.dest(paths.to.build))
-      .pipe($.notify({ message: '\n\n✅   ===> PUG completed!\n\n', onLast: true }))
+      .pipe($.notify({ message: '\n\n✅   ===> PUG completed!\n', onLast: true }))
   }
 
   return pug
