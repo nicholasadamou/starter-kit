@@ -18,7 +18,8 @@
     "update-dependencies": "yarn-check -u",
     "clean": "sudo rm -rf node_modules/ bower_components/ yarn.lock package-lock.json",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "prepare": "npm run snyk-protect",
+    "prepublish": "npm run snyk-protect"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -90,7 +91,7 @@
     "psi": "^3.1.0",
     "require-dir": "^1.1.0",
     "rucksack-css": "^1.0.2",
-    "snyk": "^1.110.2",
+    "snyk": "^1.161.1",
     "vanilla-lazyload": "latest",
     "vinyl-buffer": "^1.0.1",
     "vinyl-ftp": "^0.6.0",
