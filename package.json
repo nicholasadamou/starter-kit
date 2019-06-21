@@ -14,12 +14,13 @@
   },
   "license": "MIT",
   "scripts": {
-    "install-dependencies": "yarn install && bower cache clean && bower install",
-    "update-dependencies": "yarn-check -u",
+    "install-dependencies": "npx yarn install && npx bower cache clean && npx bower install",
+    "update-dependencies": "npx yarn-check -u",
+	"start": "yarn gulp start",
     "clean": "sudo rm -rf node_modules/ bower_components/ yarn.lock package-lock.json",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect",
-    "prepublish": "npm run snyk-protect"
+    "prepare": "npx yarn run snyk-protect",
+    "prepublish": "npx yarn run snyk-protect"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
