@@ -1,6 +1,6 @@
 # Bugs, Questions, and Feature Requests
 
-Report bugs, ask questions, and request features using [GitHub Issues](https://github.com/cferdinandi/gulp-boilerplate/issues).
+Report bugs, ask questions, and request features using [GitHub Issues](https://github.com/nicholasadamou/Starter-Kit/issues).
 
 **Before posting, do a search to make sure your issue or question hasn't already been reported or discussed.** If no matching issue exists, go ahead and create one.
 
