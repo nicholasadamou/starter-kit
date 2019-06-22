@@ -20,9 +20,9 @@
 		"start": "npx gulp start",
 		"clean": "sudo rm -rf node_modules/ bower_components/ yarn.lock package-lock.json",
 		"snyk-protect": "snyk protect",
-		"prepare": "npx yarn run snyk-protect",
+		"prepare": "npm run snyk-protect",
 		"test": "snyk test",
-		"prepublish": "npx yarn run snyk-protect"
+		"prepublish": "npm run snyk-protect"
 	},
 	"devDependencies": {
 		"@babel/core": "7.4.5",
@@ -86,7 +86,7 @@
 		"hover": "latest",
 		"imagemin-pngquant": "^8.0.0",
 		"isinviewport": "latest",
-		"jquery": "latest",
+		"jquery": "3.4.0",
 		"lost": "8.3.1",
 		"minimist": "^1.2.0",
 		"moment": "2.24.0",
@@ -95,7 +95,7 @@
 		"psi": "^3.1.0",
 		"require-dir": "1.2.0",
 		"rucksack-css": "^1.0.2",
-		"snyk": "^1.161.1",
+		"snyk": "^1.180.0",
 		"vanilla-lazyload": "latest",
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-ftp": "^0.6.0",
