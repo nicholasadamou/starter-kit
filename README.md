@@ -121,6 +121,7 @@ vagrant up
 vagrant ssh
 cd /var/www
 gem install travis
+nvm install --lts
 yarn install-dependencies
 gulp help
 ```
