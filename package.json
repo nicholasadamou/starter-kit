@@ -21,6 +21,7 @@
 		"clean": "sudo rm -rf node_modules/ bower_components/ yarn.lock package-lock.json",
 		"snyk-protect": "snyk protect",
 		"prepare": "npx yarn run snyk-protect",
+		"test": "snyk test",
 		"prepublish": "npx yarn run snyk-protect"
 	},
 	"devDependencies": {
