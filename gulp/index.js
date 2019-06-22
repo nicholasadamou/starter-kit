@@ -31,7 +31,7 @@ gulp.task('assets', gulp.series('data', 'docs', 'fonts', 'images', 'media', 'mis
 if (config.environment === 'production') {
   // During 'production' we inline the CSS and JS,
   // so, we clean the compiled files from the build folder.
-  gulp.task('build', gulp.series('clean:build', 'assets', 'js', 'sass', 'pug', 'clean:compiled-files'))
+  gulp.task('build', gulp.series('clean:build', 'assets', 'js', 'sass', 'pug', 'generate-service-worker', 'clean:compiled-files'))
 } else {
   // During 'development' we do not inline the CSS or JS,
   // thus we do not need to clean the compiled files from the build folder.

@@ -1,3 +1,5 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable no-tabs */
 /* eslint-disable global-require */
 /* eslint-disable func-names */
 module.exports = function () {
