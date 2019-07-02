@@ -118,6 +118,7 @@ jspm_packages
 
 # Yarn Lock file
 yarn.lock
+yarn-error.log
 
 # NPM Lock file
 package-lock.json
@@ -130,3 +131,6 @@ bower_components
 
 ### Vagrant ###
 .vagrant
+
+# Misc.
+.env
