@@ -403,7 +403,7 @@ This project has some nice configuration options to meet all your needs. To conf
 
 ## License
 
-© 2018 Nicholas Adamou.
+© 2019 Nicholas Adamou.
 
 It is free software, and may be redistributed under the terms specified in the [LICENSE] file.
 
