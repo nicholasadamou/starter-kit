@@ -82,7 +82,7 @@
     "del": "^5.0.0",
     "dotenv": "^8.0.0",
     "gulp": "4.0.2",
-    "gulp-load-plugins": "1.6.0",
+    "gulp-load-plugins": "2.0.0",
     "hamburgers": "latest",
     "hover": "latest",
     "imagemin-pngquant": "^8.0.0",
