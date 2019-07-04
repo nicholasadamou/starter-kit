@@ -544,3 +544,36 @@ patch:
   SNYK-JS-AXIOS-174505:
     - browser-sync > localtunnel > axios:
         patched: '2019-05-06T02:21:20.947Z'
+  SNYK-JS-LODASH-450202:
+    - snyk > inquirer > lodash:
+        patched: '2019-07-04T02:14:11.605Z'
+    - snyk > lodash:
+        patched: '2019-07-04T02:14:11.605Z'
+    - browser-sync > easy-extender > lodash:
+        patched: '2019-07-04T02:14:11.605Z'
+    - snyk > snyk-nuget-plugin > lodash:
+        patched: '2019-07-04T02:14:11.605Z'
+    - rucksack-css > postcss-reporter > lodash:
+        patched: '2019-07-04T02:14:11.605Z'
+    - snyk > snyk-nodejs-lockfile-parser > lodash:
+        patched: '2019-07-04T02:14:11.605Z'
+    - snyk > snyk-mvn-plugin > lodash:
+        patched: '2019-07-04T02:14:11.605Z'
+    - snyk > snyk-config > lodash:
+        patched: '2019-07-04T02:14:11.605Z'
+    - psi > lodash:
+        patched: '2019-07-04T02:14:11.605Z'
+    - snyk > @snyk/dep-graph > lodash:
+        patched: '2019-07-04T02:14:11.605Z'
+    - psi > googleapis > async > lodash:
+        patched: '2019-07-04T02:14:11.605Z'
+    - snyk > snyk-nodejs-lockfile-parser > graphlib > lodash:
+        patched: '2019-07-04T02:14:11.605Z'
+    - snyk > snyk-go-plugin > graphlib > lodash:
+        patched: '2019-07-04T02:14:11.605Z'
+    - snyk > @snyk/dep-graph > graphlib > lodash:
+        patched: '2019-07-04T02:14:11.605Z'
+    - rucksack-css > laggard > postcss-reporter > lodash:
+        patched: '2019-07-04T02:14:11.605Z'
+    - snyk > snyk-php-plugin > @snyk/composer-lockfile-parser > lodash:
+        patched: '2019-07-04T02:14:11.605Z'
