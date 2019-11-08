@@ -93,7 +93,7 @@
     "moment": "2.24.0",
     "node-bourbon": "^4.2.8",
     "node-neat": "^2.0.0-beta.0",
-    "psi": "^3.1.0",
+    "psi": "^4.0.1",
     "require-dir": "1.2.0",
     "rucksack-css": "^1.0.2",
     "snyk": "^1.231.0",
