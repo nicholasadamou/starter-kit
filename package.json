@@ -68,7 +68,7 @@
     "run-sequence": "^2.2.1",
     "undertaker-forward-reference": "^1.0.2",
     "workbox-build": "^4.3.1",
-    "yarn": "1.21.0",
+    "yarn": "1.21.1",
     "yarn-check": "^0.0.3"
   },
   "dependencies": {
