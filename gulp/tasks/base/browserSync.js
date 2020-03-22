@@ -17,7 +17,7 @@ gulp.task('browsersync', (done) => {
     server: `${paths.to.build}`,
     ui: config.syncOptions.ui,
     open: config.syncOptions.open,
-    tunnel: config.syncOptions.tunnelName
+    // tunnel: config.syncOptions.tunnelName
   })
   // Watch for build changes and reload browser
   browserSync.watch(`${paths.to.build}/**/*`).on('change', browserSync.reload)

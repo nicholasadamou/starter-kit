@@ -109,7 +109,7 @@ module.exports = function () {
       // Whether or not the UI should be enabled
       ui: false,
       // The local-tunnel sub-domain (e.g. <example>.localtunnel.me)
-      tunnelName: 'starterkit'
+      // tunnelName: 'starterkit'
     }
   }
 

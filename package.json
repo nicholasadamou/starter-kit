@@ -19,10 +19,6 @@
     "build": "npx gulp build",
     "start": "npx gulp start",
     "clean": "sudo rm -rf node_modules/ bower_components/ yarn.lock package-lock.json",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect",
-    "test": "snyk test",
-    "prepublish": "npm run snyk-protect"
   },
   "devDependencies": {
     "@babel/core": "7.8.7",
@@ -101,6 +97,5 @@
     "vinyl-buffer": "^1.0.1",
     "vinyl-ftp": "^0.6.0",
     "vinyl-source-stream": "^2.0.0"
-  },
-  "snyk": true
+  }
 }

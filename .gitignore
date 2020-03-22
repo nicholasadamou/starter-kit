@@ -134,3 +134,4 @@ bower_components
 
 # Misc.
 .env
+.idea/*
