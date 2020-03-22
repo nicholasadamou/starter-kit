@@ -14,11 +14,12 @@
   },
   "license": "MIT",
   "scripts": {
-    "install-dependencies": "npx yarn install && npx bower cache clean && npx bower install",
-    "update-dependencies": "npx yarn-check -u",
-    "build": "npx gulp build",
-    "start": "npx gulp start",
-    "clean": "sudo rm -rf node_modules/ bower_components/ yarn.lock package-lock.json",
+	"install-dependencies": "npx yarn install && npx bower cache clean && npx bower install",
+	"update-dependencies": "npx yarn-check -u",
+	"build": "npx gulp build",
+	"start": "npx gulp start",
+	"clean": "sudo rm -rf node_modules/ bower_components/ yarn.lock package-lock.json",
+	"test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "@babel/core": "7.8.7",
