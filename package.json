@@ -19,7 +19,7 @@
 	"build": "npx gulp build",
 	"start": "npx gulp start",
 	"clean": "sudo rm -rf node_modules/ bower_components/ yarn.lock package-lock.json",
-	"test": "echo \"Error: no test specified\" && exit 1"
+	"test": "exit 0"
   },
   "devDependencies": {
     "@babel/core": "7.8.7",
