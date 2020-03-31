@@ -140,6 +140,24 @@ Username: vagrant
 Private key: C:/dev/Starter-Kit/.vagrant/machines/default/virtualbox/private_key
 ```
 
+**Note**: if after running `yarn install-dependencies` you are presented with the below error, please install `libpng-dev` via apt (`sudo apt install -y libpng-dev`). `libpng-dev` is used by `pngquant` and is necessary and required in order to build the `pngquant` binary.
+
+```bash
+error An unexpected error occurred: "/var/www/node_modules/pngquant-bin: Command failed.
+Exit code: 1
+Command: sh
+Arguments: -c node lib/install.js
+Directory: /var/www/node_modules/pngquant-bin
+Output:
+⚠ Couldn't execute the `/var/www/node_modules/pngquant-bin/vendor/pngquant` binary. Make sure it has the right permissions.
+  ⚠ pngquant pre-build test failed
+  ℹ compiling from source
+  ✖ Error: pngquant failed to build, make sure that libpng-dev is installed
+    at /var/www/node_modules/execa/index.js:231:11
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at async Promise.all (index 0)".
+```
+
 **Note**: ⬆ **(Updating & Upgrading Dependencies)** If you would like to update & upgrade all of the `dependencies` & `devDependencies` for this project, please run the following snippet:
 
 ```bash
