@@ -140,7 +140,7 @@ Username: vagrant
 Private key: C:/dev/Starter-Kit/.vagrant/machines/default/virtualbox/private_key
 ```
 
-**Note**: if after running `yarn install-dependencies` you are presented with the below error, please install `libpng-dev` via apt (`sudo apt install -y libpng-dev`). `libpng-dev` is used by `pngquant` and is necessary and required in order to build the `pngquant` binary.
+**Note**: if after running `yarn install-dependencies` you are presented with the below error, please install `libpng-dev` via `apt` (`sudo apt install -y libpng-dev`). `libpng-dev` is used by `pngquant` and is necessary and required in order to build the `pngquant` binary.
 
 ```bash
 error An unexpected error occurred: "/var/www/node_modules/pngquant-bin: Command failed.
