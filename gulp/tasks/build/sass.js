@@ -1,114 +1,131 @@
-const gulp = require('gulp')
-const $ = require('gulp-load-plugins')({ lazy: true })
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')({ lazy: true });
 
-const autoprefixer = require('autoprefixer')
-const rucksack = require('rucksack-css')
-const bourbon = require('node-bourbon')
-const neat = require('node-neat')
-const lost = require('lost')
-const postcssPresetEnv = require('postcss-preset-env')
+const autoprefixer = require('autoprefixer');
+const rucksack = require('rucksack-css');
+const bourbon = require('node-bourbon');
+const neat = require('node-neat');
+const lost = require('lost');
+const postcssPresetEnv = require('postcss-preset-env');
 
-const paths = require('../../paths.js')
-const banner = require('../../banner.js')()
-const config = require('../../config.js')()
+const paths = require('../../paths.js');
+const banner = require('../../banner.js')();
+const config = require('../../config.js')();
 
 gulp.task('sass', (done) => {
-  const env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production')
+	const env =
+		(config.environment || process.env.NODE_ENV || 'development')
+			.trim()
+			.toLowerCase() !== 'production';
 
-  const options = {
-    sourceComments: (config.sassOptions.sourceComments).trim().toLowerCase() ? !env : '',
-    outputStyle: (config.sassOptions.outputStyle).trim().toLowerCase() ? !env : 'compressed',
-    imagePath: config.sassOptions.imagePath,
-    precision: config.sassOptions.precision || 3,
-    includePaths: [
-      bourbon.includePaths,
-      neat.includePaths
-    ],
-    errLogToConsole: true
-  }
+	const options = {
+		sourceComments: config.sassOptions.sourceComments.trim().toLowerCase()
+			? !env
+			: '',
+		outputStyle: config.sassOptions.outputStyle.trim().toLowerCase()
+			? !env
+			: 'compressed',
+		imagePath: config.sassOptions.imagePath,
+		precision: config.sassOptions.precision || 3,
+		includePaths: [bourbon.includePaths, neat.includePaths],
+		errLogToConsole: true,
+	};
 
-  const plugins = [
-    lost(),
-    rucksack(),
-    autoprefixer(),
-    postcssPresetEnv()
-  ]
+	const plugins = [lost(), rucksack(), autoprefixer(), postcssPresetEnv()];
 
-  console.log(`-> Compiling SASS for ${config.environment}`)
+	console.log(`-> Compiling SASS for ${config.environment}`);
 
-  let sass = null
+	let sass = null;
 
-  if (env) {
-    // Select files
-    sass = gulp.src(`${paths.to.sass.in}/*.scss`)
-    // Prevent pipe breaking caused by errors from gulp plugins
-      .pipe(
-        $.plumber({
-          errorHandler: function (err) {
-            $.notify.onError('Error: <%= error.message %>')(err)
-            this.emit('end') // End stream if error is found.
-          }
-        })
-      )
-    // Add file-header
-      .pipe($.header(banner.default, { package: config.pkg }))
-    // Initialize sourcemaps *after* header
-      .pipe($.sourcemaps.init())
-    // Compile Sass
-      .pipe($.sass(options).on('error', $.sass.logError))
-    // Add vendor prefixes
-      .pipe($.postcss(plugins))
-    // Concatenate includes
-      .pipe($.include({
-        includePaths: [
-          `${config.root}/bower_components`,
-          `${config.root}/node_modules`
-        ]
-      }))
-    // Save sourcemaps
-      .pipe($.sourcemaps.write('.'))
-    // Save unminified file
-      .pipe(gulp.dest(`${paths.to.sass.out}`))
-      .pipe($.notify({ message: '\n\n✅   ===> SASS completed!\n', onLast: true }))
-  } else {
-    // Select files
-    sass = gulp.src(`${paths.to.sass.in}/*.scss`)
-    // Prevent pipe breaking caused by errors from gulp plugins
-      .pipe(
-        $.plumber({
-          errorHandler: function (err) {
-            $.notify.onError('Error: <%= error.message %>')(err)
-            this.emit('end') // End stream if error is found.
-          }
-        })
-      )
-    // Add file-header
-      .pipe($.header(banner.min, { package: config.pkg }))
-    // Compile Sass
-      .pipe($.sass(options).on('error', $.sass.logError))
-    // Add vendor prefixes
-      .pipe($.postcss(plugins))
-    // Concatenate includes
-      .pipe($.include({
-        includePaths: [
-          `${config.root}/bower_components`,
-          `${config.root}/node_modules`
-        ]
-      }))
-    // Show file-size before compression
-      .pipe($.size({ title: 'sass In Size' }))
-    // Optimize and minify
-      .pipe($.cssnano())
-    // Show file-size after compression
-      .pipe($.size({ title: 'sass Out Size' }))
-    // Append suffix
-      .pipe($.rename({
-        suffix: '.min'
-      }))
-    // Save minified file
-      .pipe(gulp.dest(`${paths.to.sass.out}`))
-      .pipe($.notify({ message: '\n\n✅   ===> SASS completed!\n', onLast: true }))
-  }
+	if (env) {
+		// Select files
+		sass = gulp
+			.src(`${paths.to.sass.in}/*.scss`)
+			// Prevent pipe breaking caused by errors from gulp plugins
+			.pipe(
+				$.plumber({
+					errorHandler: $.notify.onError({
+						title: 'Error: Compiling js.',
+						message: '<%= error.message %>',
+					}),
+				}),
+			)
+			// Add file-header
+			.pipe($.header(banner.default, { package: config.pkg }))
+			// Initialize sourcemaps *after* header
+			.pipe($.sourcemaps.init())
+			// Compile Sass
+			.pipe($.sass(options).on('error', $.sass.logError))
+			// Add vendor prefixes
+			.pipe($.postcss(plugins))
+			// Concatenate includes
+			.pipe(
+				$.include({
+					includePaths: [
+						`${config.root}/bower_components`,
+						`${config.root}/node_modules`,
+					],
+				}),
+			)
+			// Save sourcemaps
+			.pipe($.sourcemaps.write('.'))
+			// Save unminified file
+			.pipe(gulp.dest(`${paths.to.sass.out}`))
+			.pipe(
+				$.notify({
+					title: 'SASS compiled successfully!',
+					message: 'sass task completed.',
+				}),
+			);
+	} else {
+		// Select files
+		sass = gulp
+			.src(`${paths.to.sass.in}/*.scss`)
+			// Prevent pipe breaking caused by errors from gulp plugins
+			.pipe(
+				$.plumber({
+					errorHandler: $.notify.onError({
+						title: 'Error: Compiling js.',
+						message: '<%= error.message %>',
+					}),
+				}),
+			)
+			// Add file-header
+			.pipe($.header(banner.min, { package: config.pkg }))
+			// Compile Sass
+			.pipe($.sass(options).on('error', $.sass.logError))
+			// Add vendor prefixes
+			.pipe($.postcss(plugins))
+			// Concatenate includes
+			.pipe(
+				$.include({
+					includePaths: [
+						`${config.root}/bower_components`,
+						`${config.root}/node_modules`,
+					],
+				}),
+			)
+			// Show file-size before compression
+			.pipe($.size({ title: 'sass In Size' }))
+			// Optimize and minify
+			.pipe($.cssnano())
+			// Show file-size after compression
+			.pipe($.size({ title: 'sass Out Size' }))
+			// Append suffix
+			.pipe(
+				$.rename({
+					suffix: '.min',
+				}),
+			)
+			// Save minified file
+			.pipe(gulp.dest(`${paths.to.sass.out}`))
+			.pipe(
+				$.notify({
+					title: 'JS compiled successfully!',
+					message: 'js task completed.',
+				}),
+			);
+	}
 
-  return sass
-})
+	return sass;
+});

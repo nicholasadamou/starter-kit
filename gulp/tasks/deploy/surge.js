@@ -1,12 +1,15 @@
-'use-strict'
+'use-strict';
 
-const gulp = require('gulp')
-const $ = require('gulp-load-plugins')({ lazy: true })
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')({ lazy: true });
 
-const config = require('../../config.js')()
+const config = require('../../config.js')();
 
-gulp.task('surge', gulp.series('build', () => {
-  console.log(`-> Deploying to ${config.SURGE.domain}`)
+gulp.task(
+	'surge',
+	gulp.series('build', () => {
+		console.log(`-> Deploying to ${config.SURGE.domain}`);
 
-  return $.surge(config.SURGE)
-}))
+		return $.surge(config.SURGE);
+	}),
+);

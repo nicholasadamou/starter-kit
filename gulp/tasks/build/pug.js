@@ -1,92 +1,117 @@
-'use-strict'
+'use-strict';
 
-const gulp = require('gulp')
-const $ = require('gulp-load-plugins')({ lazy: true })
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')({ lazy: true });
 
-const moment = require('moment')
+const moment = require('moment');
 
-const paths = require('../../paths.js')
-const config = require('../../config.js')()
+const paths = require('../../paths.js');
+const config = require('../../config.js')();
 
 gulp.task('pug', () => {
-  const env = ((config.environment || process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production')
+	const env =
+		(config.environment || process.env.NODE_ENV || 'development')
+			.trim()
+			.toLowerCase() !== 'production';
 
-  console.log(`-> Compiling Pug Templates for ${config.environment}`)
+	console.log(`-> Compiling Pug Templates for ${config.environment}`);
 
-  let pug = null
+	let pug = null;
 
-  if (env) {
-    // Select files
-    pug = gulp.src(`${paths.to.pug.in}/*.pug`)
-    // Prevent pipe breaking caused by errors from gulp plugins
-      .pipe(
-        $.plumber({
-          errorHandler: function (err) {
-            $.notify.onError('Error: <%= error.message %>')(err)
-            this.emit('end') // End stream if error is found.
-          }
-        })
-      )
-    // Check which files have changed
-      .pipe($.changed(paths.to.pug.in, {
-        extension: '.html'
-      }))
-    // Compile Pug
-      .pipe($.pug({
-        basedir: `${__dirname}/${paths.to.pug.in}`,
-        pretty: (config.environment === 'development'),
-        data: {
-          env: config.environment
-        },
-        locals: { moment }
-      }))
-    // Catch errors
-      .pipe($.errorHandle())
-    // Save files
-      .pipe(gulp.dest(paths.to.build))
-      .pipe($.notify({ message: '\n\n✅   ===> PUG completed!\n', onLast: true }))
-  } else {
-    // Select files
-    pug = gulp.src(`${paths.to.pug.in}/*.pug`)
-    // Prevent pipe breaking caused by errors from gulp plugins
-      .pipe(
-        $.plumber({
-          errorHandler: function (err) {
-            $.notify.onError('Error: <%= error.message %>')(err)
-            this.emit('end') // End stream if error is found.
-          }
-        })
-      )
-    // Check which files have changed
-      .pipe($.changed(paths.to.pug.in, {
-        extension: '.html'
-      }))
-    // Compile Pug
-      .pipe($.pug({
-        basedir: `${__dirname}/${paths.to.pug.in}`,
-        pretty: (config.environment === 'development'),
-        data: {
-          env: config.environment
-        },
-        locals: { moment }
-      }))
-    // inline CSS & js
-      .pipe($.inlineSource({
-        compress: env,
-        rootpath: paths.to.build
-      }))
-    // Catch errors
-      .pipe($.errorHandle())
-    // Show file-size before compression
-      .pipe($.size({ title: 'Pug Templates Before Compression' }))
-    // Optomize and minify
-      .pipe($.htmlmin({ collapseWhitespace: true }))
-    // Show file-size after compression
-      .pipe($.size({ title: 'Pug Templates After Compression' }))
-    // Save minified file
-      .pipe(gulp.dest(paths.to.build))
-      .pipe($.notify({ message: '\n\n✅   ===> PUG completed!\n', onLast: true }))
-  }
+	if (env) {
+		// Select files
+		pug = gulp
+			.src(`${paths.to.pug.in}/*.pug`)
+			// Prevent pipe breaking caused by errors from gulp plugins
+			.pipe(
+				$.plumber({
+					errorHandler: $.notify.onError({
+						title: 'Error: Compiling pug.',
+						message: '<%= error.message %>',
+					}),
+				}),
+			)
+			// Check which files have changed
+			.pipe(
+				$.changed(paths.to.pug.in, {
+					extension: '.html',
+				}),
+			)
+			// Compile Pug
+			.pipe(
+				$.pug({
+					basedir: `${__dirname}/${paths.to.pug.in}`,
+					pretty: config.environment === 'development',
+					data: {
+						env: config.environment,
+					},
+					locals: { moment },
+				}),
+			)
+			// Catch errors
+			.pipe($.errorHandle())
+			// Save files
+			.pipe(gulp.dest(paths.to.build))
+			.pipe(
+				$.notify({
+					title: 'Pug compiled successfully!',
+					message: 'Pug task completed.',
+				}),
+			);
+	} else {
+		// Select files
+		pug = gulp
+			.src(`${paths.to.pug.in}/*.pug`)
+			// Prevent pipe breaking caused by errors from gulp plugins
+			.pipe(
+				$.plumber({
+					errorHandler: $.notify.onError({
+						title: 'Error: Compiling pug.',
+						message: '<%= error.message %>',
+					}),
+				}),
+			)
+			// Check which files have changed
+			.pipe(
+				$.changed(paths.to.pug.in, {
+					extension: '.html',
+				}),
+			)
+			// Compile Pug
+			.pipe(
+				$.pug({
+					basedir: `${__dirname}/${paths.to.pug.in}`,
+					pretty: config.environment === 'development',
+					data: {
+						env: config.environment,
+					},
+					locals: { moment },
+				}),
+			)
+			// inline CSS & js
+			.pipe(
+				$.inlineSource({
+					compress: env,
+					rootpath: paths.to.build,
+				}),
+			)
+			// Catch errors
+			.pipe($.errorHandle())
+			// Show file-size before compression
+			.pipe($.size({ title: 'Pug Templates Before Compression' }))
+			// Optomize and minify
+			.pipe($.htmlmin({ collapseWhitespace: true }))
+			// Show file-size after compression
+			.pipe($.size({ title: 'Pug Templates After Compression' }))
+			// Save minified file
+			.pipe(gulp.dest(paths.to.build))
+			.pipe(
+				$.notify({
+					title: 'Pug compiled successfully!',
+					message: 'Pug task completed.',
+				}),
+			);
+	}
 
-  return pug
-})
+	return pug;
+});

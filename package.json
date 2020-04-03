@@ -1,9 +1,8 @@
 {
   "name": "starter-kit",
-  "title": "Starter Kit",
-  "description": "A Front End development Gulp.js based workflow.",
+  "title": "starter kit",
+  "description": "A Front-End development Gulp.js based workflow.",
   "version": "1.0.0",
-  "homepage": "https://nicholasadamou.com/",
   "author": {
     "name": "Nicholas Adamou",
     "url": "https://nicholasadamou.com/"
@@ -14,12 +13,11 @@
   },
   "license": "MIT",
   "scripts": {
-	"install-dependencies": "npx yarn install && npx bower cache clean && npx bower install",
-	"update-dependencies": "npx yarn-check -u",
-	"build": "npx gulp build",
-	"start": "npx gulp start",
-	"clean": "sudo rm -rf node_modules/ bower_components/ yarn.lock package-lock.json",
-	"test": "exit 0"
+    "build": "npx gulp build",
+    "start": "npx gulp start",
+    "clean": "sudo rm -rf node_modules/ bower_components/ yarn.lock package-lock.json",
+    "install-dependencies": "npx yarn install && npx bower cache clean && npx bower install",
+    "update-dependencies": "npx yarn-check -u"
   },
   "devDependencies": {
     "@babel/core": "7.9.0",
@@ -69,6 +67,7 @@
     "yarn-check": "^0.0.3"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "animate.css": "latest",
     "argv": "^0.0.2",
     "autoprefixer": "9.7.5",
