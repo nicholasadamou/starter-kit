@@ -1,12 +1,12 @@
 <div align="center">
 
-# Nicholas Adamou's Starter Kit [![Build Status](https://travis-ci.org/nicholasadamou/Starter-Kit.svg?branch=master)](https://travis-ci.org/nicholasadamou/Starter-Kit)
+# Nicholas Adamou's Starter Kit [![Build Status](https://travis-ci.org/nicholasadamou/starter-kit.svg?branch=master)](https://travis-ci.org/nicholasadamou/starter-kit)
 
 ![Project Preview](https://cloud.githubusercontent.com/assets/7629661/9838465/89626e74-5a5e-11e5-9b7d-e0ce76856732.gif)
 
 ![license](https://img.shields.io/apm/l/vim-mode.svg)
-[![DevDependencies](https://img.shields.io/david/dev/nicholasadamou/Starter-Kit.svg?style=flat-square)](https://david-dm.org/nicholasadamou/Starter-Kit#info=devDependencies)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=nicholasadamou/Starter-Kit)](https://dependabot.com)
+[![DevDependencies](https://img.shields.io/david/dev/nicholasadamou/starter-kit.svg?style=flat-square)](https://david-dm.org/nicholasadamou/starter-kit#info=devDependencies)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=nicholasadamou/starter-kit)](https://dependabot.com)
 ![javascript style guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)
 [![Say Thanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/NicholasAdamou)
 
