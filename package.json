@@ -82,7 +82,7 @@
 		"gulp-load-plugins": "2.0.3",
 		"hamburgers": "latest",
 		"hover": "latest",
-		"imagemin-pngquant": "^8.0.0",
+		"imagemin-pngquant": "^9.0.0",
 		"isinviewport": "latest",
 		"jquery": "3.5.1",
 		"lost": "8.3.1",
