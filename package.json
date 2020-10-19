@@ -73,7 +73,7 @@
 		"argv": "^0.0.2",
 		"autoprefixer": "10.0.1",
 		"babel-polyfill": "^6.26.0",
-		"browser-sync": "2.26.12",
+		"browser-sync": "2.26.13",
 		"browserify": "^17.0.0",
 		"bulma": "latest",
 		"del": "^6.0.0",
