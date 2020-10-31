@@ -59,7 +59,7 @@
 		"localtunnel": "2.0.0",
 		"main-bower-files": "^2.13.1",
 		"path": "^0.12.7",
-		"postcss-cli": "8.1.0",
+		"postcss-cli": "8.2.0",
 		"postcss-preset-env": "6.7.0",
 		"run-sequence": "^2.2.1",
 		"undertaker-forward-reference": "^1.0.2",
