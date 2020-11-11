@@ -71,7 +71,7 @@
 		"@fortawesome/fontawesome-free": "^5.13.0",
 		"animate.css": "latest",
 		"argv": "^0.0.2",
-		"autoprefixer": "10.0.1",
+		"autoprefixer": "10.0.2",
 		"babel-polyfill": "^6.26.0",
 		"browser-sync": "2.26.13",
 		"browserify": "^17.0.0",
