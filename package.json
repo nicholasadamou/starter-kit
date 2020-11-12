@@ -50,7 +50,7 @@
 		"gulp-rename": "^2.0.0",
 		"gulp-sass": "*",
 		"gulp-size": "^3.0.0",
-		"gulp-sourcemaps": "2.6.5",
+		"gulp-sourcemaps": "3.0.0",
 		"gulp-strip-css-comments": "^2.0.0",
 		"gulp-strip-debug": "^3.0.0",
 		"gulp-surge": "0.1.4",
