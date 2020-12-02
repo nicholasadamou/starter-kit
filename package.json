@@ -63,7 +63,7 @@
 		"postcss-preset-env": "6.7.0",
 		"run-sequence": "^2.2.1",
 		"undertaker-forward-reference": "^1.0.2",
-		"workbox-build": "^5.0.0",
+		"workbox-build": "^6.0.0",
 		"yarn": "1.22.10",
 		"yarn-check": "^0.0.3"
 	},
