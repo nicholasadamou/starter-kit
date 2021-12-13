@@ -1,6 +1,6 @@
 <div align="center">
 
-# Nicholas Adamou's Starter Kit [![Build Status](https://travis-ci.org/nicholasadamou/starter-kit.svg?branch=master)](https://travis-ci.org/nicholasadamou/starter-kit)
+# Nicholas Adamou's Starter Kit
 
 ![Project Preview](https://cloud.githubusercontent.com/assets/7629661/9838465/89626e74-5a5e-11e5-9b7d-e0ce76856732.gif)
 
@@ -12,39 +12,41 @@
 
 ## Table of Contents
 
-1. [About](#about)
-1. [Technologies](#technologies)
-1. [Requirements](#requirements)
-1. [Install](#install)
-1. [Set Up/Workflow](#set-upworkflow)
-1. [How to Use](#how-to-use)
-1. [package.json](#packagejson)
-1. [Paths](#paths)
-1. [Header](#Header)
-1. [Build](#build)
-    1. [Environments](#environments)
-        1. [Development](#development)
-        1. [Production](#production)
-1. [Browsersync](#browsersync)
-    1. [Local URLs](#local-urls)
-    1. [Options](#options)
-1. [Assets](#assets)
-    1. [Data](#data)
-    1. [Docs](#docs)
-    1. [Fonts](#fonts)
-    1. [Images](#images)
-    1. [Media](#media)
-    1. [Miscellaneous](#miscellaneous)
-    1. [Vendors](#vendors)
-1. [JS](#js)
-1. [SASS](#sass)
-    1. [BEM Structure](#bem-structure)
-1. [Pug](#pug)
-    1. [Pug Structure](#pug-structure)
-    1. [Environment Variables](#environment-variables)
-1. [Configuration](#configuration)
-1. [Inspiration](#inspiration)
-1. [License](#license)
+- [Nicholas Adamou's Starter Kit](#nicholas-adamous-starter-kit)
+	- [Table of Contents](#table-of-contents)
+	- [About](#about)
+	- [Technologies](#technologies)
+	- [Requirements](#requirements)
+	- [Install](#install)
+	- [Set Up/Workflow](#set-upworkflow)
+	- [How to Use](#how-to-use)
+	- [package.json](#packagejson)
+	- [Paths](#paths)
+	- [Header](#header)
+	- [Build](#build)
+		- [Environments](#environments)
+			- [Development](#development)
+			- [Production](#production)
+	- [Browsersync](#browsersync)
+		- [Local URLs](#local-urls)
+		- [Options](#options)
+	- [Assets](#assets)
+		- [Data](#data)
+		- [Docs](#docs)
+		- [Fonts](#fonts)
+		- [Images](#images)
+		- [Media](#media)
+		- [Miscellaneous](#miscellaneous)
+		- [Vendors](#vendors)
+	- [js](#js)
+	- [SASS](#sass)
+		- [BEM Structure](#bem-structure)
+	- [Pug](#pug)
+		- [Pug Structure](#pug-structure)
+		- [Environment Variables](#environment-variables)
+	- [Configuration](#configuration)
+	- [Inspiration](#inspiration)
+	- [License](#license)
 
 ## About
 
@@ -55,29 +57,29 @@ _⚠️ Note: Starter Kit is simply a guideline and it doesn't solve everything.
 
 ## Technologies
 
--   [**Vagrant**](https://www.vagrantup.com/) - Development Environments Made Easy
--   [**Scotch\box**](https://box.scotch.io/) - The Perfect / Easiest Local Dev Environment
--   [**NodeJS**](https://nodejs.org) - JavaScript runtime built on Chrome's V8 JavaScript engine.
--   [**Gulp**](http://gulpjs.com) - Automate and enhance your workflow.
--   [**Yarn**](https://yarnpkg.com/en/docs/install) - Fast, Reliable, and secure dependency management.
--   [**Surge**](https://surge.sh) - Simple, single-command web publishing. Publish HTML, CSS, and JS for free, without leaving the command line.
--   [**GitHub Pages**](https://pages.github.com/) - Websites for you and your projects. Hosted directly from your GitHub repository. Just edit, push, and your changes are live.
--   [**PostCSS**](http://postcss.org/) - A tool for transforming CSS with JavaScript.
--   [**Pug**](https://pugjs.org) - Simple language for writing HTML templates.
--   [**SASS**](http://sass-lang.com) - CSS with superpowers.
--   [**Rucksack**](https://simplaio.github.io/rucksack/) - A little bag of CSS superpowers.
--   [**Skeleton**](https://github.com/dhg/Skeleton) - A simple, responsive boilerplate to kickstart any responsive project.
--   [**Babel**](https://babeljs.io/) - Babel is a JavaScript compiler; use next generation JavaScript, today.
+- [**Vagrant**](https://www.vagrantup.com/) - Development Environments Made Easy
+- [**Scotch\box**](https://box.scotch.io/) - The Perfect / Easiest Local Dev Environment
+- [**NodeJS**](https://nodejs.org) - JavaScript runtime built on Chrome's V8 JavaScript engine.
+- [**Gulp**](http://gulpjs.com) - Automate and enhance your workflow.
+- [**Yarn**](https://yarnpkg.com/en/docs/install) - Fast, Reliable, and secure dependency management.
+- [**Surge**](https://surge.sh) - Simple, single-command web publishing. Publish HTML, CSS, and JS for free, without leaving the command line.
+- [**GitHub Pages**](https://pages.github.com/) - Websites for you and your projects. Hosted directly from your GitHub repository. Just edit, push, and your changes are live.
+- [**PostCSS**](http://postcss.org/) - A tool for transforming CSS with JavaScript.
+- [**Pug**](https://pugjs.org) - Simple language for writing HTML templates.
+- [**SASS**](http://sass-lang.com) - CSS with superpowers.
+- [**Rucksack**](https://simplaio.github.io/rucksack/) - A little bag of CSS superpowers.
+- [**Skeleton**](https://github.com/dhg/Skeleton) - A simple, responsive boilerplate to kickstart any responsive project.
+- [**Babel**](https://babeljs.io/) - Babel is a JavaScript compiler; use next generation JavaScript, today.
 
 ## Requirements
 
--   [Virtualbox](https://www.virtualbox.org/)
--   [Vagrant](https://www.vagrantup.com/)
--   [Node.js](https://nodejs.org/en/)
--   [Gulp](http://gulpjs.com)
--   [Yarn](https://yarnpkg.com/en/docs/install)
--   [Bower](https://bower.io/)
--   [localtunnel](https://github.com/localtunnel/localtunnel)
+- [Virtualbox](https://www.virtualbox.org/)
+- [Vagrant](https://www.vagrantup.com/)
+- [Node.js](https://nodejs.org/en/)
+- [Gulp](http://gulpjs.com)
+- [Yarn](https://yarnpkg.com/en/docs/install)
+- [Bower](https://bower.io/)
+- [localtunnel](https://github.com/localtunnel/localtunnel)
 
 ️️⚠️ _**Note:** if you've previously installed Gulp globally, run `npm rm --global gulp` to remove it. [Details here.](https://medium.com/gulpjs/gulp-sips-command-line-interface-e53411d4467)_
 
@@ -94,10 +96,13 @@ yarn global add bower gulp-cli gulp@next localtunnel
 To install `Virtualbox` and `Vagrant`:
 
 1. if on `Windows`, use [Chocolatey](https://chocolatey.org/):
+
     ```powershell
     cinst -y virtualbox virtualbox.extensionpack vagrant vagrant-manager
     ```
+
 2. if on `MacOS`, use [homebrew](https://brew.sh/):
+
     ```bash
     brew cask install virtualbox virtualbox-extension-pack vagrant vagrant-manager
     ```
@@ -174,26 +179,26 @@ To compile and live-preview all of your changes, you have some commands that wil
 
 Every command has to be executed on the root directory of the project using the gulp command like `gulp clean:build` or `gulp build`.
 
--   **start**: Compile and watch for changes (For dev.)
--   **clean:build**: Removes all the compiled files in public/
--   **clean:compiled-files**: Removes all the compiled 'sass' & 'js' files in public/assets
--   **ftp**: Deploy to an FTP/SFTP server
--   **surge**: Deploy to a Surge.sh domain
--   **ghpages**: Deploy to Github-Pages
--   **js**: Compile the JavaScript files
--   **pug**: Compile the Pug templates
--   **sass**: Compile the SASS styles
--   **assets**: copy static files from src/assets to public/assets
--   **images**: copy and optomize image files from src/assets/images to public/assets/images
--   **data**: copy data files from src/assets/data to public/assets/data
--   **docs**: copy (.pdf) files from src/assets/docs to public/assets/docs
--   **fonts**: copy font files from src/assets/fonts to public/assets/fonts
--   **media**: copy media files from src/assets/media to public/assets/media
--   **misc**: copy misc files from src/assets/misc to ./public
--   **build**: build the project
--   **pagespeed**: Run Google PageSpeed Insights
--   **help**: Print a list of available Gulp tasks
--   **browserSync**: Start the browser-sync server
+- **start**: Compile and watch for changes (For dev.)
+- **clean:build**: Removes all the compiled files in public/
+- **clean:compiled-files**: Removes all the compiled 'sass' & 'js' files in public/assets
+- **ftp**: Deploy to an FTP/SFTP server
+- **surge**: Deploy to a Surge.sh domain
+- **ghpages**: Deploy to Github-Pages
+- **js**: Compile the JavaScript files
+- **pug**: Compile the Pug templates
+- **sass**: Compile the SASS styles
+- **assets**: copy static files from src/assets to public/assets
+- **images**: copy and optomize image files from src/assets/images to public/assets/images
+- **data**: copy data files from src/assets/data to public/assets/data
+- **docs**: copy (.pdf) files from src/assets/docs to public/assets/docs
+- **fonts**: copy font files from src/assets/fonts to public/assets/fonts
+- **media**: copy media files from src/assets/media to public/assets/media
+- **misc**: copy misc files from src/assets/misc to ./public
+- **build**: build the project
+- **pagespeed**: Run Google PageSpeed Insights
+- **help**: Print a list of available Gulp tasks
+- **browserSync**: Start the browser-sync server
 
 If you are in the development process, the `gulp start` command is the best option for you. Go to the project folder in the console and execute `gulp start`, it will compile the project and start server that will refresh every time you change something in the code. The command will be waiting for changes and will tell you how to access the project from local and public url. Every browser that points to that url will be auto refreshed. As an extra feature for testing purpose any interaction on one browser will be reflected on any others. Try it on a phone, tablet, and pc at the same time.
 
@@ -205,19 +210,19 @@ Some information is automatically pulled in from it and added to a header that's
 
 ```json
 {
-	"name": "project-name",
-	"version": "0.0.1",
-	"description": "A description for your project.",
-	"author": {
-		"name": "YOUR NAME",
-		"url": "http://link-to-your-website.com"
-	},
-	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "http://link-to-your-git-repo.com"
-	},
-	"devDependencies": {}
+ "name": "project-name",
+ "version": "0.0.1",
+ "description": "A description for your project.",
+ "author": {
+  "name": "YOUR NAME",
+  "url": "http://link-to-your-website.com"
+ },
+ "license": "MIT",
+ "repository": {
+  "type": "git",
+  "url": "http://link-to-your-git-repo.com"
+ },
+ "devDependencies": {}
 }
 ```
 
@@ -236,30 +241,30 @@ const src = config.root + config.src;
 const build = config.root + config.build;
 
 module.exports = {
-	to: {
-		src,
-		build,
-		assets: {
-			in: src + config.assets,
-			out: build + config.assets
-		},
-		vendors: {
-			in: src + config.vendors,
-			out: build + config.assets + config.vendors
-		},
-		js: {
-			in: src + config.js.dir,
-			out: build + config.assets + config.js.dir
-		},
-		sass: {
-			in: src + config.sass.dir,
-			out: build + config.css
-		},
-		pug: {
-			in: src + config.pug.dir,
-			out: build
-		}
-	}
+ to: {
+  src,
+  build,
+  assets: {
+   in: src + config.assets,
+   out: build + config.assets
+  },
+  vendors: {
+   in: src + config.vendors,
+   out: build + config.assets + config.vendors
+  },
+  js: {
+   in: src + config.js.dir,
+   out: build + config.assets + config.js.dir
+  },
+  sass: {
+   in: src + config.sass.dir,
+   out: build + config.css
+  },
+  pug: {
+   in: src + config.pug.dir,
+   out: build
+  }
+ }
 };
 ```
 
@@ -274,14 +279,14 @@ Unminified versions get a fat header, while minified files get a one-liner. You 
  * Template for banner to add to file headers.
  */
 const banner = {
-	default: `/**!
-		  * <%= package.title %> v<%= package.version %>
-		  * <%= package.description %>
-		  * (c) ${new Date().getFullYear()} <%= package.author.name %>
-		  * <%= package.license %> License
-		  * <%= package.repository.url %>
-		  */`,
-	min: `/**! <%= package.title %> v<%= package.version %> | (c) ${new Date().getFullYear()} <%= package.author.name %> | <%= package.license %> License | <%= package.repository.url %> */`
+ default: `/**!
+    * <%= package.title %> v<%= package.version %>
+    * <%= package.description %>
+    * (c) ${new Date().getFullYear()} <%= package.author.name %>
+    * <%= package.license %> License
+    * <%= package.repository.url %>
+    */`,
+ min: `/**! <%= package.title %> v<%= package.version %> | (c) ${new Date().getFullYear()} <%= package.author.name %> | <%= package.license %> License | <%= package.repository.url %> */`
 };
 ```
 
@@ -311,8 +316,8 @@ Run: `gulp browsersync`
 
 ### Local URLs
 
--   Local - http://localhost:3000
--   UI - Set to `false` by default
+- Local - <http://localhost:3000>
+- UI - Set to `false` by default
 
 ### Options
 
@@ -415,7 +420,7 @@ This project has some nice configuration options to meet all your needs. To conf
 
 ## Inspiration
 
--   [**carloscuesta/starterkit**](https://github.com/carloscuesta/starterkit) - A Front End development Gulp.js based workflow. 🚀
+- [**carloscuesta/starterkit**](https://github.com/carloscuesta/starterkit) - A Front End development Gulp.js based workflow. 🚀
 
 ## License
 
